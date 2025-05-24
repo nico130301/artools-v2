@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "watch:css": "tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "fontFamily": {
+    "openSans": [
+      "Open Sans",
+      "sans-serif"
+    ]
+  }
+}

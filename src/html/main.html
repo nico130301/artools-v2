@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ARTOOLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../output.css">
+    
+
+  </head>
+
+  <body class="body bg-bgblue">
+
+    <div class="header"></div>
+
+    <div class="menu "></div>
+
+    <div class="slideshow relative w-full mt-32">  
+      <img class="slideshowPhoto w-full h-[700px] object-cover" src="../images/unior1.jpg" alt="Slide 1">
+      <div class="howToBuy absolute bottom-0 left-[15%] bg-black/70 p-8 text-white w-[500px] flex flex-col space-y-6">
+        <div class="howToBuyTitle text-3xl font-bold">
+          How to buy
+        </div>
+        <div class="howToBuySteps flex flex-col space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold">1.</span>
+            <span>Choose your product</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-semibold">2.</span>
+            <span>Add to cart</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-semibold">3.</span>
+            <span>Fill-in your details</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-semibold">4.</span>
+            <span>Wait for us to contact you</span>
+          </div>
+        </div>
+        <div class="howToBuyDetails flex flex-col space-y-4">
+          <div class="howToBuyDescription text-sm">
+            Find out more details on how to purchase the products you want
+          </div>
+          <div class="howToBuyIconContainer self-end">
+            <i class="fa-solid fa-arrow-right howToBuyIcon text-white hover:text-secondaryblue transition-colors duration-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="newProducts container mx-auto px-4 mt-16">
+      <div class="newProductsText text-4xl font-bold mb-8">New Products</div>
+
+      <div class="newProductsGrid grid grid-cols-4 gap-8"></div>
+    </div>
+
+    <div class="benefitsContainer bg-mainblue text-white mt-8 mb-8 py-8">
+      <div class="grid grid-cols-4 gap-8 container mx-auto px-4">
+        <div class="benefitItem flex flex-col items-center space-y-4">
+          <div class="benefit1 text-4xl">
+            <i class="benefitImage fa-regular fa-circle-check"></i>
+          </div>
+          <div class="benefitText">Authorised importer</div>
+        </div>
+        
+        <div class="benefitItem flex flex-col items-center space-y-4">
+          <div class="benefit2 text-4xl">
+            <i class="benefitImage fa-solid fa-truck-fast"></i>
+          </div>
+          <div class="benefitText">Free transport</div>
+        </div>  
+
+        <div class="benefitItem flex flex-col items-center space-y-4">
+          <div class="benefit3 text-4xl">
+            <i class="benefitImage fa-solid fa-headset"></i>
+          </div>
+          <div class="benefitText">Support</div>
+        </div>
+
+        <div class="benefitItem flex flex-col items-center space-y-4">
+          <div class="benefit4 text-4xl">
+            <i class="benefitImage fa-solid fa-rotate-left"></i>
+          </div>
+          <div class="benefitText">Free return in 30 days</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relatedProducts container mx-auto px-4 my-16">
+      <div class="relatedProductsText text-4xl font-bold mb-8">Related Products</div>
+
+      <div class="relatedProductsGrid grid grid-cols-4 gap-8"></div>
+    </div>
+
+    <div class="footer"></div> 
+
+     <div class="wapp"></div>
+
+    
+
+    <script src="/src/javascript/utils/header.js"></script>
+    <script src="/src/javascript/utils/menu.js"></script>
+    <script src="/src/javascript/utils/footer.js"></script>
+    <script src="/src/javascript/utils/wapp.js"></script>
+    <script type= "module"src="/src/javascript/main.js"></script>    
+
+  </body>
+</html>

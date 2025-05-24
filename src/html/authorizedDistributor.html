@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ARTOOLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../output.css">
+  </head>
+
+  <body class="body">
+    <div class="header"></div>
+    <div class="menu"></div>
+
+    <div class="distributorsTitleflex mt-40 ml-8 bg-orange-500 text-white text-5xl font-bold justify-end w-2/5 p-8">
+      Distribuitores autorizados
+    </div>
+
+    <div class="distributorsContainer flex flex-col justify-center items-center my-20 w-full">
+      <div class="country w-3/5 flex justify-center items-center mr-16 flex-col">
+        <button class="countryButton w-full my-1 bg-mainblue text-white text-left text-2xl font-bold hover:bg-blue-900 transition-colors">
+          <div class="countryButtonContent flex items-center relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 pointer-events-none"></div>
+            <img class="countryImage w-16 flex-1" src="../images/tools.png">
+            <div class="countryTitle flex-[6] flex items-center justify-start pl-10 text-3xl">Costa Rica</div>
+          </div>
+        </button>
+        <div class="cities hidden ml-40 w-full">
+          <button class="cityButton w-4/5 my-1 p-2 bg-white text-mainblue border border-mainblue text-left text-2xl hover:bg-gray-200 transition-colors">
+            San José
+          </button>
+          <div class="distributors hidden border border-blue-900 mx-8 p-4">
+            <p class="py-1">Distribuidor 1</p>
+            <p class="py-1">Distribuidor 2</p>
+          </div>
+    
+          <button class="cityButton w-4/5 my-1 p-2 bg-white text-mainblue border border-mainblue text-left text-2xl hover:bg-gray-200 transition-colors">
+            Alajuela
+          </button>
+          <div class="distributors hidden border border-blue-900 mx-8 p-4">
+            <p class="py-1">Distribuidor A</p>
+            <p class="py-1">Distribuidor B</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="country w-3/5 flex justify-center items-center mr-16 flex-col">
+        <button class="countryButton w-full my-1 bg-mainblue text-white text-left text-2xl font-bold hover:bg-blue-900 transition-colors">
+          <div class="countryButtonContent flex items-center relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 pointer-events-none"></div>
+            <img class="countryImage w-16 flex-1" src="../images/tools.png">
+            <div class="countryTitle flex-[6] flex items-center justify-start pl-10 text-3xl">Venezuela</div>
+          </div>
+        </button>
+        <div class="cities hidden ml-40 w-full">
+          <button class="cityButton w-4/5 my-1 p-2 bg-white text-mainblue border border-mainblue text-left text-2xl hover:bg-gray-200 transition-colors">
+            Caracas
+          </button>
+          <div class="distributors hidden border border-blue-900 mx-8 p-4">
+            <p class="py-1">Distribuidor X</p>
+            <p class="py-1">Distribuidor Y</p>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+    <div class="footer"></div> 
+    <div class="wapp"></div>
+
+    <script src="/src/javascript/utils/header.js"></script>
+    <script src="/src/javascript/utils/menu.js"></script>
+    <script src="/src/javascript/utils/footer.js"></script>
+    <script src="/src/javascript/utils/wapp.js"></script>
+    <script type="module" src="/src/javascript/authorizedDistributor.js"></script>      
+  </body>
+</html>
