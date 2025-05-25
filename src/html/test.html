@@ -1,19 +1,80 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="../output.css">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shrinking Header</title>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
+      const placeholder = document.getElementById('header-placeholder');
+      const fullPadding = 32; // 2rem
 
-  <body>
-    <h1 class="text-3xl  mb-4">Test Page</h1>
-    <div class="w-[200px] grid grid-cols-1 items-start gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-      <div class="bg-blue-200 p-4 rounded ">
-        <span class="text-muted-foreground">Groups</span>
-      </div>
+      let ticking = false;
 
-      <div class="bg-blue-200 p-4 rounded">Box 2</div>
-      <div class="bg-blue-200 p-4 rounded">Box 3</div>
-      <div class="bg-blue-200 p-4 rounded">Box 4</div>
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.scrollY > 10;
+            header.classList.toggle('py-8', !scrolled); // py-8 = 2rem
+            header.classList.toggle('py-2', scrolled);  // py-2 = 0.5rem
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 h-96">
+  <!-- Fixed header -->
+  <div id="header" class="fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 ease-in-out py-8 shadow">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-xl font-bold">Sticky Shrinking Header</h1>
     </div>
-  </body>
+  </div>
+
+  <!-- Placeholder to avoid layout shift -->
+  <div id="header-placeholder" class="h-32 transition-all duration-300"></div>
+
+  <!-- Page content -->
+  <div class="max-w-4xl mx-auto px-4 space-y-6">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <!-- Repeat content to allow scrolling -->
+    <div class="space-y-4">
+      <!-- You can add more paragraphs or elements here -->
+      <p>Scroll down to see the padding disappear smoothly.</p>
+      <p>More filler text...</p>
+      <p>Even more content...</p>
+      <p>Keep scrolling...</p>
+      <p>Almost there...</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      <p>The top padding should come back smoothly too.</p>
+      
+    </div>
+  </div>
+</body>
 </html>

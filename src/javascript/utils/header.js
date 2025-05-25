@@ -1,7 +1,7 @@
 fetch('/src/html/utils/header.html')
   .then(response => response.text())
   .then(data => {
-    document.querySelector('.header').innerHTML = data;
+    document.querySelector('.topContainer').innerHTML = data;
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -11,11 +11,7 @@ fetch('/src/html/utils/header.html')
     }
 
     window.updateCartCount = updateCartCount;
-    
-    // Call updateCartCount immediately after inserting the header
     updateCartCount();
-
-    // Ensure it also updates when DOMContentLoaded fires
     document.addEventListener('DOMContentLoaded', updateCartCount);
 
     const searchInput = document.getElementById('searchText');
@@ -33,5 +29,67 @@ fetch('/src/html/utils/header.html')
       if (e.key === 'Enter') handleSearch();
     });
 
+    
+    
+    window.addEventListener('scroll', () => {
+      const logoImage = document.querySelector('.logoImage');
+      const search = document.querySelector('.search');
+      const searchText = document.querySelector('.searchText');
+      const searchButton = document.querySelector('.searchButton');
+      const info = document.querySelector('.info');
+      const menuContainer = document.querySelector('.menuContainer');
+      const headerIcons = document.querySelectorAll('.headerIcons');
 
+      if (window.scrollY > 50) {
+        // When scrolled
+        logoImage.classList.remove('h-10');
+        logoImage.classList.add('h-6');
+
+        search.classList.remove('text-md');
+        search.classList.add('text-xs');
+
+        searchText.classList.remove('px-4', 'py-2');
+        searchText.classList.add('px-2', 'py-1');
+        
+        searchButton.classList.remove('p-2');
+        searchButton.classList.add('p-1');
+
+        info.classList.remove('h-14');
+        info.classList.add('h-10');
+
+        menuContainer.classList.remove('h-14', 'text-2xl');
+        menuContainer.classList.add('h-10','text-xl');
+
+        // Make header icons smaller
+        headerIcons.forEach(icon => {
+          icon.classList.remove('text-3xl');
+          icon.classList.add('text-2xl');
+        });
+      } else {
+        // When at top
+        logoImage.classList.remove('h-6');
+        logoImage.classList.add('h-10');
+
+        search.classList.remove('text-xs');
+        search.classList.add('text-md');
+
+        searchText.classList.remove('px-2', 'py-1');
+        searchText.classList.add('px-4', 'py-2');
+
+        searchButton.classList.remove('p-1');
+        searchButton.classList.add('p-2');
+
+        info.classList.remove('h-10');
+        info.classList.add('h-14');
+
+        menuContainer.classList.remove('h-10', 'text-xl');
+        menuContainer.classList.add('h-14', 'text-2xl');
+
+        // Restore header icons size
+        headerIcons.forEach(icon => {
+          icon.classList.remove('text-2xl');
+          icon.classList.add('text-3xl');
+        });
+      }
+    });
   });

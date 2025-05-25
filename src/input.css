@@ -4,18 +4,27 @@
 
 @layer components {
   .menuBtn {
-    @apply h-full w-full  hover:text-white font-medium relative;
-    &::before {
-      content: '';
-      @apply absolute inset-0 bg-mainblue transform origin-top scale-y-0 transition-transform duration-300;
-      z-index: -1;
-    }
-    &:hover::before {
-      @apply scale-y-100;
-    }
+    @apply h-full w-full font-medium relative hover:text-white transition-colors duration-300;
+    position: relative;
+    z-index: 1;
   }
+
+  .menuBtn::before {
+    content: '';
+    @apply absolute inset-0 bg-mainblue scale-y-0 transition-transform duration-300 origin-top;
+    z-index: -1;
+  }
+
+  .menuBtn:hover::before {
+    @apply scale-y-100;
+  }
+
   .menuDiv {
-    @apply h-full flex-1 flex items-center justify-center border-r border-mainblue;
+    @apply h-full flex-1 flex items-center justify-center border-r border-mainblue relative overflow-hidden;
+  }
+
+  .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .info, .headerIcons {
+    @apply transition-all duration-300 ease-in-out;
   }
 
   .headerIcons{
@@ -30,5 +39,17 @@
     @apply fixed right-5 bottom-16;
   }
   
+  .headContainer, .menuContainer {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .body {
+    @apply pt-[85px]; /* Using Tailwind padding instead of regular CSS */
+  }
+  
+  .top {
+    @apply fixed top-0 left-0 z-50 w-full bg-mainblue transform translate-y-0;
+    backface-visibility: hidden; /* Prevents flickering during scroll */
+  }
   
 }
