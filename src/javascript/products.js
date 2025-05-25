@@ -75,22 +75,24 @@ function render(currentData, title = 'Product Categories') {
   app.appendChild(breadcrumb);
 
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-3 gap-8';
+  grid.className = 'grid grid-cols-5 gap-8';
 
   // Root level: show categories
-  if (!stack.length) {
+    if (!stack.length) {
     for (let category in currentData) {
       const { __meta } = currentData[category];
       const categoryImage = __meta.categoryImage;
       const imageToShow = categoryImage || 'https://via.placeholder.com/100x100?text=Category';
 
       const card = document.createElement('div');
-      card.className = 'border border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:shadow-lg transition-shadow duration-200 flex flex-col items-center justify-center space-y-4';
+      card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="flex-1 h-full mb-4 flex justify-center items-center">
-          <img src="${imageToShow}" alt="${category}" class="object-contain w-24 h-24">
+        <div class="p-4 h-64 flex items-center justify-center">
+          <img src="${imageToShow}" alt="${category}" class="max-h-full w-auto object-contain">
         </div>
-        <div class="font-bold">${category} ></div>
+        <div class="mt-auto p-3 border-t border-gray-200">
+          <div class="text-lg font-medium text-gray-800 truncate">${category}</div>
+        </div>
       `;
 
       card.onclick = () => {
@@ -105,12 +107,15 @@ function render(currentData, title = 'Product Categories') {
     products.forEach(product => {
       const imageToShow = product.image || 'https://via.placeholder.com/100x100?text=Product';
       const card = document.createElement('div');
-      card.className = 'border border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:shadow-lg transition-shadow duration-200 flex flex-col items-center justify-center space-y-4';
+      card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="flex-1 h-full mb-4 flex justify-center items-center">
-          <img src="${imageToShow}" alt="${product.name}" class="object-contain w-24 h-24">
+        <div class="p-4 h-64 flex items-center justify-center">
+          <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
-        <div class="font-bold">${product.name}</div>
+        <div class="mt-auto p-3 border-t border-gray-200">
+          <div class="text-gray-500 text-[11px]">${product.id}</div>
+          <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
+        </div>
       `;
 
       card.onclick = () => {
@@ -124,6 +129,7 @@ function render(currentData, title = 'Product Categories') {
 
   app.appendChild(grid);
 }
+
 
 // Breadcrumb functions
 window.goToLevel = function (index) {

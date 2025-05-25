@@ -23,12 +23,12 @@
     @apply h-full flex-1 flex items-center justify-center border-r border-mainblue relative overflow-hidden;
   }
 
-  .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .info, .headerIcons {
+  .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .info, .headerIcons{
     @apply transition-all duration-300 ease-in-out;
   }
 
   .headerIcons{
-    @apply text-white text-3xl relative cursor-pointer hover:text-secondaryblue transition-colors duration-300;
+    @apply text-white text-3xl relative cursor-pointer hover:text-secondaryblue;
   } 
 
   .footerButton{
@@ -44,7 +44,7 @@
   }
 
   .body {
-    @apply pt-[85px]; /* Using Tailwind padding instead of regular CSS */
+    @apply pt-[85px] bg-bgblue; /* Using Tailwind padding instead of regular CSS */
   }
   
   .top {
