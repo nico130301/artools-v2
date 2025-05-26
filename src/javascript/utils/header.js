@@ -1,7 +1,7 @@
 fetch('/src/html/utils/header.html')
   .then(response => response.text())
   .then(data => {
-    document.querySelector('.topContainer').innerHTML = data;
+    document.querySelector('.top').innerHTML = data;
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];

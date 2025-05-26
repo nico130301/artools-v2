@@ -866,6 +866,16 @@ video {
   margin-bottom: 2rem;
 }
 
+.mx-64 {
+  margin-left: 16rem;
+  margin-right: 16rem;
+}
+
+.mx-96 {
+  margin-left: 24rem;
+  margin-right: 24rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -944,6 +954,14 @@ video {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .block {
@@ -1128,6 +1146,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-1 {
@@ -1843,6 +1865,16 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-mainblue:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-orange-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-opacity-90:hover {
   --tw-bg-opacity: 0.9;
 }
@@ -1870,6 +1902,11 @@ video {
 .hover\:text-secondaryblue:hover {
   --tw-text-opacity: 1;
   color: rgb(74 111 165 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-mainblue:hover {
+  --tw-text-opacity: 1;
+  color: rgb(27 60 95 / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover {

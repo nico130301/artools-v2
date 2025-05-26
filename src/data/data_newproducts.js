@@ -1,9 +1,11 @@
 export const newproducts = [
   {
-    id: "chei_fixe",
+    category: "Wrenches",
+    cateogryImage: "../images/cheie_fixa.png",
+    id: "0101",
     image: "../images/cheie_fixa.png",
-    name: "Cheie fixa",
-    favorite: false,
+    name: "Llave Fija Doble Boca",
+    description: "",
     keywords: []
   }
   ,
@@ -45,7 +47,7 @@ export const newproducts = [
   }
 ]
 
-export const relatedProducts = [
+export const recommendedProducts = [
   {
     id: "chei_fixe",
     image: "../images/cheie_fixa.png",

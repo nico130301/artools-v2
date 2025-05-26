@@ -173,11 +173,11 @@ const observer = new MutationObserver(() => {
             </div>
 
             <!-- Add to Cart Button -->
-            <button class="addCartButton w-full bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg
-                        hover:bg-yellow-400 transition-colors duration-300 flex items-center justify-center space-x-3"
+            <button class="addCartButton w-full bg-secondaryblue text-white font-bold py-4 px-6 rounded-lg
+                        hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3"
                     data-name="${product.name}" 
                     data-image="${product.image}">
-              <span>Buy Now</span>
+              <span>Add to cart</span>
               <i class="fas fa-shopping-cart"></i>
             </button>
           </div>
@@ -211,7 +211,7 @@ const observer = new MutationObserver(() => {
       </table>
     `;
 
-    // Related products section
+    // related products section
     if (Array.isArray(product.related)) {
       const relatedNames = typeof product.related === 'string'
         ? product.related.split(',').map(name => name.trim()).filter(name => name)
@@ -225,9 +225,9 @@ const observer = new MutationObserver(() => {
         }
 
         if (relatedProduct) {
-          const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=Related';
+          const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
           relatedProducts.innerHTML += `
-            <div class="bg-white rounded-lg m-4 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" onclick='viewRelatedProduct(${JSON.stringify(relatedProduct)})'>
+            <div class="bg-white rounded-lg m-4 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
               <div class="p-4 h-64 flex items-center justify-center">
                 <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
               </div>
@@ -241,7 +241,7 @@ const observer = new MutationObserver(() => {
     }
 
     // Helper function to view related product
-    window.viewRelatedProduct = function (productObj) {
+    window.viewrelatedProduct = function (productObj) {
       localStorage.setItem('selectedProduct', JSON.stringify(productObj));
       localStorage.setItem('navStack', JSON.stringify(navStack));
       window.location.href = '/src/htlm/productPage.html';
@@ -253,16 +253,26 @@ const observer = new MutationObserver(() => {
       // Find the right column div that contains product details
       const rightColumn = document.querySelector('.grid-cols-1.lg\\:grid-cols-2 > div:last-child');
       
+      // Get the title element
+      const productTitle = document.querySelector('.text-4xl.font-bold');
+      
       // The size selector is already being created in the main HTML template
-      // We just need to add the event listener to update the product ID
       const sizeSelector = document.getElementById('sizeSelector');
       
       if (sizeSelector) {
         sizeSelector.addEventListener('change', function () {
           const selectedIndex = String(this.selectedIndex + 1).padStart(2, '0');
+          const selectedSize = this.value;
+          
+          // Update product ID
           const productIdDisplay = document.getElementById('productIdDisplay');
           if (productIdDisplay) {
             productIdDisplay.textContent = `Cod produs: ${product.id}${selectedIndex}`;
+          }
+
+          // Update product title with size
+          if (productTitle) {
+            productTitle.textContent = `${product.name} ${selectedSize}`;
           }
         });
         
@@ -292,21 +302,27 @@ const observer = new MutationObserver(() => {
         cart.push({ name, image, quantity: 1, selectedSize});
       }
 
-      console.log(cart);
-
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
 
-      button.textContent = 'Added to Cart!';
+      // Store original content
+      const originalContent = button.innerHTML;
+      
+      // Update button appearance
+      button.innerHTML = '<span>Added to Cart!</span><i class="fas fa-check ml-2"></i>';
       button.disabled = true;
-      button.classList.add('bg-green-500', 'text-white', 'border-none');
+      button.classList.remove('bg-secondaryblue', 'hover:bg-mainblue');
+      button.classList.add('bg-green-500');
 
       setTimeout(() => {
         button.disabled = false;
-        button.classList.remove('bg-green-500', 'text-white', 'border-none')
-        button.textContent = 'Add to Cart';
+        button.innerHTML = originalContent;
+        button.classList.remove('bg-green-500');
+        button.classList.add('bg-secondaryblue', 'hover:bg-mainblue');
       }, 1000);
     });
+
+    
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
