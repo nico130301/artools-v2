@@ -32,17 +32,13 @@
   } 
 
   .footerButton{
-    @apply hover:text-mainblue cursor-pointer transition-colors;
+    @apply hover:text-mainblue cursor-pointer transition-colors hover:underline ;
   }
 
   .wapp{
     @apply fixed right-5 bottom-16;
   }
   
-  .headContainer, .menuContainer {
-    @apply transition-all duration-500 ease-in-out;
-  }
-
   .body {
     @apply pt-[85px] bg-bgblue; /* Using Tailwind padding instead of regular CSS */
   }

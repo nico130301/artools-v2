@@ -44,6 +44,7 @@ fetch('/src/html/utils/header.html')
         // When scrolled
         logoImage.classList.remove('h-10');
         logoImage.classList.add('h-6');
+        logoImage.classList.add('pl-6');
 
         search.classList.remove('text-md');
         search.classList.add('text-xs');
@@ -69,6 +70,7 @@ fetch('/src/html/utils/header.html')
         // When at top
         logoImage.classList.remove('h-6');
         logoImage.classList.add('h-10');
+        logoImage.classList.remove('pl-6');
 
         search.classList.remove('text-xs');
         search.classList.add('text-md');

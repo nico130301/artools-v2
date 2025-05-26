@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const container = document.querySelector('.cartContainer');
   const form = document.querySelector(".form");
+  const termsCheckbox = document.getElementById("termsCheckbox");
+
+  form.addEventListener("submit", function (e) {
+    if (!termsCheckbox.checked) {
+      e.preventDefault();
+      alert("Please accept the terms and conditions before submitting the request.");
+      return;
+    }
+    collectCartInfoForForm();
+  });
 
   function updateCartTitle() {
     const cartTitleElement = document.querySelector('.cartTitle');
@@ -114,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
       window.updateCartCount();
     }
   }
-    renderCart();
+  
+
+
+  renderCart();
   
 });

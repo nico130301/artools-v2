@@ -78,39 +78,108 @@ const observer = new MutationObserver(() => {
     let relatedProducts = document.querySelector('.relatedProducts');
 
     // Build breadcrumb
-    let breadcrumbHTML = `<a class="historyStep" onclick="location.href='/src/html/products.html'">Products</a>`;
+    let breadcrumbHTML = `
+      <a class="historyStep text-gray-600 underline hover:no-underline hover:cursor-pointer transition-all duration-200" 
+        onclick="location.href='/src/html/products.html'">
+        Products
+      </a>`;
 
     if (navStack.length > 0) {
       navStack.forEach((node, index) => {
-        breadcrumbHTML += ` > <a class="historyStep" onclick="historyBackTo(${index})">${node.title}</a>`;
+        breadcrumbHTML += `
+          <span class="text-gray-600 mx-2">></span>
+          <a class="historyStep text-gray-600 underline hover:no-underline hover:cursor-pointer transition-all duration-200" 
+            onclick="historyBackTo(${index})">
+            ${node.title}
+          </a>`;
       });
     } else {
       const fromSearchCategory = localStorage.getItem('selectedProductCategory');
       if (fromSearchCategory) {
-        breadcrumbHTML += ` > <a class="historyStep" onclick="location.href='/src/html/products.html'">${fromSearchCategory}</a>`;
+        breadcrumbHTML += `
+          <span class="text-gray-600 mx-2">></span>
+          <a class="historyStep text-gray-600 underline hover:no-underline transition-all duration-200" 
+            onclick="location.href='/src/html/products.html'">
+            ${fromSearchCategory}
+          </a>`;
       }
     }
 
-    breadcrumbHTML += ` > <a class="historyProduct">${product.name}</a>`;
+    breadcrumbHTML += `
+      <span class="text-gray-600 mx-2">></span>
+      <span class="historyProduct text-gray-600">
+        ${product.name}
+      </span>`;
 
     history.innerHTML = breadcrumbHTML;
     pageContent.innerHTML = `
-      <div class="productName text-4xl font-bold text-black font-openSans my-2">${product.name}</div>
-      <div class="productPageMainDetails flex flex-row">
-        <div class="productImageContainer flex-1 flex justify-center items-center">
-          <img class="productImage w-3/5 object-cover" src="${product.image}">
-        </div>
-        <div class="productInfoContainer flex-1 flex flex-col justify-between pl-8">
-          <div class="productId flex justify-end text-xl text-black font-openSans my-2">
-            <span id="productIdDisplay">Cod produs: ${product.id}</span>
-          </div>
-          <div class="productDescription text-xl font-bold text-black font-openSans">${product.description}</div>
-          <div class="addToCartContainerProduct flex flex-row w-4/5 font-openSans">
-            <div class="addtoCartButtonContainer flex justify-start flex-1">
-              <button class="addCartButton w-full p-2 bg-transparent border border-black hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-300" data-name="${product.name}" data-image="${product.image}">
-                Add to Cart
-              </button>
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Left Column - Title and Image -->
+          <div class="flex flex-col space-y-8">
+            <!-- Product Title -->
+            <h1 class="text-4xl font-bold text-gray-900 font-openSans">${product.name}</h1>
+            
+            <!-- Product Image -->
+            <div class="flex items-center justify-center bg-white p-8 rounded-lg">
+              <img class="w-full max-w-lg object-contain hover:scale-105 transition-transform duration-300" 
+                  src="${product.image}" 
+                  alt="${product.name}">
             </div>
+          </div>
+
+          <!-- Right Column - Product Details -->
+          <div class="flex flex-col space-y-8">
+            <!-- Product ID -->
+            <div class="inline-flex items-center bg-gray-100 rounded-lg px-4 py-2 text-gray-600">
+              <span id="productIdDisplay" class="text-sm font-semibold">
+                Cod produs: ${product.id}
+              </span>
+            </div>
+
+            <!-- Product Description -->
+            <div class="bg-gray-50 rounded-lg p-6">
+              <ul class="space-y-4">
+                ${product.description.split('\n').map(line => 
+                  `<li class="flex items-start">
+                    <span class="text-mainblue mr-2">•</span>
+                    <span class="text-gray-700">${line}</span>
+                  </li>`
+                ).join('')}
+              </ul>
+            </div>
+
+            <!-- Size Selector if available -->
+            ${product.size ? `
+              <div class="bg-gray-50 rounded-lg p-6">
+                <label class="block text-gray-700 font-semibold mb-2">Select Size:</label>
+                <select id="sizeSelector" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue">
+                  ${product.size.split(',').map(s => `
+                    <option value="${s.trim()}">${s.trim()}</option>
+                  `).join('')}
+                </select>
+              </div>
+            ` : ''}
+
+            <!-- Technical Sheet -->
+            <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-between">
+              <span class="text-gray-700 font-semibold">Technical sheet:</span>
+              <a href="../data/catalog/${product.id}.pdf" 
+                class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2">
+                <i class="fas fa-file-pdf"></i>
+                <span class="underline">${product.id}.pdf</span>
+              </a>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <button class="addCartButton w-full bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg
+                        hover:bg-yellow-400 transition-colors duration-300 flex items-center justify-center space-x-3"
+                    data-name="${product.name}" 
+                    data-image="${product.image}">
+              <span>Buy Now</span>
+              <i class="fas fa-shopping-cart"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -163,7 +232,6 @@ const observer = new MutationObserver(() => {
                 <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
               </div>
               <div class="mt-auto p-3 border-t border-gray-200">
-                <div class="text-gray-500 text-[11px]">${relatedProduct.id}</div>
                 <div class="text-lg font-medium text-gray-800 truncate">${relatedProduct.name}</div>
               </div>
             </div>
@@ -182,85 +250,62 @@ const observer = new MutationObserver(() => {
     //size drop-down
 
     if (product.size) {
-      const sizes = product.size.split(',').map(s => s.trim());
-      const sizeDropdown = document.createElement('select');
-      sizeDropdown.id = 'sizeSelector';
-    
-      sizes.forEach((sizeValue, index) => {
-        const option = document.createElement('option');
-        option.value = sizeValue; // Use actual size for value
-        option.dataset.index = String(index + 1).padStart(2, '0'); // Optional: store padded index separately
-        option.textContent = sizeValue;
-        sizeDropdown.appendChild(option);
-      });
-    
-      sizeDropdown.addEventListener('change', function () {
-        const selectedOption = sizeDropdown.options[sizeDropdown.selectedIndex];
-        const paddedIndex = selectedOption.dataset.index;
-        document.getElementById('productIdDisplay').textContent = `Cod produs: ${product.id}${paddedIndex}`;
-      });
+      // Find the right column div that contains product details
+      const rightColumn = document.querySelector('.grid-cols-1.lg\\:grid-cols-2 > div:last-child');
       
-            // Trigger the first display on load
-      setTimeout(() => {
-        const event = new Event('change');
-        sizeDropdown.dispatchEvent(event);
-      }, 0);
-    
-      const container = document.createElement('div');
-      container.className = 'sizeSelectorContainer';
-      container.innerHTML = '<label for="sizeSelector"><strong>Select Size:</strong></label>';
-      container.appendChild(sizeDropdown);
-    
-      const infoContainer = document.querySelector('.productInfoContainer');
-      infoContainer.insertBefore(container, infoContainer.querySelector('.addToCartContainerProduct'));
-
-      const technicalSheet = document.createElement('div');
-      technicalSheet.className = 'technicalSheetContainer my-8 py-4 px-6';
-      technicalSheet.innerHTML = `
-        <span class="text-black font-openSans text-xl">Technical sheet: </span>
-        <a href="../data/catalog/${product.id}.pdf" class="text-blue-600 hover:text-blue-800 underline font-openSans text-xl">
-          ${product.id}.pdf
-        </a>
-      `;
+      // The size selector is already being created in the main HTML template
+      // We just need to add the event listener to update the product ID
+      const sizeSelector = document.getElementById('sizeSelector');
       
-      infoContainer.insertBefore(technicalSheet, infoContainer.querySelector('.addToCartContainerProduct'));
-      
+      if (sizeSelector) {
+        sizeSelector.addEventListener('change', function () {
+          const selectedIndex = String(this.selectedIndex + 1).padStart(2, '0');
+          const productIdDisplay = document.getElementById('productIdDisplay');
+          if (productIdDisplay) {
+            productIdDisplay.textContent = `Cod produs: ${product.id}${selectedIndex}`;
+          }
+        });
+        
+        // Trigger initial update
+        setTimeout(() => {
+          const event = new Event('change');
+          sizeSelector.dispatchEvent(event);
+        }, 0);
+      }
     }
 
     // Cart button logic
-    const buttons = document.querySelectorAll('.addCartButton');
-    buttons.forEach(button => {
-      button.addEventListener('click', function (event) {
-        event.stopPropagation();
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const button = document.querySelector('.addCartButton');
+    button.addEventListener('click', function (event) {
+      event.stopPropagation();
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        const name = button.dataset.name;
-        const image = button.dataset.image;
-        const selectedSize = document.getElementById('sizeSelector').value;
+      const name = button.dataset.name;
+      const image = button.dataset.image;
+      const selectedSize = document.getElementById('sizeSelector').value;
 
-        const existingItem = cart.find(item => item.name === name && item.selectedSize === selectedSize);
+      const existingItem = cart.find(item => item.name === name && item.selectedSize === selectedSize);
 
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          cart.push({ name, image, quantity: 1, selectedSize});
-        }
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, image, quantity: 1, selectedSize});
+      }
 
-        console.log(cart);
+      console.log(cart);
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
 
-        button.textContent = 'Added to Cart!';
-        button.disabled = true;
-        button.classList.add('bg-green-500', 'text-white', 'border-none');
+      button.textContent = 'Added to Cart!';
+      button.disabled = true;
+      button.classList.add('bg-green-500', 'text-white', 'border-none');
 
-        setTimeout(() => {
-          button.disabled = false;
-          button.classList.remove('bg-green-500', 'text-white', 'border-none')
-          button.textContent = 'Add to Cart';
-        }, 1000);
-      });
+      setTimeout(() => {
+        button.disabled = false;
+        button.classList.remove('bg-green-500', 'text-white', 'border-none')
+        button.textContent = 'Add to Cart';
+      }, 1000);
     });
 
     function updateCartCount() {

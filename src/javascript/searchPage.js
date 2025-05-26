@@ -32,7 +32,7 @@ function render(products, searchTerm) {
   title.textContent = `Search results for "${searchTerm}" (${products.length} found)`;
 
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-3 gap-8';
+  grid.className = 'grid grid-cols-4 gap-8';
 
   const defaultProductImg = 'https://via.placeholder.com/100x100?text=Product';
 
@@ -49,7 +49,7 @@ function render(products, searchTerm) {
     `;
 
     card.addEventListener('click', () => {
-      window.location.href = `/src/html/product.html?id=${product.id}`;
+      window.location.href = `/src/html/productPage.html?id=${product.id}`;
     });
 
     grid.appendChild(card);
