@@ -37,20 +37,30 @@ function render(products, searchTerm) {
   const defaultProductImg = 'https://via.placeholder.com/100x100?text=Product';
 
   products.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'border border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:shadow-lg transition-shadow duration-200 flex flex-col items-center justify-center space-y-4';
-    const image = product.image || defaultProductImg;
+    // Get size range
+    const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
+    const sizeRange = sizes.length ? 
+      `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
+      'Size not available';
 
+    const card = document.createElement('div');
+    card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
+    
     card.innerHTML = `
-      <div class="flex-1 h-full mb-4 flex justify-center items-center">
-        <img src="${image}" alt="${product.name}" class="object-contain w-24 h-24">
+      <div class="p-7 flex items-center justify-center">
+        <img src="${product.image || defaultProductImg}" alt="${product.name}" class="max-h-full w-auto object-contain">
       </div>
-      <div class="font-bold">${product.name}</div>
+      <div class="mt-auto p-3 border-t border-gray-200">
+        <div class="text-gray-500 text-[11px]">${sizeRange}</div>
+        <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
+        <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
+      </div>
     `;
 
-    card.addEventListener('click', () => {
-      window.location.href = `/src/html/productPage.html?id=${product.id}`;
-    });
+    card.onclick = () => {
+      localStorage.setItem('selectedProduct', JSON.stringify(product));
+      window.location.href = '/src/html/productPage.html';
+    };
 
     grid.appendChild(card);
   });
@@ -77,7 +87,7 @@ function extractProducts(rows) {
     spec4: row.spec4,
     spec5Title: row.spec5Title,
     spec5: row.spec5,
-    recommended: row.recommended ? row.recommended.split(',').map(r => r.trim()) : []
+    related: row.related ? row.related.split(',').map(r => r.trim()) : []
   }));
 }
 

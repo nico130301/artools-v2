@@ -47,5 +47,21 @@
     @apply fixed top-0 left-0 z-50 w-full bg-mainblue transform translate-y-0;
     backface-visibility: hidden; /* Prevents flickering during scroll */
   }
+
+  .map-section {
+    @apply relative z-0; /* Add this to ensure map stays below header */
+  }
   
+  .map-overlay {
+    @apply absolute inset-0 w-full bg-black/50 flex items-center justify-center transition-all duration-300 ease-in-out opacity-0 invisible;
+    pointer-events: none;
+  }
+
+  .map-overlay.active {
+    @apply opacity-100 visible;
+  }
+
+  .map-overlay-text {
+    @apply text-white text-xl font-bold bg-black/70 px-6 py-3 rounded-lg;
+  }
 }

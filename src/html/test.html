@@ -1,80 +1,78 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shrinking Header</title>
-  <script defer>
-    window.addEventListener('DOMContentLoaded', () => {
-      const header = document.getElementById('header');
-      const placeholder = document.getElementById('header-placeholder');
-      const fullPadding = 32; // 2rem
-
-      let ticking = false;
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const scrolled = window.scrollY > 10;
-            header.classList.toggle('py-8', !scrolled); // py-8 = 2rem
-            header.classList.toggle('py-2', scrolled);  // py-2 = 0.5rem
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    });
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store Locator</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 h-96">
-  <!-- Fixed header -->
-  <div id="header" class="fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 ease-in-out py-8 shadow">
-    <div class="max-w-4xl mx-auto px-4">
-      <h1 class="text-xl font-bold">Sticky Shrinking Header</h1>
+<body class="font-sans bg-gray-100">
+  
+  <div class="flex h-screen">
+    <!-- Sidebar with list -->
+    <div class="w-1/3 overflow-y-scroll p-4 bg-white shadow-md">
+      <h2 class="text-2xl font-bold mb-4">Găsiți un vânzător</h2>
+      <div id="storeList" class="space-y-4"></div>
     </div>
+
+    
+
+    <!-- Map -->
+    <div class="w-2/3 h-full" id="map"></div>
   </div>
 
-  <!-- Placeholder to avoid layout shift -->
-  <div id="header-placeholder" class="h-32 transition-all duration-300"></div>
+  <script>const stores = [
+      {
+        name: "AB WELDING IMPEX SRL",
+        address: "Bd. Basarabia, Nr. 256, Sector 3, Bucuresti 30352",
+        phone: "0735 779 030",
+        email: "office@abwelding.ro",
+        lat: 44.439663,
+        lng: 26.096306,
+        hours: "8:00–17:00"
+      },
+      {
+        name: "ABC INTERNATIONAL",
+        address: "Str. Babadag, Nr. 5, Bl. 1, Sc. A, Tulcea 820004",
+        phone: "0784 863 583",
+        email: "web@unelte.com.ro",
+        lat: 45.180176,
+        lng: 28.804550,
+        hours: "8:00–17:00"
+      }
+    ];
 
-  <!-- Page content -->
-  <div class="max-w-4xl mx-auto px-4 space-y-6">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <!-- Repeat content to allow scrolling -->
-    <div class="space-y-4">
-      <!-- You can add more paragraphs or elements here -->
-      <p>Scroll down to see the padding disappear smoothly.</p>
-      <p>More filler text...</p>
-      <p>Even more content...</p>
-      <p>Keep scrolling...</p>
-      <p>Almost there...</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      <p>The top padding should come back smoothly too.</p>
-      
-    </div>
-  </div>
+    const map = L.map('map').setView([45.9432, 24.9668], 6); // Romania center
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const storeList = document.getElementById("storeList");
+
+    stores.forEach((store, index) => {
+      const marker = L.marker([store.lat, store.lng]).addTo(map)
+        .bindPopup(`<b>${store.name}</b><br>${store.address}`);
+
+      const storeItem = document.createElement("div");
+      storeItem.className = "border-b pb-4";
+      storeItem.innerHTML = `
+        <div class="font-bold text-lg">${store.name}</div>
+        <div class="text-sm text-gray-700">${store.address}</div>
+        <div class="text-sm mt-1"><i class="fa fa-phone"></i> ${store.phone}</div>
+        <div class="text-sm"><i class="fa fa-envelope"></i> ${store.email}</div>
+        <div class="text-green-600 font-semibold mt-1">Deschis</div>
+        <div class="text-sm text-gray-600">${store.hours}</div>
+      `;
+
+      storeItem.addEventListener("click", () => {
+        map.setView([store.lat, store.lng], 14);
+        marker.openPopup();
+      });
+
+      storeList.appendChild(storeItem);
+    });
+    </script>
 </body>
 </html>

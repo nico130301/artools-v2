@@ -52,7 +52,7 @@ function buildDataStructure(rows) {
         spec4: row.spec4,
         spec5Title: row.spec5Title,
         spec5: row.spec5,
-        recommended: row.recommended ? row.recommended.split(',').map(r => r.trim()) : []
+        related: row.related ? row.related.split(',').map(r => r.trim()) : []
       });
     }
   });
@@ -64,18 +64,34 @@ function buildDataStructure(rows) {
 function render(currentData, title = 'Product Categories') {
   app.innerHTML = '';
 
-  // Breadcrumb navigation
-  const breadcrumb = document.createElement('div');
-  breadcrumb.className = 'text-4xl font-bold mb-8';
-  let breadcrumbHTML = `<a class="cursor-pointer hover:underline transition-all duration-200" onclick="resetToRoot()">Products</a>`;
-  stack.forEach((node, index) => {
-    breadcrumbHTML += ` / <a class="cursor-pointer hover:underline transition-all duration-200" onclick="goToLevel(${index})">${node.title}</a>`;
-  });
-  breadcrumb.innerHTML = breadcrumbHTML;
-  app.appendChild(breadcrumb);
+  // Update the page title
+  const pageTitle = document.querySelector('.pageTitle');
+  pageTitle.textContent = title;
 
+  // Breadcrumb navigation
+  const breadcrumb = document.querySelector('.breadcrumbs');
+  let breadcrumbHTML = `
+    <span class="text-gray-600">
+      <a href="/src/html/main.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
+      <span class="mx-2">/</span>
+      <a class="text-mainblue hover:underline cursor-pointer" onclick="resetToRoot()">Products categories</a>
+    </span>
+  `;
+  
+  stack.forEach((node, index) => {
+    breadcrumbHTML += `
+      <span class="text-gray-600">
+        <span class="mx-2">/</span>
+        <a class="text-mainblue hover:underline cursor-pointer" onclick="goToLevel(${index})">${node.title}</a>
+      </span>
+    `;
+  });
+  
+  breadcrumb.innerHTML = breadcrumbHTML;
+
+  // Create grid for products/categories
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-5 gap-8';
+  grid.className = 'grid grid-cols-4 gap-8';
 
   // Root level: show categories
     if (!stack.length) {
@@ -87,7 +103,7 @@ function render(currentData, title = 'Product Categories') {
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-4 h-64 flex items-center justify-center">
+        <div class="p-7 flex items-center justify-center">
           <img src="${imageToShow}" alt="${category}" class="max-h-full w-auto object-contain">
         </div>
         <div class="mt-auto p-3 border-t border-gray-200">
@@ -106,15 +122,23 @@ function render(currentData, title = 'Product Categories') {
     const { products } = currentData;
     products.forEach(product => {
       const imageToShow = product.image || 'https://via.placeholder.com/100x100?text=Product';
+      
+      // Get size range
+      const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
+      const sizeRange = sizes.length ? 
+        `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
+        'Size not available';
+
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-4 h-64 flex items-center justify-center">
+        <div class="p-7 flex items-center justify-center">
           <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
         <div class="mt-auto p-3 border-t border-gray-200">
-          <div class="text-gray-500 text-[11px]">${product.id}</div>
+          <div class="text-gray-500 text-[11px]">${sizeRange}</div>
           <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
+          <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
         </div>
       `;
 

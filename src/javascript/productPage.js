@@ -71,7 +71,7 @@ const observer = new MutationObserver(() => {
       console.error('No product data found in localStorage');
       return;
     }
-
+    console.log(product);
     let history = document.querySelector('.history');
     let pageContent = document.querySelector('.productPageDetails');
     let pageSpecs = document.querySelector('.productPageSpecs');
@@ -79,39 +79,52 @@ const observer = new MutationObserver(() => {
 
     // Build breadcrumb
     let breadcrumbHTML = `
-      <a class="historyStep text-gray-600 underline hover:no-underline hover:cursor-pointer transition-all duration-200" 
-        onclick="location.href='/src/html/products.html'">
-        Products
-      </a>`;
+      <span class="text-gray-600">
+        <a href="/src/html/main.html" class="text-mainblue hover:underline">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <span class="mx-2">/</span>
+        <a class="text-mainblue hover:underline cursor-pointer" 
+          onclick="location.href='/src/html/products.html'">
+          Products
+        </a>
+      </span>`;
 
     if (navStack.length > 0) {
       navStack.forEach((node, index) => {
         breadcrumbHTML += `
-          <span class="text-gray-600 mx-2">></span>
-          <a class="historyStep text-gray-600 underline hover:no-underline hover:cursor-pointer transition-all duration-200" 
-            onclick="historyBackTo(${index})">
-            ${node.title}
-          </a>`;
+          <span class="text-gray-600">
+            <span class="mx-2">/</span>
+            <a class="text-mainblue hover:underline cursor-pointer" 
+              onclick="historyBackTo(${index})">
+              ${node.title}
+            </a>
+          </span>`;
       });
     } else {
       const fromSearchCategory = localStorage.getItem('selectedProductCategory');
       if (fromSearchCategory) {
         breadcrumbHTML += `
-          <span class="text-gray-600 mx-2">></span>
-          <a class="historyStep text-gray-600 underline hover:no-underline transition-all duration-200" 
-            onclick="location.href='/src/html/products.html'">
-            ${fromSearchCategory}
-          </a>`;
+          <span class="text-gray-600">
+            <span class="mx-2">/</span>
+            <a class="text-mainblue hover:underline cursor-pointer" 
+              onclick="location.href='/src/html/products.html'">
+              ${fromSearchCategory}
+            </a>
+          </span>`;
       }
     }
 
     breadcrumbHTML += `
-      <span class="text-gray-600 mx-2">></span>
-      <span class="historyProduct text-gray-600">
-        ${product.name}
+      <span class="text-gray-600">
+        <span class="mx-2">/</span>
+        <span class="text-gray-600">
+          ${product.name}
+        </span>
       </span>`;
 
     history.innerHTML = breadcrumbHTML;
+
     pageContent.innerHTML = `
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -226,13 +239,21 @@ const observer = new MutationObserver(() => {
 
         if (relatedProduct) {
           const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
+          // Get size range for related product
+          const sizes = relatedProduct.size ? relatedProduct.size.split(',').map(s => s.trim()) : [];
+          const sizeRange = sizes.length ? 
+            `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
+            'Size not available';
+
           relatedProducts.innerHTML += `
             <div class="bg-white rounded-lg m-4 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
-              <div class="p-4 h-64 flex items-center justify-center">
+              <div class="p-7 flex items-center justify-center">
                 <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
               </div>
               <div class="mt-auto p-3 border-t border-gray-200">
+                <div class="text-gray-500 text-[11px]">${sizeRange}</div>
                 <div class="text-lg font-medium text-gray-800 truncate">${relatedProduct.name}</div>
+                <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
               </div>
             </div>
           `;
@@ -244,7 +265,7 @@ const observer = new MutationObserver(() => {
     window.viewrelatedProduct = function (productObj) {
       localStorage.setItem('selectedProduct', JSON.stringify(productObj));
       localStorage.setItem('navStack', JSON.stringify(navStack));
-      window.location.href = '/src/htlm/productPage.html';
+      window.location.href = '/src/html/productPage.html';
     }
 
     //size drop-down
