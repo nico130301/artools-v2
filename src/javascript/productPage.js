@@ -80,12 +80,12 @@ const observer = new MutationObserver(() => {
     // Build breadcrumb
     let breadcrumbHTML = `
       <span class="text-gray-600">
-        <a href="/src/html/main.html" class="text-mainblue hover:underline">
+        <a href="./main.html" class="text-mainblue hover:underline">
           <i class="fa-solid fa-house"></i>
         </a>
         <span class="mx-2">/</span>
         <a class="text-mainblue hover:underline cursor-pointer" 
-          onclick="location.href='/src/html/products.html'">
+          onclick="location.href='./products.html'">
           Products
         </a>
       </span>`;
@@ -108,7 +108,7 @@ const observer = new MutationObserver(() => {
           <span class="text-gray-600">
             <span class="mx-2">/</span>
             <a class="text-mainblue hover:underline cursor-pointer" 
-              onclick="location.href='/src/html/products.html'">
+              onclick="location.href='./products.html'">
               ${fromSearchCategory}
             </a>
           </span>`;
@@ -265,7 +265,7 @@ const observer = new MutationObserver(() => {
     window.viewrelatedProduct = function (productObj) {
       localStorage.setItem('selectedProduct', JSON.stringify(productObj));
       localStorage.setItem('navStack', JSON.stringify(navStack));
-      window.location.href = '/src/html/productPage.html';
+      window.location.href = './productPage.html';
     }
 
     //size drop-down
@@ -360,7 +360,7 @@ const observer = new MutationObserver(() => {
       const newStack = navStack.slice(0, index + 1);
       localStorage.setItem('navStack', JSON.stringify(newStack));
       localStorage.setItem('resumeFromNavStack', 'true');
-      location.href = '/src/html/products.html';
+      location.href = './products.html';
     };
   });
 });

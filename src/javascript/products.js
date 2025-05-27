@@ -72,7 +72,7 @@ function render(currentData, title = 'Product Categories') {
   const breadcrumb = document.querySelector('.breadcrumbs');
   let breadcrumbHTML = `
     <span class="text-gray-600">
-      <a href="/src/html/main.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
+      <a href="./main.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
       <span class="mx-2">/</span>
       <a class="text-mainblue hover:underline cursor-pointer" onclick="resetToRoot()">Products categories</a>
     </span>
@@ -145,7 +145,7 @@ function render(currentData, title = 'Product Categories') {
       card.onclick = () => {
         localStorage.setItem('selectedProduct', JSON.stringify(product));
         localStorage.setItem('navStack', JSON.stringify(stack));
-        window.location.href = '/src/html/productPage.html';
+        window.location.href = './productPage.html';
       };
       grid.appendChild(card);
     });

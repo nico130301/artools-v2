@@ -20,7 +20,7 @@ fetch('../html/utils/header.html')
     function handleSearch() {
       const query = searchInput.value.trim();
       if (query) {
-        window.location.href = `/src/html/searchPage.html?query=${encodeURIComponent(query)}`;
+        window.location.href = `./searchPage.html?query=${encodeURIComponent(query)}`;
       }
     }    
 

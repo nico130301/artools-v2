@@ -59,7 +59,7 @@ function render(products, searchTerm) {
 
     card.onclick = () => {
       localStorage.setItem('selectedProduct', JSON.stringify(product));
-      window.location.href = '/src/html/productPage.html';
+      window.location.href = './productPage.html';
     };
 
     grid.appendChild(card);
