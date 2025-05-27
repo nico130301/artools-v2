@@ -1,36 +1,37 @@
-  <div class="headContainer flex items-center justify-between w-full h-full bg-mainblue px-4">
-    <div class="logo w-1/5 flex items-center">
+  <div class="headContainer flex items-center justify-between w-full h-full bg-mainblue py-2">
+    <div class=" logo w-[16.5%] flex items-center justify-center">
         <img class="logoImage h-10 w-auto cursor-pointer" src="../images/logo.png" alt="Logo" onclick="location.href='./main.html'">
     </div>
-    <div class="search w-3/5 flex items-center justify-center text-md">
+    <!--<div class="basis"></div>-->
+    <div class="search w-[62%] flex items-center justify-center text-md">
       <input id="searchText" class="searchText w-11/12 px-4 py-2 rounded-l-lg focus:outline-none" type="text" placeholder="Search...">
       <button id="searchButton" class="searchButton w-1/12 bg-secondaryblue p-2 rounded-r-lg" type="submit">
         <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
-    <div class="info h-14 w-1/5 flex items-center">
-      <button class="favButton basis-1/3 rounded-full">
+    <div class="info h-14 w-[21%] flex items-center justify-between">
+      <button class="favButton basis-1/3 rounded-full ">
         <i class="headerIcons fa-solid fa-heart"></i>
       </button>
       <button class="cartButton basis-1/3 rounded-full relative" onclick="location.href='./cart.html'">
         <i class="headerIcons fa-solid fa-cart-shopping"></i>
         <span class="cartQuantity absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"></span>
       </button>
-      <button class="customerSupportButton basis-1/3 rounded-full">
+      <button class="customerSupportButton basis-1/3 rounded-full ">
         <i class="headerIcons fa-solid fa-headset"></i>
       </button>
     </div>
   </div>
 
-  <div class="menuContainer  flex items-center justify-between w-full h-14 bg-secondaryblue text-white text-2xl shadow-2xl">
-    <div class="menuDiv border-gray-300">
+  <div class="menuContainer  flex items-center justify-between px-24 w-full h-14 bg-mainblue text-white text-2xl shadow-2xl">
+    <div class="menuDiv  ">
       <button class="menuBtn" onclick="location.href='./aboutUs.html'">About Us</button>
     </div>
-    <div class="menuDiv border-gray-300">
+    <div class="menuDiv ">
       <button class="menuBtn" onclick="location.href='./products.html'">Products</button>
     </div>
-    <div class="menuDiv border-gray-300">
-      <button class="menuBtn" onclick="location.href='./authorizedDistributor.html'">Services</button>
+    <div class="menuDiv ">
+      <button class="menuBtn" onclick="location.href='./authorizedDistributor.html'">Distribuidores Autorizados</button>
     </div>
     <div class="menuDiv">
       <button class="menuBtn" onclick="location.href='./contact.html'">Contact Us</button>

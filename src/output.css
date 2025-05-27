@@ -612,11 +612,11 @@ video {
   content: '';
   position: absolute;
   inset: 0px;
-  transform-origin: top;
+  transform-origin: bottom;
   --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-bg-opacity: 1;
-  background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
+  background-color: rgb(74 111 165 / var(--tw-bg-opacity, 1));
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
@@ -636,9 +636,10 @@ video {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-right-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(27 60 95 / var(--tw-border-opacity, 1));
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
 }
 
 .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .info, .headerIcons {
@@ -1077,10 +1078,6 @@ video {
   width: 33.333333%;
 }
 
-.w-1\/5 {
-  width: 20%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -1105,10 +1102,6 @@ video {
   width: 75%;
 }
 
-.w-3\/5 {
-  width: 60%;
-}
-
 .w-32 {
   width: 8rem;
 }
@@ -1125,8 +1118,20 @@ video {
   width: 24rem;
 }
 
+.w-\[16\.5\%\] {
+  width: 16.5%;
+}
+
+.w-\[21\%\] {
+  width: 21%;
+}
+
 .w-\[500px\] {
   width: 500px;
+}
+
+.w-\[62\%\] {
+  width: 62%;
 }
 
 .w-auto {
@@ -1545,6 +1550,11 @@ video {
   padding-right: 5rem;
 }
 
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1558,6 +1568,11 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-9 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
 }
 
 .py-1 {
@@ -1791,14 +1806,6 @@ video {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 .transition-all {

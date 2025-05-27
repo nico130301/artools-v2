@@ -1,18 +1,3 @@
-document.querySelectorAll('.countryButton').forEach(button => {
-  button.addEventListener('click', () => {
-    const cities = button.nextElementSibling;
-    cities.classList.toggle('hidden');
-  });
-});
-
-
-document.querySelectorAll('.cityButton').forEach(button => {
-  button.addEventListener('click', () => {
-    const distributors = button.nextElementSibling;
-    distributors.classList.toggle('hidden');
-  });
-});
-
 const stores = [
   {
     name: "Distribuidor San José",
@@ -73,7 +58,7 @@ const stores = [
 let isCtrlPressed = false;
 
 const map = L.map('map', {
-  scrollWheelZoom: false  // Disable scroll wheel zoom by default
+  scrollWheelZoom: false 
 }).setView([9.9281, -84.0907], 6);
 
 // Initialize map centered on Costa Rica
@@ -91,7 +76,6 @@ mapElement.appendChild(overlay);
 
 let overlayTimeout;
 
-// Update the event listeners
 mapElement.addEventListener('mouseenter', () => {
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keyup', handleKeyUp);
@@ -99,26 +83,26 @@ mapElement.addEventListener('mouseenter', () => {
 
 mapElement.addEventListener('wheel', (e) => {
   if (!isCtrlPressed) {
-    // Show overlay when scrolling without Ctrl
+
     overlay.classList.add('active');
     overlay.style.display = 'flex';
     e.preventDefault();
     
-    // Clear any existing timeout
+
     if (overlayTimeout) {
       clearTimeout(overlayTimeout);
     }
     
-    // Set new timeout to hide overlay after 2 seconds
+
     overlayTimeout = setTimeout(() => {
       overlay.classList.remove('active');
-      // Wait for transition to complete before hiding
+
       setTimeout(() => {
         overlay.style.display = 'none';
-      }, 300); // This should match the duration in the CSS transition
+      }, 300);
     }, 2000);
   } else {
-    // When Ctrl is pressed, allow the map zoom
+
     map.scrollWheelZoom.enable();
   }
 });
@@ -144,7 +128,6 @@ function handleKeyUp(e) {
   }
 }
 
-// Make sure map container is focusable
 document.getElementById('map').setAttribute('tabindex', '0');
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

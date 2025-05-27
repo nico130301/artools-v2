@@ -11,7 +11,7 @@
 
   .menuBtn::before {
     content: '';
-    @apply absolute inset-0 bg-mainblue scale-y-0 transition-transform duration-300 origin-top;
+    @apply absolute inset-0 bg-secondaryblue scale-y-0 transition-transform duration-300 origin-bottom;
     z-index: -1;
   }
 
@@ -20,7 +20,7 @@
   }
 
   .menuDiv {
-    @apply h-full flex-1 flex items-center justify-center border-r border-mainblue relative overflow-hidden;
+    @apply h-full flex-1 flex items-center justify-center relative overflow-hidden bg-mainblue rounded-t-xl;
   }
 
   .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .info, .headerIcons{

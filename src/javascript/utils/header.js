@@ -39,8 +39,10 @@ fetch('../html/utils/header.html')
       const info = document.querySelector('.info');
       const menuContainer = document.querySelector('.menuContainer');
       const headerIcons = document.querySelectorAll('.headerIcons');
+      const head = document.querySelector('.headContainer');
 
       if (window.scrollY > 50) {
+        head.classList.add('px-10');
         // When scrolled
         logoImage.classList.remove('h-10');
         logoImage.classList.add('h-6');
@@ -68,6 +70,7 @@ fetch('../html/utils/header.html')
         });
       } else {
         // When at top
+        head.classList.remove('px-10');
         logoImage.classList.remove('h-6');
         logoImage.classList.add('h-10');
         logoImage.classList.remove('pl-6');
