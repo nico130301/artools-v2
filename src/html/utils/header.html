@@ -1,5 +1,5 @@
 <!--- Header Container --->
-<div class="headContainer flex items-center justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
+<div class="headContainer flex items-center justify-between md:justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
     <!-- Logo Section -->
     <div class="logo w-1/4 md:w-[16.5%] flex items-center justify-start">
         <img class="logoImage h-8 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" 
@@ -8,20 +8,20 @@
              onclick="location.href='./main.html'">
     </div>
 
-    <!-- Desktop Search Bar - Hidden on mobile -->
-    <div class="search hidden md:flex w-[62%] items-center justify-center">
+    <!-- Search Bar - Shown between logo and cart on mobile, centered on desktop -->
+    <div class="search flex md:w-[62%] w-[45%] items-center justify-center">
         <input id="searchText" 
-               class="searchText w-11/12 px-4 py-2 rounded-l-lg focus:outline-none" 
+               class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg focus:outline-none" 
                type="text" 
                placeholder="Search...">
         <button id="searchButton" 
-                class="searchButton w-1/12 bg-secondaryblue hover:bg-mainblue p-2 rounded-r-lg">
+                class="searchButton w-10 md:w-1/12 bg-secondaryblue hover:bg-mainblue text-md p-1 md:p-2 rounded-r-lg">
             <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
         </button>
     </div>
 
     <!-- Header Icons Section -->
-    <div class="info h-14 flex items-center justify-end gap-4 w-1/4 md:w-[21.5%] md:justify-between">
+    <div class="info h-14 flex items-center justify-between gap-4 w-1/4 md:w-[21.5%] md:justify-between">
         <!-- Favorites Button -->
         <button class="favButton hidden md:block md:basis-1/3 rounded-full">
             <i class="headerIcons fa-solid fa-heart"></i>
@@ -43,20 +43,6 @@
         <!-- Support Button - Visible only on desktop -->
         <button class="customerSupportButton hidden md:block md:basis-1/3 rounded-full">
             <i class="headerIcons fa-solid fa-headset"></i>
-        </button>
-    </div>
-</div>
-
-<!-- Mobile Search Bar - Visible only on mobile -->
-<div class="mobileSearchContainer block md:hidden w-full bg-mainblue px-4 py-2">
-    <div class="search flex items-center justify-center">
-        <input id="mobileSearchText" 
-               class="w-full px-4 py-2 rounded-l-lg focus:outline-none" 
-               type="text" 
-               placeholder="Search...">
-        <button id="mobileSearchButton" 
-                class="w-12 bg-secondaryblue hover:bg-mainblue p-2 rounded-r-lg">
-            <i class="text-white fa-solid fa-magnifying-glass"></i>
         </button>
     </div>
 </div>

@@ -74,7 +74,6 @@ fetch('../html/utils/header.html')
     
     window.addEventListener('scroll', () => {
       const logoImage = document.querySelector('.logoImage');
-      const search = document.querySelector('.search');
       const searchText = document.querySelector('.searchText');
       const searchButton = document.querySelector('.searchButton');
       const info = document.querySelector('.info');
@@ -92,16 +91,13 @@ fetch('../html/utils/header.html')
 
         logoImage.classList.remove('h-10');
         logoImage.classList.add('h-6');
-        logoImage.classList.add('pl-6');
+        logoImage.classList.add('md:pl-6');
 
-        search.classList.remove('text-md');
-        search.classList.add('text-xs');
-
-        searchText.classList.remove('px-4', 'py-2');
-        searchText.classList.add('px-2', 'py-1');
+        searchText.classList.remove('px-4', 'py-2', 'text-md');
+        searchText.classList.add('px-2', 'py-1', 'text-sm');
         
-        searchButton.classList.remove('p-2');
-        searchButton.classList.add('p-1');
+        searchButton.classList.remove('p-2', 'text-md');
+        searchButton.classList.add('p-1', 'text-sm');
 
         info.classList.remove('h-14');
         info.classList.add('h-10');
@@ -126,16 +122,13 @@ fetch('../html/utils/header.html')
         
         logoImage.classList.remove('h-6');
         logoImage.classList.add('h-10');
-        logoImage.classList.remove('pl-6');
+        logoImage.classList.remove('md:pl-6');
 
-        search.classList.remove('text-xs');
-        search.classList.add('text-md');
+        searchText.classList.remove('px-2', 'py-1', 'text-sm');
+        searchText.classList.add('px-4', 'py-2', 'text-md');
 
-        searchText.classList.remove('px-2', 'py-1');
-        searchText.classList.add('px-4', 'py-2');
-
-        searchButton.classList.remove('p-1');
-        searchButton.classList.add('p-2');
+        searchButton.classList.remove('p-1', 'text-sm');
+        searchButton.classList.add('p-2', 'text-md');
 
         info.classList.remove('h-10');
         info.classList.add('h-14');
