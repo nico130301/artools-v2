@@ -42,7 +42,7 @@
   }
 
   .wapp{
-    @apply fixed right-5 bottom-16;
+    @apply fixed right-[2%] bottom-[5%];
   }
   
   .body {
