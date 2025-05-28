@@ -16,29 +16,28 @@
     <div class="top"></div>
 
     <div class="slideshow relative w-full">  
-      <img class="slideshowPhoto w-full h-[750px] object-cover" src="../images/unior1.jpg" alt="Slide 1">
+      <img class="slideshowPhoto w-full h-[450px] md:h-[750px] object-cover" src="../images/unior1.jpg" alt="Slide 1">
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div class="howToBuy absolute bottom-20 right-[10%] p-8 text-white w-[500px] z-10">
-          <div class="howToBuyTitle text-6xl font-bold mb-8">
-            HOW TO BUY
-          </div>
-          <a onclick="location.href='./howToBuy.html'" class="inline-block">
-            <button class="learn-more-btn border-2 border-white px-8 py-3 text-lg font-medium hover:bg-white hover:text-mainblue transition-all duration-300">
-              Learn More
-            </button>
-          </a>
+      <div class="howToBuy absolute bottom-10 md:bottom-20 right-2 md:right-[10%] p-4 md:p-8 text-white w-[90%] md:w-[500px] z-10">
+        <div class="howToBuyTitle text-4xl md:text-6xl font-bold mb-4 md:mb-8">
+          HOW TO BUY
         </div>
+        <a onclick="location.href='./howToBuy.html'" class="inline-block w-full md:w-auto">
+          <button class="learn-more-btn border-2 border-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-medium hover:bg-white hover:text-mainblue transition-all duration-300 w-full md:w-auto">
+            Learn More
+          </button>
+        </a>
       </div>
     </div>
     
-    <div class="newProducts container mx-auto px-20 mt-16">
-      <div class="newProductsText text-4xl font-bold mb-8">NEW PRODUCTS</div>
+    <div class="newProducts container mx-auto px-4 md:px-20 mt-8 md:mt-16">
+      <div class="newProductsText text-2xl md:text-4xl font-bold mb-4 md:mb-8">NEW PRODUCTS</div>
 
-      <div class="newProductsGrid grid grid-cols-4 gap-8"></div>
+      <div class="newProductsGrid grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"></div>
     </div>
 
-    <div class="benefitsContainer bg-mainblue text-white my-24 py-14">
-      <div class="grid grid-cols-4 gap-8 container mx-auto px-4">
+    <div class="benefitsContainer bg-mainblue text-white my-12 md:my-24 py-8 md:py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 container mx-auto px-4">
         <div class="benefitItem flex flex-col items-center space-y-4">
           <div class="benefit1 text-4xl">
             <i class="benefitImage fa-regular fa-circle-check"></i>
@@ -69,10 +68,10 @@
       </div>
     </div>
 
-    <div class="recommendedProducts container mx-auto px-20 my-16">
-      <div class="recommendedProductsText text-4xl font-bold mb-8">RECOMMENDED PRODUCTS</div>
+    <div class="recommendedProducts container mx-auto px-4 md:px-20 my-8 md:my-16">
+  <div class="recommendedProductsText text-2xl md:text-4xl font-bold mb-4 md:mb-8">RECOMMENDED PRODUCTS</div>
 
-      <div class="recommendedProductsGrid grid grid-cols-4 gap-8"></div>
+  <div class="recommendedProductsGrid grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"></div>
     </div>
 
     <div class="footer"></div> 

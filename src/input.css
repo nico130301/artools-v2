@@ -45,8 +45,12 @@
     @apply fixed right-[2%] bottom-[5%];
   }
   
+  html{
+    @apply w-full overflow-x-hidden;
+  }
+  
   .body {
-    @apply pt-[100px] bg-bgblue;
+    @apply pt-[70px] md:pt-[100px] bg-bgblue overflow-x-hidden ;
   }
   
   .top {
