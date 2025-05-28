@@ -18,62 +18,56 @@ document.addEventListener('DOMContentLoaded', () => {
     cartTitleElement.innerHTML = `Cart (${cart.length} ${cart.length === 1 ? 'item' : 'items'})`;
   }
 
-  function renderCart() {
-    container.innerHTML = '';
-    updateCartTitle();
-    if (cart.length === 0) {
-      container.innerHTML = '<div class="text-center">Your cart is empty.</div>';
-    } else {
-      cart.forEach((item,index) => {
-        let itemDiv = ``;
-        itemDiv= `
-        <div class="flex flex-row items-start gap-6 m-4 p-6 border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-all bg-white">
-          <!-- Column 1: Image -->
-          <div class="w-24">
-            <img class="h-24 w-24 object-cover rounded-md" src="${item.image}" />
-          </div>
+function renderCart() {
+  container.innerHTML = '';
+  updateCartTitle();
+  if (cart.length === 0) {
+    container.innerHTML = '<div class="text-center p-4">Your cart is empty.</div>';
+  } else {
+    cart.forEach((item,index) => {
+      let itemDiv = `
+      <div class="flex flex-row items-center gap-4 m-4 p-4 border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-all bg-white">
+        <!-- Column 1: Image -->
+        <div class="w-24 h-24 flex-shrink-0">
+          <img class="w-full h-full object-cover rounded-md" src="${item.image}" alt="${item.name}" />
+        </div>
 
-          <!-- Column 2: Product Details -->
-          <div class="flex-1 flex flex-col gap-4">
-            <!-- Row 1: Name -->
-            <div class="text-xl font-semibold text-gray-800">
+        <!-- Column 2: Product Details -->
+        <div class="flex-1 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-4">
+          <div class="flex flex-col gap-1">
+            <div class="text-lg font-semibold text-gray-800">
               ${item.name}
             </div>
-            
-            <!-- Row 2: Size and Quantity Controls -->
-            <div class="flex flex-row items-center gap-4">
-              <div class="flex items-center">
-                <span class="text-sm text-gray-600 mr-2">Size:</span>
-                <span class="text-sm inline-block px-1 py-1  ">
-                  ${item.selectedSize}
-                </span>
-              </div>
-
-              <div class="flex flex-row items-center p-2 border border-gray-300 rounded-lg h-10 bg-white">
-                <div class="text-gray-400 flex justify-center items-center cursor-pointer w-8 text-2xl font-bold font-openSans hover:text-black hover:bg-gray-50 removeQuantity" data-index=${index}>
-                  &ndash;
-                </div>
-                <div class="text-sm text-black flex justify-center items-center font-openSans font-bold itemQuantity w-8 border-x border-gray-200">
-                  ${item.quantity}
-                </div>
-                <div class="text-gray-400 flex justify-center items-center cursor-pointer w-8 text-2xl font-bold font-openSans hover:text-black hover:bg-gray-50 addQuantity" data-index=${index}>
-                  +
-                </div>
-              </div>
+            <div class="text-sm text-gray-600">
+              Size: ${item.selectedSize}
             </div>
           </div>
 
-          <!-- Column 3: Delete Button -->
-          <div class="deleteItem">
-            <button class="bg-white w-10 h-10 border border-gray-200 text-gray-400 text-xl font-bold cursor-pointer rounded-full flex justify-center items-center font-openSans hover:text-red-600 hover:border-red-200 hover:bg-red-50 transition-colors deleteButton">
+          <!-- Quantity Controls -->
+          <div class="flex items-center gap-4">
+            <div class="flex items-center p-1 border border-gray-300 rounded-lg h-8 bg-white">
+              <div class="text-gray-400 flex justify-center items-center cursor-pointer w-8 text-xl font-bold hover:text-black hover:bg-gray-50 removeQuantity" data-index=${index}>
+                &ndash;
+              </div>
+              <div class="text-sm text-black flex justify-center items-center font-bold w-8 border-x border-gray-200">
+                ${item.quantity}
+              </div>
+              <div class="text-gray-400 flex justify-center items-center cursor-pointer w-8 text-xl font-bold hover:text-black hover:bg-gray-50 addQuantity" data-index=${index}>
+                +
+              </div>
+            </div>
+
+            <!-- Delete Button -->
+            <button class="deleteItem bg-white w-8 h-8 border border-gray-200 text-gray-400 text-lg font-bold cursor-pointer rounded-full flex justify-center items-center hover:text-red-600 hover:border-red-200 hover:bg-red-50 transition-colors" data-index=${index}>
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
         </div>
-          `;
-        container.innerHTML += itemDiv;
-      });
-    }
+      </div>
+      `;
+      container.innerHTML += itemDiv;
+    });
+  }
 
     function collectCartInfoForForm() {
 

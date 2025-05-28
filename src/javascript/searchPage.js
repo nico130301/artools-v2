@@ -32,7 +32,7 @@ function render(products, searchTerm) {
   title.textContent = `Search results for "${searchTerm}" (${products.length} found)`;
 
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-4 gap-8';
+  grid.className = 'grid grid-cols-1 md:grid-cols-4 gap-8';
 
   const defaultProductImg = 'https://via.placeholder.com/100x100?text=Product';
 

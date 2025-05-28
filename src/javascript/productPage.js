@@ -127,14 +127,14 @@ const observer = new MutationObserver(() => {
 
     pageContent.innerHTML = `
       <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           <!-- Left Column - Title and Image -->
-          <div class="flex flex-col space-y-8">
+          <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Product Title -->
-            <h1 class="text-4xl font-bold text-gray-900 font-openSans">${product.name}</h1>
+            <h1 class="text-2xl md:text-4xl font-bold text-gray-900 font-openSans">${product.name}</h1>
             
             <!-- Product Image -->
-            <div class="flex items-center justify-center bg-white p-8 rounded-lg">
+            <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg">
               <img class="w-full max-w-lg object-contain hover:scale-105 transition-transform duration-300" 
                   src="${product.image}" 
                   alt="${product.name}">
@@ -142,21 +142,21 @@ const observer = new MutationObserver(() => {
           </div>
 
           <!-- Right Column - Product Details -->
-          <div class="flex flex-col space-y-8">
+          <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Product ID -->
-            <div class="inline-flex items-center bg-gray-100 rounded-lg px-4 py-2 text-gray-600">
-              <span id="productIdDisplay" class="text-sm font-semibold">
+            <div class="inline-flex items-center bg-gray-100 rounded-lg px-3 md:px-4 py-2 text-gray-600">
+              <span id="productIdDisplay" class="text-xs md:text-sm font-semibold">
                 Cod produs: ${product.id}
               </span>
             </div>
 
             <!-- Product Description -->
-            <div class="bg-gray-50 rounded-lg p-6">
-              <ul class="space-y-4">
+            <div class="bg-gray-50 rounded-lg p-4 md:p-6">
+              <ul class="space-y-3 md:space-y-4">
                 ${product.description.split('\n').map(line => 
                   `<li class="flex items-start">
                     <span class="text-mainblue mr-2">•</span>
-                    <span class="text-gray-700">${line}</span>
+                    <span class="text-sm md:text-base text-gray-700">${line}</span>
                   </li>`
                 ).join('')}
               </ul>
@@ -164,10 +164,10 @@ const observer = new MutationObserver(() => {
 
             <!-- Size Selector if available -->
             ${product.size ? `
-              <div class="bg-gray-50 rounded-lg p-6">
-                <label class="block text-gray-700 font-semibold mb-2">Select Size:</label>
+              <div class="bg-gray-50 rounded-lg p-4 md:p-6">
+                <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Select Size:</label>
                 <select id="sizeSelector" 
-                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue">
+                        class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
                   ${product.size.split(',').map(s => `
                     <option value="${s.trim()}">${s.trim()}</option>
                   `).join('')}
@@ -176,18 +176,18 @@ const observer = new MutationObserver(() => {
             ` : ''}
 
             <!-- Technical Sheet -->
-            <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-between">
-              <span class="text-gray-700 font-semibold">Technical sheet:</span>
+            <div class="bg-gray-50 rounded-lg p-4 md:p-6 flex items-center justify-between">
+              <span class="text-sm md:text-base text-gray-700 font-semibold">Technical sheet:</span>
               <a href="../data/catalog/${product.id}.pdf" 
-                class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2">
+                class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2 text-sm md:text-base">
                 <i class="fas fa-file-pdf"></i>
                 <span class="underline">${product.id}.pdf</span>
               </a>
             </div>
 
             <!-- Add to Cart Button -->
-            <button class="addCartButton w-full bg-secondaryblue text-white font-bold py-4 px-6 rounded-lg
-                        hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3"
+            <button class="addCartButton w-full bg-secondaryblue text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-lg
+                        hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3 text-sm md:text-base"
                     data-name="${product.name}" 
                     data-image="${product.image}">
               <span>Add to cart</span>
@@ -198,30 +198,35 @@ const observer = new MutationObserver(() => {
       </div>
     `;
 
+
     pageSpecs.innerHTML = `
-      <div class="specsTitle flex bg-mainblue text-white text-3xl font-openSans w-96 my-10 px-14 py-2">Specification</div>
-      <table class="specsTable w-11/12 ml-12">
-        <tr class="specContainer bg-gray-200">
-          <th class="specTitle text-xl font-bold text-black font-openSans p-2 text-left">${product.spec1Title}</th>
-          <td class="spec text-xl text-black font-openSans p-2">${product.spec1}</td>
-        </tr>
-        <tr class="specContainer">
-          <th class="specTitle text-xl font-bold text-black font-openSans p-2 text-left">${product.spec2Title}</th>
-          <td class="spec text-xl text-black font-openSans p-2">${product.spec2}</td>
-        </tr> 
-        <tr class="specContainer bg-gray-200">
-          <th class="specTitle text-xl font-bold text-black font-openSans p-2 text-left">${product.spec3Title}</th>
-          <td class="spec text-xl text-black font-openSans p-2">${product.spec3}</td>
-        </tr>
-        <tr class="specContainer">
-          <th class="specTitle text-xl font-bold text-black font-openSans p-2 text-left">${product.spec4Title}</th>
-          <td class="spec text-xl text-black font-openSans p-2">${product.spec4}</td>
-        </tr>
-        <tr class="specContainer bg-gray-200">
-          <th class="specTitle text-xl font-bold text-black font-openSans p-2 text-left">${product.spec5Title}</th>
-          <td class="spec text-xl text-black font-openSans p-2">${product.spec5}</td>
-        </tr>
-      </table>
+      <div class="specsTitle bg-mainblue text-white text-2xl md:text-3xl font-openSans w-full md:w-96 my-6 md:my-10 py-2 px-4 md:px-14"> Specification </div>
+
+      <div class="overflow-x-auto">
+        <table class="specsTable w-full md:w-11/12 md:ml-12">
+          <tr class="specContainer bg-gray-200">
+            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec1Title}</th>
+            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec1}</td>
+          </tr>
+          <tr class="specContainer ">
+            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec2Title}</th>
+            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec2}</td>
+          </tr>
+          <tr class="specContainer bg-gray-200">
+            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec3Title}</th>
+            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec3}</td>
+          </tr>
+          <tr class="specContainer ">
+            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec4Title}</th>
+            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec4}</td>
+          </tr>
+          <tr class="specContainer bg-gray-200">
+            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec5Title}</th>
+            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec5}</td>
+          </tr>
+          
+        </table>
+      </div>
     `;
 
     // related products section

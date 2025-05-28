@@ -89,12 +89,14 @@ function render(currentData, title = 'Product Categories') {
   
   breadcrumb.innerHTML = breadcrumbHTML;
 
-  // Create grid for products/categories
+  // Create responsive grid for products/categories
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-4 gap-8';
+  grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6';
+
+
 
   // Root level: show categories
-    if (!stack.length) {
+  if (!stack.length) {
     for (let category in currentData) {
       const { __meta } = currentData[category];
       const categoryImage = __meta.categoryImage;
@@ -103,11 +105,11 @@ function render(currentData, title = 'Product Categories') {
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-7 flex items-center justify-center">
+        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-40">
           <img src="${imageToShow}" alt="${category}" class="max-h-full w-auto object-contain">
         </div>
-        <div class="mt-auto p-3 border-t border-gray-200">
-          <div class="text-lg font-medium text-gray-800 truncate">${category}</div>
+        <div class="p-2 md:p-3 border-t border-gray-200">
+          <div class="text-sm md:text-base font-medium text-gray-800 truncate text-center">${category}</div>
         </div>
       `;
 
@@ -123,7 +125,6 @@ function render(currentData, title = 'Product Categories') {
     products.forEach(product => {
       const imageToShow = product.image || 'https://via.placeholder.com/100x100?text=Product';
       
-      // Get size range
       const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
       const sizeRange = sizes.length ? 
         `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
@@ -132,13 +133,16 @@ function render(currentData, title = 'Product Categories') {
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-7 flex items-center justify-center">
+        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-40">
           <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
-        <div class="mt-auto p-3 border-t border-gray-200">
-          <div class="text-gray-500 text-[11px]">${sizeRange}</div>
-          <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
-          <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
+        <div class="p-2 md:p-3 border-t border-gray-200">
+          <div class="text-xs md:text-sm text-gray-500">${sizeRange}</div>
+          <div class="text-sm md:text-base font-medium text-gray-800 truncate">${product.name}</div>
+          <button class="w-full mt-2 py-1 md:py-2 px-2 md:px-4 bg-secondaryblue text-white text-xs md:text-sm rounded 
+                      hover:bg-mainblue transition-colors duration-300">
+            More Details
+          </button>
         </div>
       `;
 
@@ -153,7 +157,6 @@ function render(currentData, title = 'Product Categories') {
 
   app.appendChild(grid);
 }
-
 
 // Breadcrumb functions
 window.goToLevel = function (index) {
