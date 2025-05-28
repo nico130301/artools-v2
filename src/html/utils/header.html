@@ -2,20 +2,13 @@
 <div class="headContainer flex items-center justify-between md:justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
     <!-- Logo Section -->
     <div class="logo w-1/4 md:w-[16.5%] flex items-center justify-start">
-        <img class="logoImage h-8 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" 
-             src="../images/logo.png" 
-             alt="Logo" 
-             onclick="location.href='./main.html'">
+        <img class="logoImage h-8 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" src="../images/logo.png" alt="Logo" onclick="location.href='./main.html'">
     </div>
 
     <!-- Search Bar - Shown between logo and cart on mobile, centered on desktop -->
     <div class="search flex md:w-[62%] w-[45%] items-center justify-center">
-        <input id="searchText" 
-               class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg focus:outline-none" 
-               type="text" 
-               placeholder="Search...">
-        <button id="searchButton" 
-                class="searchButton w-10 md:w-1/12 bg-secondaryblue hover:bg-mainblue text-md p-1 md:p-2 rounded-r-lg">
+        <input id="searchText" class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg focus:outline-none" type="text" placeholder="Search...">
+        <button id="searchButton" class="searchButton w-10 md:w-1/12 bg-secondaryblue hover:bg-mainblue text-sm md:text-md p-1 md:p-2 rounded-r-lg">
             <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
         </button>
     </div>
@@ -28,11 +21,9 @@
         </button>
         
         <!-- Cart Button -->
-        <button class="cartButton md:basis-1/3 rounded-full relative" 
-                onclick="location.href='./cart.html'">
+        <button class="cartButton md:basis-1/3 rounded-full relative" onclick="location.href='./cart.html'">
             <i class="headerIcons fa-solid fa-cart-shopping"></i>
-            <span class="cartQuantity absolute -top-2 -right-2 bg-white text-mainblue text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-            </span>
+            <span class="cartQuantity absolute top-[10%] right-[20%] md:right-[40%]   text-mainblue text-xs font-bold  h-4 w-4 flex items-center justify-center"></span>
         </button>
 
         <!-- Mobile Menu Toggle - Visible only on mobile -->
