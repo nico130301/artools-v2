@@ -173,6 +173,7 @@ loadExcelData().then(loadedData => {
 
   const savedNavStack = JSON.parse(localStorage.getItem('navStack'));
   const resumeFlag = localStorage.getItem('resumeFromNavStack');
+  const selectedCategory = localStorage.getItem('selectedCategory');
 
   if (resumeFlag === 'true' && Array.isArray(savedNavStack) && savedNavStack.length > 0) {
     stack = savedNavStack;
@@ -182,6 +183,11 @@ loadExcelData().then(loadedData => {
     });
     localStorage.removeItem('resumeFromNavStack');
     render(currentNode, stack[stack.length - 1].title);
+  } else if (selectedCategory && rootData[selectedCategory]) {
+    // Navigate directly to selected category
+    stack.push({ data: rootData[selectedCategory], title: selectedCategory });
+    render(rootData[selectedCategory], selectedCategory);
+    localStorage.removeItem('selectedCategory');
   } else {
     render(rootData, 'Product Categories');
   }

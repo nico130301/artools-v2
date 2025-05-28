@@ -23,9 +23,15 @@ fetch('../html/utils/header.html')
           const dropdown = document.getElementById('productDropdown');
           categories.forEach(category => {
             const item = document.createElement('a');
-            item.href = `./products.html#${encodeURIComponent(category)}`;
-            item.className = 'text-white hover:underline transition-colors duration-200';
+            item.href = './products.html';
+            item.setAttribute('data-category', category);
+            item.className = 'text-white bg-mainblue py-1 px-2 rounded-lg hover:bg-secondaryblue transition-colors duration-200';
             item.textContent = category;
+            item.addEventListener('click', (e) => {
+              e.preventDefault();
+              localStorage.setItem('selectedCategory', category);
+              window.location.href = './products.html';
+            });
             dropdown.appendChild(item);
           });
         };

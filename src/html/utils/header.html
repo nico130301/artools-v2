@@ -1,45 +1,107 @@
-  <div class="headContainer flex items-center justify-between w-full h-full bg-mainblue py-2">
-    <div class=" logo w-[16.5%] flex items-center justify-center">
-        <img class="logoImage h-10 w-auto cursor-pointer" src="../images/logo.png" alt="Logo" onclick="location.href='./main.html'">
+<!--- Header Container --->
+<div class="headContainer flex items-center justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
+    <!-- Logo Section -->
+    <div class="logo w-1/4 md:w-[16.5%] flex items-center justify-start">
+        <img class="logoImage h-8 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" 
+             src="../images/logo.png" 
+             alt="Logo" 
+             onclick="location.href='./main.html'">
     </div>
-    <!--<div class="basis"></div>-->
-    <div class="search w-[62%] flex items-center justify-center text-md">
-      <input id="searchText" class="searchText w-11/12 px-4 py-2 rounded-l-lg focus:outline-none" type="text" placeholder="Search...">
-      <button id="searchButton" class="searchButton w-1/12 bg-secondaryblue p-2 rounded-r-lg" type="submit">
-        <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
-      </button>
-    </div>
-    <div class="info h-14 w-[21%] flex items-center justify-between">
-      <button class="favButton basis-1/3 rounded-full ">
-        <i class="headerIcons fa-solid fa-heart"></i>
-      </button>
-      <button class="cartButton basis-1/3 rounded-full relative" onclick="location.href='./cart.html'">
-        <i class="headerIcons fa-solid fa-cart-shopping">
-        </i>
 
-        <span class="cartQuantity absolute bottom-[37%] left-[43%]  text-mainblue font-bold text-sm  h-5 w-5 flex items-center align-middle justify-center"></span>
-      </button>
-      <button class="customerSupportButton basis-1/3 rounded-full ">
-        <i class="headerIcons fa-solid fa-headset"></i>
-      </button>
+    <!-- Desktop Search Bar - Hidden on mobile -->
+    <div class="search hidden md:flex w-[62%] items-center justify-center">
+        <input id="searchText" 
+               class="searchText w-11/12 px-4 py-2 rounded-l-lg focus:outline-none" 
+               type="text" 
+               placeholder="Search...">
+        <button id="searchButton" 
+                class="searchButton w-1/12 bg-secondaryblue hover:bg-mainblue p-2 rounded-r-lg">
+            <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
+        </button>
     </div>
-  </div>
 
-  <div class="menuContainer  flex items-center justify-between px-24 w-full h-14 bg-mainblue text-white text-2xl shadow-2xl">
-    <div class="menuDiv  ">
-      <button class="menuBtn" onclick="location.href='./aboutUs.html'">About Us</button>
+    <!-- Header Icons Section -->
+    <div class="info h-14 flex items-center justify-end gap-4 w-1/4 md:w-[21.5%] md:justify-between">
+        <!-- Favorites Button -->
+        <button class="favButton hidden md:block md:basis-1/3 rounded-full">
+            <i class="headerIcons fa-solid fa-heart"></i>
+        </button>
+        
+        <!-- Cart Button -->
+        <button class="cartButton md:basis-1/3 rounded-full relative" 
+                onclick="location.href='./cart.html'">
+            <i class="headerIcons fa-solid fa-cart-shopping"></i>
+            <span class="cartQuantity absolute -top-2 -right-2 bg-white text-mainblue text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+            </span>
+        </button>
+
+        <!-- Mobile Menu Toggle - Visible only on mobile -->
+        <button class="mobileMenuBtn block md:hidden rounded-full" id="mobileMenuBtn">
+            <i class="headerIcons fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Support Button - Visible only on desktop -->
+        <button class="customerSupportButton hidden md:block md:basis-1/3 rounded-full">
+            <i class="headerIcons fa-solid fa-headset"></i>
+        </button>
     </div>
-    <div class="menuDiv group relative">
-      <button class="menuBtn" onclick="location.href='./products.html'">Products</button>
-      <div class="dropdown-menu fixed w-1/2 top-32 left-0 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300">
-        <div class="py-3 px-24" id="productDropdown">
-        </div>
-      </div>
+</div>
+
+<!-- Mobile Search Bar - Visible only on mobile -->
+<div class="mobileSearchContainer block md:hidden w-full bg-mainblue px-4 py-2">
+    <div class="search flex items-center justify-center">
+        <input id="mobileSearchText" 
+               class="w-full px-4 py-2 rounded-l-lg focus:outline-none" 
+               type="text" 
+               placeholder="Search...">
+        <button id="mobileSearchButton" 
+                class="w-12 bg-secondaryblue hover:bg-mainblue p-2 rounded-r-lg">
+            <i class="text-white fa-solid fa-magnifying-glass"></i>
+        </button>
     </div>
-    <div class="menuDiv ">
-      <button class="menuBtn" onclick="location.href='./authorizedDistributor.html'">Distribuidores Autorizados</button>
-    </div>
+</div>
+
+<!-- Desktop Navigation Menu - Hidden on mobile -->
+<div class="menuContainer hidden md:flex items-center justify-between px-24 w-full h-14 bg-mainblue text-white text-2xl shadow-2xl">
     <div class="menuDiv">
-      <button class="menuBtn" onclick="location.href='./contact.html'">Contact Us</button>
+        <button class="menuBtn" onclick="location.href='./aboutUs.html'">About Us</button>
     </div>
-  </div>
+    
+    <div class="menuDiv group relative">
+        <button class="menuBtn" onclick="location.href='./products.html'">Products</button>
+        <div class="dropdown-menu fixed top-32 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300">
+            <div class="py-3 px-24" id="productDropdown"></div>
+        </div>
+    </div>
+    
+    <div class="menuDiv">
+        <button class="menuBtn" onclick="location.href='./authorizedDistributor.html'">
+            Distribuidores Autorizados
+        </button>
+    </div>
+    
+    <div class="menuDiv">
+        <button class="menuBtn" onclick="location.href='./contact.html'">Contact Us</button>
+    </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobileMenu fixed inset-0 bg-black/50 z-50 hidden" id="mobileMenu">
+    <div class="bg-mainblue w-64 h-full absolute right-0 transform translate-x-full transition-transform duration-300">
+        <!-- Close Button -->
+        <div class="flex justify-end p-4">
+            <button id="closeMenuBtn" class="text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Links -->
+        <div class="flex flex-col gap-4 p-4">
+            <a href="./aboutUs.html" class="mobileMenuLink text-white">About Us</a>
+            <a href="./products.html" class="mobileMenuLink text-white">Products</a>
+            <a href="./authorizedDistributor.html" class="mobileMenuLink text-white">Distribuidores Autorizados</a>
+            <a href="./contact.html" class="mobileMenuLink text-white">Contact Us</a>
+            <a href="./favorites.html" class="mobileMenuLink text-white">Favorites</a>
+        </div>
+    </div>
+</div>
