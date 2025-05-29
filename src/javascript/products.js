@@ -41,6 +41,7 @@ function buildDataStructure(rows) {
         image: row.image,
         name: row.name,
         size: row.size,
+        uom: row.unit,
         description: row.description,
         spec1Title: row.spec1Title,
         spec1: row.spec1,

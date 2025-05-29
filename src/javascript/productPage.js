@@ -32,13 +32,15 @@ function buildDataStructure(rows) {
       data[category] = { __meta: { categoryImage }, products: [] };
     }
 
+    console.log('Excel row data:', row);
+
     if (productName) {
       data[category].products.push({
         id: row.id,
         image: row.image,
         name: row.name,
         size: row.size,
-        uom: row.uom,
+        uom: row.unit,
         description: row.description,
         spec1Title: row.spec1Title,
         spec1: row.spec1,
@@ -132,7 +134,9 @@ const observer = new MutationObserver(() => {
           <!-- Left Column - Title and Image -->
           <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Product Title -->
-            <h1 class="text-2xl md:text-4xl font-bold text-gray-900 font-openSans">${product.name}</h1>
+              <h1 class="text-2xl md:text-4xl font-bold text-gray-900 font-openSans">
+                ${product.name}${product.size ? ` ${product.size.split(',')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
+              </h1>
             
             <!-- Product Image -->
             <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg">
@@ -304,11 +308,9 @@ const observer = new MutationObserver(() => {
           }
         });
         
-        // Trigger initial update
-        setTimeout(() => {
-          const event = new Event('change');
-          sizeSelector.dispatchEvent(event);
-        }, 0);
+        // Trigger initial update immediately after setting up the listener
+        const event = new Event('change');
+        sizeSelector.dispatchEvent(event);
       }
     }
 
