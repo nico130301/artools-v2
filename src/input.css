@@ -96,15 +96,15 @@
   /*/////////MENU//////////*/
 
   .mobileMenu {
-    @apply fixed inset-0 bg-black/50 z-50 hidden transition-all duration-300;
+    @apply fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out;
   }
 
   .mobileMenu > div {
-    @apply bg-mainblue w-64 h-full absolute right-0 transform translate-x-full transition-transform duration-300;
+    @apply bg-mainblue w-64 h-full absolute right-0 transform translate-x-full transition-transform duration-300 ease-in-out;
   }
 
   .mobileMenu.active {
-    @apply block;
+    @apply opacity-100 pointer-events-auto;
   }
 
   .mobileMenu.active > div {

@@ -174,7 +174,7 @@ const observer = new MutationObserver(() => {
                 <select id="sizeSelector" 
                         class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
                   ${product.size.split(',').map(s => `
-                    <option value="${s.trim()}">${s.trim()}</option>
+                    <option value="${s.trim()}">${s.trim()}${product.uom ? ` ${product.uom}` : ''}</option>
                   `).join('')}
                 </select>
               </div>

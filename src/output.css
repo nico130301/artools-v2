@@ -803,25 +803,27 @@ html {
 /*/////////MENU//////////*/
 
 .\!mobileMenu {
+  pointer-events: none;
   position: fixed;
   inset: 0px;
   z-index: 50;
-  display: none;
   background-color: rgb(0 0 0 / 0.5);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition-property: opacity;
   transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobileMenu {
+  pointer-events: none;
   position: fixed;
   inset: 0px;
   z-index: 50;
-  display: none;
   background-color: rgb(0 0 0 / 0.5);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition-property: opacity;
   transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .\!mobileMenu > div {
@@ -834,8 +836,8 @@ html {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
   transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobileMenu > div {
@@ -848,16 +850,18 @@ html {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
   transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .\!mobileMenu.active {
-  display: block;
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .mobileMenu.active {
-  display: block;
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .\!mobileMenu.active > div {
