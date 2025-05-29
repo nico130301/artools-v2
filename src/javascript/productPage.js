@@ -38,6 +38,7 @@ function buildDataStructure(rows) {
         image: row.image,
         name: row.name,
         size: row.size,
+        uom: row.uom,
         description: row.description,
         spec1Title: row.spec1Title,
         spec1: row.spec1,
@@ -251,7 +252,7 @@ const observer = new MutationObserver(() => {
             'Size not available';
 
           relatedProducts.innerHTML += `
-            <div class="bg-white rounded-lg m-4 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
               <div class="p-7 flex items-center justify-center">
                 <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
               </div>
@@ -280,7 +281,7 @@ const observer = new MutationObserver(() => {
       const rightColumn = document.querySelector('.grid-cols-1.lg\\:grid-cols-2 > div:last-child');
       
       // Get the title element
-      const productTitle = document.querySelector('.text-4xl.font-bold');
+      const productTitle = document.querySelector('.text-2xl.md\\:text-4xl.font-bold');
       
       // The size selector is already being created in the main HTML template
       const sizeSelector = document.getElementById('sizeSelector');
@@ -296,9 +297,10 @@ const observer = new MutationObserver(() => {
             productIdDisplay.textContent = `Cod produs: ${product.id}${selectedIndex}`;
           }
 
-          // Update product title with size
+          // Update product title with size and UOM
           if (productTitle) {
-            productTitle.textContent = `${product.name} ${selectedSize}`;
+            const uomText = product.uom ? ` ${product.uom}` : '';
+            productTitle.textContent = `${product.name} ${selectedSize}${uomText}`;
           }
         });
         

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       'Size not available';
 
     newProductsHTML += `
-      <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-category="${product.Category}" data-id="${product.id}">
+      <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" data-category="${product.Category}" data-id="${product.id}">
         <div class="product-image-container p-7 flex items-center justify-center">
           <img class="productImage max-h-full w-auto object-contain" src="${product.image}">
         </div>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       'Size not available';
 
     recommendedProductsHTML += `
-      <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-category="${product.Category}" data-id="${product.id}">
+      <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" data-category="${product.Category}" data-id="${product.id}">
         <div class="product-image-container p-7 flex items-center justify-center">
           <img class="productImage max-h-full w-auto object-contain" src="${product.image}">
         </div>
