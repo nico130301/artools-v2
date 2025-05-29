@@ -996,6 +996,14 @@ html {
   top: 0px;
 }
 
+.top-\[11\%\] {
+  top: 11%;
+}
+
+.top-\[9\%\] {
+  top: 9%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1234,6 +1242,11 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .max-h-full {
@@ -2250,6 +2263,10 @@ html {
     height: 100%;
   }
 
+  .md\:h-60 {
+    height: 15rem;
+  }
+
   .md\:w-1\/12 {
     width: 8.333333%;
   }
@@ -2320,6 +2337,10 @@ html {
 
   .md\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .md\:flex-row {

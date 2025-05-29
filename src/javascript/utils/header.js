@@ -102,8 +102,8 @@ fetch('../html/utils/header.html')
           info.classList.remove('h-14');
           info.classList.add('h-10');
 
-          cartQty.classList.remove('text-sm');
-          cartQty.classList.add('text-xs');
+          cartQty.classList.remove('text-sm','top-[13%]');
+          cartQty.classList.add('text-xs','top-[9%]');
 
           menuContainer.classList.remove('h-14', 'text-2xl');
           menuContainer.classList.add('h-10','text-xl');
@@ -132,8 +132,8 @@ fetch('../html/utils/header.html')
           info.classList.remove('h-10');
           info.classList.add('h-14');
 
-          cartQty.classList.remove('text-xs');
-          cartQty.classList.add('text-sm');
+          cartQty.classList.remove('text-xs', 'top-[9%]');
+          cartQty.classList.add('text-sm', 'top-[13%]');
 
           menuContainer.classList.remove('h-10', 'text-xl');
           menuContainer.classList.add('h-14', 'text-2xl');

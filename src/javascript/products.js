@@ -92,7 +92,7 @@ function render(currentData, title = 'Product Categories') {
 
   // Create responsive grid for products/categories
   const grid = document.createElement('div');
-  grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6';
+  grid.className = 'grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6';
 
 
 
@@ -106,7 +106,7 @@ function render(currentData, title = 'Product Categories') {
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-40">
+        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-60">
           <img src="${imageToShow}" alt="${category}" class="max-h-full w-auto object-contain">
         </div>
         <div class="p-2 md:p-3 border-t border-gray-200">
@@ -134,7 +134,7 @@ function render(currentData, title = 'Product Categories') {
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
       card.innerHTML = `
-        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-40">
+        <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-60">
           <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
         <div class="p-2 md:p-3 border-t border-gray-200">
