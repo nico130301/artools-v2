@@ -1309,6 +1309,10 @@ html {
   width: 1rem;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1726,6 +1730,10 @@ html {
 
 .text-justify {
   text-align: justify;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .font-\[\'Open_Sans\'\] {
@@ -2290,6 +2298,10 @@ html {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-full {
+    width: 100%;
   }
 
   .md\:basis-1\/3 {
