@@ -136,9 +136,19 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const storeList = document.getElementById("storeList");
 
+const orangeIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
 stores.forEach((store, index) => {
-  const marker = L.marker([store.lat, store.lng]).addTo(map)
+  const marker = L.marker([store.lat, store.lng], {icon: orangeIcon}).addTo(map)
     .bindPopup(`<b>${store.name}</b><br>${store.address}`);
+
 
   const storeItem = document.createElement("div");
   storeItem.className = "border-b pb-4 cursor-pointer hover:bg-gray-50";
