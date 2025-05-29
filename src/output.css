@@ -1470,6 +1470,11 @@ html {
   border-bottom-right-radius: 0.5rem;
 }
 
+.rounded-r-none {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
 .border {
   border-width: 1px;
 }
