@@ -2080,6 +2080,14 @@ html {
     right: 43%;
   }
 
+  .md\:right-\[42\%\] {
+    right: 42%;
+  }
+
+  .md\:right-\[41\%\] {
+    right: 41%;
+  }
+
   .md\:m-12 {
     margin: 3rem;
   }
