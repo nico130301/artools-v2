@@ -126,10 +126,21 @@ function render(currentData, title = 'Product Categories') {
     products.forEach(product => {
       const imageToShow = product.image || 'https://via.placeholder.com/100x100?text=Product';
       
-      const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
-      const sizeRange = sizes.length ? 
-        `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
-        'Size not available';
+      // Updated size range calculation
+      const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
+      let sizeRange = 'Size not available';
+
+      if (sizes.length > 0) {
+        if (sizes.length === 1) {
+          // If there's only one size, show it once
+          sizeRange = `Size: ${sizes[0]}`;
+        } else {
+          // If there are multiple sizes, show the range
+          const firstSize = sizes[0];
+          const lastSize = sizes[sizes.length - 1];
+          sizeRange = `Sizes: ${firstSize} - ${lastSize}`;
+        }
+      }
 
       const card = document.createElement('div');
       card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';

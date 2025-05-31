@@ -77,15 +77,15 @@
 
   .dropdown-menu {
     @apply z-50 fixed bg-secondaryblue shadow-lg mt-0;
-    width: 30%;
+    width: 60%; /* Increased width to accommodate 4 columns */
   }
 
   #productDropdown {
-    @apply flex flex-row justify-center items-center gap-12 py-4;
+    @apply grid grid-cols-3 gap-4 py-4 px-8;
   }
 
   #productDropdown a {
-    @apply text-white text-lg font-medium transition-all duration-200;
+    @apply text-white text-base font-medium transition-all duration-200 whitespace-nowrap;
   }
 
   .group:hover .dropdown-menu {

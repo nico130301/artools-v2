@@ -25,7 +25,7 @@ fetch('../html/utils/header.html')
             const item = document.createElement('a');
             item.href = './products.html';
             item.setAttribute('data-category', category);
-            item.className = 'text-white bg-mainblue py-1 px-2 rounded-lg hover:bg-secondaryblue transition-colors duration-200';
+            item.className = 'text-white bg-mainblue py-1 px-2 rounded-lg hover:bg-secondaryblue transition-colors duration-200 text-center';
             item.textContent = category;
             item.addEventListener('click', (e) => {
               e.preventDefault();

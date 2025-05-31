@@ -38,7 +38,7 @@ function render(products, searchTerm) {
 
   products.forEach(product => {
     // Get size range
-    const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
+    const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
     const sizeRange = sizes.length ? 
       `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
       'Size not available';

@@ -135,7 +135,7 @@ const observer = new MutationObserver(() => {
           <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Product Title -->
               <h1 class="text-2xl md:text-4xl font-bold text-gray-900 font-openSans">
-                ${product.name}${product.size ? ` ${product.size.split(',')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
+                ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
               </h1>
             
             <!-- Product Image -->
@@ -173,7 +173,7 @@ const observer = new MutationObserver(() => {
                 <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Select Size:</label>
                 <select id="sizeSelector" 
                         class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
-                  ${product.size.split(',').map(s => `
+                  ${product.size.split(';').map(s => `
                     <option value="${s.trim()}">${s.trim()}${product.uom ? ` ${product.uom}` : ''}</option>
                   `).join('')}
                 </select>
@@ -250,7 +250,7 @@ const observer = new MutationObserver(() => {
         if (relatedProduct) {
           const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
           // Get size range for related product
-          const sizes = relatedProduct.size ? relatedProduct.size.split(',').map(s => s.trim()) : [];
+          const sizes = relatedProduct.size ? relatedProduct.size.split(';').map(s => s.trim()) : [];
           const sizeRange = sizes.length ? 
             `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
             'Size not available';

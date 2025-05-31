@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   let newProductsHTML = '';
   newProducts.forEach((product) => {
     // Get size range
-    const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
+    const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
     const sizeRange = sizes.length ? 
       `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
       'Size not available';
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   let recommendedProductsHTML = '';
   recommendedProducts.forEach((product) => {
     // Get size range
-    const sizes = product.size ? product.size.split(',').map(s => s.trim()) : [];
+    const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
     const sizeRange = sizes.length ? 
       `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
       'Size not available';
