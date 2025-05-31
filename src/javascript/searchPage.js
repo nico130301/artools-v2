@@ -87,7 +87,7 @@ function extractProducts(rows) {
     spec4: row.spec4,
     spec5Title: row.spec5Title,
     spec5: row.spec5,
-    related: row.related ? row.related.split(',').map(r => r.trim()) : []
+    related: row.related ? row.related.split(';').map(r => r.trim()) : []
   }));
 }
 

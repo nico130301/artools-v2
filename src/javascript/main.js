@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       ...product,
       related: product.related ? 
         (typeof product.related === 'string' ? 
-          product.related.split(',').map(r => r.trim()) : 
+          product.related.split(';').map(r => r.trim()) : 
           product.related) : 
         []
     }));
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       ...product,
       related: product.related ? 
         (typeof product.related === 'string' ? 
-          product.related.split(',').map(r => r.trim()) : 
+          product.related.split(';').map(r => r.trim()) : 
           product.related) : 
         []
     }));
