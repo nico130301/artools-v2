@@ -323,13 +323,20 @@ const observer = new MutationObserver(() => {
       const name = button.dataset.name;
       const image = button.dataset.image;
       const selectedSize = document.getElementById('sizeSelector').value;
+      const uom = product.uom || ''; // Get UOM from product data
 
       const existingItem = cart.find(item => item.name === name && item.selectedSize === selectedSize);
 
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        cart.push({ name, image, quantity: 1, selectedSize});
+        cart.push({ 
+          name, 
+          image, 
+          quantity: 1, 
+          selectedSize,
+          uom // Add UOM to cart item
+        });
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));

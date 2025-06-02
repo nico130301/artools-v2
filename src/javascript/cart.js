@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cartTitleElement.innerHTML = `Cart (${cart.length} ${cart.length === 1 ? 'item' : 'items'})`;
   }
 
-function renderCart() {
-  container.innerHTML = '';
-  updateCartTitle();
-  if (cart.length === 0) {
-    container.innerHTML = '<div class="text-center p-4">Your cart is empty.</div>';
-  } else {
-    cart.forEach((item,index) => {
+  function renderCart() {
+    container.innerHTML = '';
+    updateCartTitle();
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="text-center p-4">Your cart is empty.</div>';
+    } else {
+      cart.forEach((item,index) => {
+      // Replace the cart item display template in renderCart:
       let itemDiv = `
       <div class="flex flex-row items-center gap-4 m-4 p-4 border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-all bg-white">
         <!-- Column 1: Image -->
@@ -39,7 +40,7 @@ function renderCart() {
               ${item.name}
             </div>
             <div class="text-sm text-gray-600">
-              Size: ${item.selectedSize}
+              Size: ${item.selectedSize}${item.uom || ''}
             </div>
           </div>
 
@@ -65,16 +66,14 @@ function renderCart() {
         </div>
       </div>
       `;
-      container.innerHTML += itemDiv;
-    });
-  }
+        container.innerHTML += itemDiv;
+      });
+    }
 
     function collectCartInfoForForm() {
-
       let cartData = "";
-
       cart.forEach(item => {
-        cartData += `${item.name} - Quantity: ${item.quantity}\n`;
+        cartData += `${item.name} - Size: ${item.selectedSize}${item.uom || ''} - Quantity: ${item.quantity}\n`;
       });
       document.querySelector(".cartDetails").value = cartData;
     }
@@ -117,10 +116,8 @@ function renderCart() {
     if (window.updateCartCount) {
       window.updateCartCount();
     }
-  }
+  } 
   
-
-
   renderCart();
   
 });

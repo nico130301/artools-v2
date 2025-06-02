@@ -43,9 +43,19 @@ document.addEventListener('DOMContentLoaded', async function() {
   newProducts.forEach((product) => {
     // Get size range
     const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-    const sizeRange = sizes.length ? 
-      `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
-      'Size not available';
+    let sizeRange = 'Size not available';
+
+    if (sizes.length > 0) {
+      if (sizes.length === 1) {
+        // If there's only one size, show it with the unit
+        sizeRange = `Size: ${sizes[0]}${product.unit || ''}`;
+      } else {
+        // If there are multiple sizes, show the range with the unit
+        const firstSize = sizes[0];
+        const lastSize = sizes[sizes.length - 1];
+        sizeRange = `Sizes: ${firstSize}${product.unit || ''} - ${lastSize}${product.unit || ''}`;
+      }
+    }
 
     newProductsHTML += `
       <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" data-category="${product.Category}" data-id="${product.id}">
@@ -65,10 +75,20 @@ document.addEventListener('DOMContentLoaded', async function() {
   let recommendedProductsHTML = '';
   recommendedProducts.forEach((product) => {
     // Get size range
-    const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-    const sizeRange = sizes.length ? 
-      `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
-      'Size not available';
+  const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
+  let sizeRange = 'Size not available';
+
+  if (sizes.length > 0) {
+    if (sizes.length === 1) {
+      // If there's only one size, show it with the unit
+      sizeRange = `Size: ${sizes[0]}${product.unit || ''}`;
+    } else {
+      // If there are multiple sizes, show the range with the unit
+      const firstSize = sizes[0];
+      const lastSize = sizes[sizes.length - 1];
+      sizeRange = `Sizes: ${firstSize}${product.unit || ''} - ${lastSize}${product.unit || ''}`;
+    }
+  }
 
     recommendedProductsHTML += `
       <div class="product bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" data-category="${product.Category}" data-id="${product.id}">
@@ -96,22 +116,149 @@ document.addEventListener('DOMContentLoaded', async function() {
         const category = productElement.dataset.category;
         const productId = productElement.dataset.id;
         
-        // Find the clicked product data
+        // Find the clicked product data 
         const clickedProduct = [...newProducts, ...recommendedProducts].find(p => p.id === productId);
-        
+
         if (clickedProduct) {
-          // Store the product data and navigation stack
-          localStorage.setItem('selectedProduct', JSON.stringify(clickedProduct));
+          // Add the unit to the product data before storing
+          const productWithUnit = {
+            ...clickedProduct,
+            // If size contains unit, keep it, otherwise append the unit from product
+            size: clickedProduct.size ? clickedProduct.size.split(';').map(s => 
+              s.trim() + (s.includes(clickedProduct.unit) ? '' : (clickedProduct.unit || ''))
+            ).join(';') : '',
+            unit: clickedProduct.unit || '' // Ensure unit is included
+          };
+          
+          // Store the enhanced product data
+          localStorage.setItem('selectedProduct', JSON.stringify(productWithUnit));
           localStorage.setItem('navStack', JSON.stringify([
             { title: category, data: null }
           ]));
           
-          // Navigate directly to product page
+          // Navigate to product page
           window.location.href = '../html/productPage.html';
         }
       }
     });
   });
+
+  //// SLIDESHOW /////
+  const slideshow = document.querySelector('.slideshow');
+  const slidesWrapper = document.querySelector('.slides-wrapper');
+  const slides = document.querySelectorAll('.slide-container');
+  const dots = document.querySelectorAll('.slide-dots button');
+  const prevButton = document.querySelector('.prev-arrow');
+  const nextButton = document.querySelector('.next-arrow');
+
+  let currentSlide = 1; // Start at first real slide (index 1)
+  let isTransitioning = false;
+  let autoplayInterval;
+
+  // Initialize position
+  slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+  function goToSlide(index, instant = false) {
+    if (isTransitioning && !instant) return;
+    isTransitioning = true;
+
+    const totalSlides = slides.length;
+    const actualIndex = ((index % (totalSlides - 2)) + (totalSlides - 2)) % (totalSlides - 2); // Adjust for actual slides (excluding clones)
+    
+    // Update dots
+    dots.forEach(dot => dot.classList.remove('opacity-100'));
+    dots[actualIndex].classList.add('opacity-100');
+
+    // Move slides
+    if (instant) {
+      slidesWrapper.style.transition = 'none';
+    }
+    
+    slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
+
+    // Handle infinite scroll
+    setTimeout(() => {
+      if (index === 0) { // If we're at the clone of the last slide
+        slidesWrapper.style.transition = 'none';
+        currentSlide = totalSlides - 2; // Jump to the real last slide
+        slidesWrapper.style.transform = `translateX(-${(totalSlides - 2) * 100}%)`;
+      } else if (index === totalSlides - 1) { // If we're at the clone of the first slide
+        slidesWrapper.style.transition = 'none';
+        currentSlide = 1; // Jump to the real first slide
+        slidesWrapper.style.transform = `translateX(-100%)`;
+      } else {
+        currentSlide = index;
+      }
+      
+      // Reset transition
+      setTimeout(() => {
+        slidesWrapper.style.transition = 'transform 500ms';
+        isTransitioning = false;
+      }, 10);
+    }, instant ? 0 : 500);
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  // Event listeners
+  prevButton.addEventListener('click', () => {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  nextButton.addEventListener('click', () => {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      goToSlide(index + 1); // Add 1 to account for clone slide at start
+      resetAutoplay();
+    });
+  });
+
+  // Handle transition end
+  slidesWrapper.addEventListener('transitionend', () => {
+    slidesWrapper.style.transition = 'transform 500ms';
+  });
+
+  // Autoplay
+  function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 4000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  }
+
+  // Touch support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slidesWrapper.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  slidesWrapper.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) {
+      nextSlide();
+      resetAutoplay();
+    } else if (touchEndX - touchStartX > 50) {
+      prevSlide();
+      resetAutoplay();
+    }
+  });
+
+  // Initialize
+  dots[0].classList.add('opacity-100');
+  startAutoplay();
 });
-
-

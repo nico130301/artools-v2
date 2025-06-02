@@ -92,6 +92,21 @@
     @apply visible opacity-100;
   }
 
+  /*/////////SLIDESHOW//////////*/
+
+  .slides-wrapper {
+    @apply w-full h-full;
+    transform: translateX(0);
+    will-change: transform;
+  }
+
+  .slide-container {
+    @apply opacity-100 transition-opacity duration-500;
+  }
+
+  .slide-dots button.opacity-100 {
+    @apply bg-white;
+  }
 
   /*/////////MENU//////////*/
 

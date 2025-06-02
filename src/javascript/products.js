@@ -132,13 +132,13 @@ function render(currentData, title = 'Product Categories') {
 
       if (sizes.length > 0) {
         if (sizes.length === 1) {
-          // If there's only one size, show it once
-          sizeRange = `Size: ${sizes[0]}`;
+          // If there's only one size, show it with the unit
+          sizeRange = `Size: ${sizes[0]}${product.uom || ''}`;
         } else {
-          // If there are multiple sizes, show the range
+          // If there are multiple sizes, show the range with the unit
           const firstSize = sizes[0];
           const lastSize = sizes[sizes.length - 1];
-          sizeRange = `Sizes: ${firstSize} - ${lastSize}`;
+          sizeRange = `Sizes: ${firstSize}${product.uom || ''} - ${lastSize}${product.uom || ''}`;
         }
       }
 
