@@ -249,11 +249,21 @@ const observer = new MutationObserver(() => {
 
         if (relatedProduct) {
           const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
-          // Get size range for related product
+          // Updated size range calculation
           const sizes = relatedProduct.size ? relatedProduct.size.split(';').map(s => s.trim()) : [];
-          const sizeRange = sizes.length ? 
-            `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
-            'Size not available';
+          let sizeRange = 'Size not available';
+
+          if (sizes.length > 0) {
+            if (sizes.length === 1) {
+              // If there's only one size, show it with the unit
+              sizeRange = `Size: ${sizes[0]}${relatedProduct.uom || ''}`;
+            } else {
+              // If there are multiple sizes, show the range with the unit
+              const firstSize = sizes[0];
+              const lastSize = sizes[sizes.length - 1];
+              sizeRange = `Sizes: ${firstSize}${relatedProduct.uom || ''} - ${lastSize}${relatedProduct.uom || ''}`;
+            }
+          }
 
           relatedProducts.innerHTML += `
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
@@ -270,6 +280,7 @@ const observer = new MutationObserver(() => {
         }
       });
     }
+
 
     // Helper function to view related product
     window.viewrelatedProduct = function (productObj) {
