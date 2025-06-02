@@ -37,11 +37,21 @@ function render(products, searchTerm) {
   const defaultProductImg = 'https://via.placeholder.com/100x100?text=Product';
 
   products.forEach(product => {
-    // Get size range
+    // Get size range with proper handling of UOM
     const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-    const sizeRange = sizes.length ? 
-      `Sizes: ${Math.min(...sizes)} - ${Math.max(...sizes)}` : 
-      'Size not available';
+    let sizeRange = 'Size not available';
+
+    if (sizes.length > 0 && sizes[0] !== 'nan') {
+      if (sizes.length === 1) {
+        // If there's only one size, show it with the unit
+        sizeRange = `Size: ${sizes[0]}${product.unit || ''}`;
+      } else {
+        // If there are multiple sizes, show the range with the unit
+        const firstSize = sizes[0];
+        const lastSize = sizes[sizes.length - 1];
+        sizeRange = `Sizes: ${firstSize}${product.unit || ''} - ${lastSize}${product.unit || ''}`;
+      }
+    }
 
     const card = document.createElement('div');
     card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
@@ -58,7 +68,14 @@ function render(products, searchTerm) {
     `;
 
     card.onclick = () => {
-      localStorage.setItem('selectedProduct', JSON.stringify(product));
+      // Create a complete product object with all necessary fields
+      const productData = {
+        ...product,
+        unit: product.unit || '', // Ensure unit is included
+        uom: product.unit || ''   // Add uom field for compatibility
+      };
+      
+      localStorage.setItem('selectedProduct', JSON.stringify(productData));
       window.location.href = './productPage.html';
     };
 
@@ -68,7 +85,7 @@ function render(products, searchTerm) {
   app.appendChild(grid);
 }
 
-// Flatten the Excel data to a list of products
+// Update the extractProducts function to include the unit field
 function extractProducts(rows) {
   return rows.map(row => ({
     category: row.Category,
@@ -76,6 +93,7 @@ function extractProducts(rows) {
     image: row.image,
     name: row.name,
     size: row.size,
+    unit: row.unit, // Add unit field
     description: row.description,
     spec1Title: row.spec1Title,
     spec1: row.spec1,
@@ -90,7 +108,6 @@ function extractProducts(rows) {
     related: row.related ? row.related.split(';').map(r => r.trim()) : []
   }));
 }
-
 const searchTerm = getQueryParam('query')?.toLowerCase() || '';
 
 loadExcelData().then(rows => {
