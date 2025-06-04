@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>ARTOOLS</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta name="description" content="ARTOOLS - Professional Tools and Equipment">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="../images/logo.png" as="image">
+    <link rel="preload" href="../images/unior1.jpg" as="image">
+  
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../output.css">
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js" defer></script>
     <script defer src="https://cdn.counter.dev/script.js" data-id="902f8325-56eb-41f4-9f00-471248a12c92" data-utcoffset="3"></script>
   </head>
+
 
   <body class="body">
     <div class="top"></div>
@@ -17,7 +33,12 @@
       <div class="slides-wrapper flex transition-transform duration-500">
         <!-- Clone of last slide -->
         <div class="slide-container relative h-[450px] md:h-[750px] min-w-full">
-          <img src="../images/unior2.jpg" alt="Last Slide Clone" class="absolute inset-0 w-full h-full object-cover">
+          <img src="../images/unior2.jpg" 
+              alt="Last Slide Clone" 
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              width="1920"
+              height="1080">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           <div class="catalog absolute bottom-10 md:bottom-[60%] right-2 md:right-[60%] p-4 md:p-8 text-white w-[90%] md:w-[500px] z-10">
             <div class="catalogTitle text-4xl md:text-6xl font-bold mb-4 md:mb-8">
@@ -33,7 +54,12 @@
 
         <!-- Original first slide -->
         <div class="slide-container relative h-[450px] md:h-[750px] min-w-full">
-          <img src="../images/unior1.jpg" alt="Slide 1" class="absolute inset-0 w-full h-full object-cover">
+          <img src="../images/unior1.jpg" 
+              alt="Slide 1" 
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+              width="1920"
+              height="1080">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           <div class="howToBuy absolute bottom-10 md:bottom-20 right-2 md:right-[10%] p-4 md:p-8 text-white w-[90%] md:w-[500px] z-10">
             <div class="howToBuyTitle text-4xl md:text-6xl font-bold mb-4 md:mb-8">
@@ -49,7 +75,12 @@
 
         <!-- Original second slide -->
         <div class="slide-container relative h-[450px] md:h-[750px] min-w-full">
-          <img src="../images/unior2.jpg" alt="Slide 2" class="absolute inset-0 w-full h-full object-cover">
+          <img src="../images/unior2.jpg" 
+              alt="Slide 1" 
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+              width="1920"
+              height="1080">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           <div class="catalog absolute bottom-10 md:bottom-[60%] right-2 md:right-[60%] p-4 md:p-8 text-white w-[90%] md:w-[500px] z-10">
             <div class="catalogTitle text-4xl md:text-6xl font-bold mb-4 md:mb-8">
@@ -65,7 +96,12 @@
 
         <!-- Clone of first slide -->
         <div class="slide-container relative h-[450px] md:h-[750px] min-w-full">
-          <img src="../images/unior1.jpg" alt="First Slide Clone" class="absolute inset-0 w-full h-full object-cover">
+          <img src="../images/unior1.jpg" 
+              alt="Slide 1" 
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+              width="1920"
+              height="1080">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           <div class="howToBuy absolute bottom-10 md:bottom-20 right-2 md:right-[10%] p-4 md:p-8 text-white w-[90%] md:w-[500px] z-10">
             <div class="howToBuyTitle text-4xl md:text-6xl font-bold mb-4 md:mb-8">

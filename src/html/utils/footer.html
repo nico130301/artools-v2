@@ -1,23 +1,25 @@
 <div class="newsLetterContainer bg-mainblue py-6 md:py-8 px-4 md:px-0">
   <div class="newsLetter container mx-auto flex flex-col items-center text-center">
     <div class="newsLetterText mb-4 md:mb-8 text-white">
-      <div class="newsLetterTextTitle text-2xl md:text-3xl font-bold mb-2">
+      <h2 class="newsLetterTextTitle text-2xl md:text-3xl font-bold mb-2">
         Subscribe to our newsletter
-      </div>
-      <div class="newsLetterTextDescription text-sm md:text-base text-gray-300">
+      </h2>
+      <p class="newsLetterTextDescription text-sm md:text-base text-gray-300">
         Get the latest news and updates from our team.
-      </div>
+      </p>
     </div>
-    <div class="flex flex-col md:flex-row w-full items-center  max-w-2xl gap-3 md:gap-4">
-      <input 
-        class="newsLetterInput w-full px-3 md:px-4 py-2 md:py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondaryblue text-sm md:text-base" 
-        type="text" 
-        placeholder="Enter your email">
-      <button 
-        class="newsLetterButton w-1/2 md:w-auto bg-secondaryblue text-white px-4 md:px-8 py-2 md:py-3 rounded-lg hover:bg-opacity-90 transition-colors duration-300 text-sm md:text-base font-medium">
+    <form class="flex flex-col md:flex-row w-full items-center max-w-2xl gap-3 md:gap-4"
+          aria-label="Newsletter subscription">
+      <input class="newsLetterInput w-full px-3 md:px-4 py-2 md:py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondaryblue text-sm md:text-base"
+              type="email"
+              required
+              aria-label="Email address"
+              placeholder="Enter your email">
+      <button type="submit"
+              class="newsLetterButton w-1/2 md:w-auto bg-secondaryblue text-white px-4 md:px-8 py-2 md:py-3 rounded-lg hover:bg-opacity-90 transition-colors duration-300 text-sm md:text-base font-medium">
         Subscribe
       </button>
-    </div>
+    </form>
   </div>
 </div>
 <div class="footerInfo bg-bgblue py-8 md:py-12">

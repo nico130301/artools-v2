@@ -1,14 +1,26 @@
 <!--- Header Container --->
 <div class="headContainer flex items-center justify-between md:justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
-    <!-- Logo Section -->
+    <!-- Logo Section with explicit dimensions -->
     <div class="logo w-1/4 md:w-[16.5%] flex items-center justify-start">
-        <img class="logoImage h-6 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" src="../images/logo.png" alt="Logo" onclick="location.href='./main.html'">
+        <img class="logoImage h-6 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" 
+             src="../images/logo.png" 
+             alt="ARTOOLS Logo" 
+             width="160" 
+             height="40"
+             loading="eager"
+             onclick="location.href='./main.html'">
     </div>
 
-    <!-- Search Bar - Shown between logo and cart on mobile, centered on desktop -->
+    <!-- Optimized Search Bar -->
     <div class="search flex md:w-[62%] w-[45%] items-center justify-center">
-        <input id="searchText" class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg rounded-r-none focus:outline-none" type="text" placeholder="Search...">
-        <button id="searchButton" class="searchButton w-10 md:w-1/12 bg-secondaryblue hover:bg-mainblue text-sm md:text-md p-1 md:p-2 rounded-r-lg">
+        <input id="searchText" 
+               class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg rounded-r-none focus:outline-none" 
+               type="search" 
+               placeholder="Search..."
+               aria-label="Search products">
+        <button id="searchButton" 
+                class="searchButton w-10 md:w-1/12 bg-secondaryblue hover:bg-mainblue text-sm md:text-md p-1 md:p-2 rounded-r-lg"
+                aria-label="Search">
             <i class="searchImage text-white fa-solid fa-magnifying-glass"></i>
         </button>
     </div>
