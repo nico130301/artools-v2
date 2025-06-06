@@ -134,7 +134,7 @@ const observer = new MutationObserver(() => {
           <!-- Left Column - Title and Image -->
           <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Product Title -->
-              <h1 class="text-2xl md:text-4xl font-bold text-gray-900 font-openSans">
+              <h1 class="text-sm md:text-4xl font-bold text-gray-900 font-openSans">
                 ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
               </h1>
             
@@ -296,7 +296,7 @@ const observer = new MutationObserver(() => {
       const rightColumn = document.querySelector('.grid-cols-1.lg\\:grid-cols-2 > div:last-child');
       
       // Get the title element
-      const productTitle = document.querySelector('.text-2xl.md\\:text-4xl.font-bold');
+      const productTitle = document.querySelector('.text-sm.md\\:text-4xl.font-bold');
       
       // The size selector is already being created in the main HTML template
       const sizeSelector = document.getElementById('sizeSelector');
