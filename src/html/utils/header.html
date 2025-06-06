@@ -1,7 +1,6 @@
-<!--- Header Container --->
-<div class="headContainer flex items-center justify-between md:justify-between w-full h-full bg-mainblue py-2 px-4 md:px-8">
-    <!-- Logo Section with explicit dimensions -->
-    <div class="logo w-1/4 md:w-[16.5%] flex items-center justify-start">
+<div class="headContainer flex items-center justify-evenly w-full h-full bg-mainblue py-2">
+    <!-- Logo Section -->
+    <div class="logo w-[25%] md:w-[10.5%] flex items-center justify-start">
         <img class="logoImage h-6 md:h-10 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" 
              src="../images/logo.png" 
              alt="ARTOOLS Logo" 
@@ -11,8 +10,8 @@
              onclick="location.href='./main.html'">
     </div>
 
-    <!-- Optimized Search Bar -->
-    <div class="search flex md:w-[62%] w-[45%] items-center justify-center">
+    <!-- Search Bar -->
+    <div class="search flex md:w-[52%] w-[45%] items-center justify-center">
         <input id="searchText" 
                class="searchText w-full md:w-11/12 px-2 md:px-4 py-1 md:py-2 text-sm md:text-md rounded-l-lg rounded-r-none focus:outline-none" 
                type="search" 
@@ -25,29 +24,26 @@
         </button>
     </div>
 
-    <!-- Header Icons Section -->
-    <div class="info h-14 flex items-center justify-between gap-4 w-1/4 md:w-[21.5%] md:justify-between">
-        <!-- Questions Button -->
-        <button class="qButton hidden md:block md:basis-1/3 rounded-full">
-            <i class="headerIcons fa-solid fa-question " onclick="location.href='./questions.html'"></i>
-        </button>
-        
-        <!-- Cart Button -->
-        <button class="cartButton md:basis-1/3 rounded-full relative" onclick="location.href='./cart.html'">
-            <i class="headerIcons fa-solid fa-cart-shopping"></i>
-            <span class="cartQuantity absolute top-[13%] right-[20%] md:right-[41%]   text-mainblue text-sm font-bold  h-4 w-4 flex items-center justify-center"></span>
-        </button>
+    <!-- Questions Button -->
+    <button class="qButton hidden md:block w-[5%] rounded-full" onclick="location.href='./questions.html'">
+        <i class="headerIcons fa-solid fa-question"></i>
+    </button>
+    
+    <!-- Cart Button -->
+    <button class="cartButton w-[5%] rounded-full relative" onclick="location.href='./cart.html'">
+        <i class="headerIcons fa-solid fa-cart-shopping"></i>
+        <span class="cartQuantity absolute top-[13%] right-[41%] text-mainblue text-sm font-bold h-4 w-4 flex items-center justify-center"></span>
+    </button>
 
-        <!-- Mobile Menu Toggle - Visible only on mobile -->
-        <button class="mobileMenuBtn block md:hidden rounded-full " id="mobileMenuBtn">
-            <i class="headerIcons fa-solid fa-bars"></i>
-        </button>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobileMenuBtn block md:hidden w-[10%] rounded-full" id="mobileMenuBtn">
+        <i class="headerIcons fa-solid fa-bars"></i>
+    </button>
 
-        <!-- Support Button - Visible only on desktop -->
-        <button class="customerSupportButton hidden md:block md:basis-1/3 rounded-full">
-            <i class="headerIcons fa-solid fa-headset"></i>
-        </button>
-    </div>
+    <!-- Support Button -->
+    <button class="customerSupportButton hidden md:block w-[5%] rounded-full">
+        <i class="headerIcons fa-solid fa-headset"></i>
+    </button>
 </div>
 
 <!-- Desktop Navigation Menu - Hidden on mobile -->

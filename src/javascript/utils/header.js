@@ -77,8 +77,6 @@ fetch('../html/utils/header.html')
         const logoImage = document.querySelector('.logoImage');
         const searchText = document.querySelector('.searchText');
         const searchButton = document.querySelector('.searchButton');
-        const info = document.querySelector('.info');
-        const menuContainer = document.querySelector('.menuContainer');
         const headerIcons = document.querySelectorAll('.headerIcons');
         const head = document.querySelector('.headContainer');
         const dropdown = document.querySelector('.dropdown-menu');
@@ -86,63 +84,28 @@ fetch('../html/utils/header.html')
 
         if (window.scrollY > 50) {
           head.classList.add('px-10');
-
           dropdown.classList.remove('top-32');
           dropdown.classList.add('top-24');
-
           logoImage.classList.remove('h-10');
           logoImage.classList.add('h-6');
-
-          searchText.classList.remove('px-4', 'py-2', 'text-md');
-          searchText.classList.add('px-2', 'py-1', 'text-sm');
-          
-          searchButton.classList.remove('p-2', 'text-md');
-          searchButton.classList.add('p-1', 'text-sm');
-
-          info.classList.remove('h-14');
-          info.classList.add('h-10');
-
-          cartQty.classList.remove('text-sm','top-[13%]');
-          cartQty.classList.add('text-xs','top-[9%]');
-
-          menuContainer.classList.remove('h-14', 'text-2xl');
-          menuContainer.classList.add('h-10','text-xl');
-
-          // Make header icons smaller
           headerIcons.forEach(icon => {
             icon.classList.remove('text-3xl');
             icon.classList.add('text-2xl');
           });
+          cartQty.classList.remove('text-sm', 'top-[13%]');
+          cartQty.classList.add('text-xs', 'top-[9%]');
         } else {
-          // When at top
           head.classList.remove('px-10');
-
           dropdown.classList.remove('top-24');
           dropdown.classList.add('top-32');
-          
-          logoImage.classList.remove('h-6','md:pl-6');
+          logoImage.classList.remove('h-6');
           logoImage.classList.add('h-10');
-
-          searchText.classList.remove('px-2', 'py-1', 'text-sm');
-          searchText.classList.add('px-4', 'py-2', 'text-md');
-
-          searchButton.classList.remove('p-1', 'text-sm');
-          searchButton.classList.add('p-2', 'text-md');
-
-          info.classList.remove('h-10');
-          info.classList.add('h-14');
-
-          cartQty.classList.remove('text-xs', 'top-[9%]');
-          cartQty.classList.add('text-sm', 'top-[13%]');
-
-          menuContainer.classList.remove('h-10', 'text-xl');
-          menuContainer.classList.add('h-14', 'text-2xl');
-
-          // Restore header icons size
           headerIcons.forEach(icon => {
             icon.classList.remove('text-2xl');
             icon.classList.add('text-3xl');
           });
+          cartQty.classList.remove('text-xs', 'top-[9%]');
+          cartQty.classList.add('text-sm', 'top-[13%]');
         }
       }
     });
