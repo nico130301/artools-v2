@@ -39,6 +39,8 @@ function buildDataStructure(rows) {
       data[category].products.push({
         id: row.id,
         image: row.image,
+        image2: row.image2, // Add new image fields
+        image3: row.image3,
         name: row.name,
         size: row.size,
         uom: row.unit,

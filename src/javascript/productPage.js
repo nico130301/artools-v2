@@ -32,12 +32,12 @@ function buildDataStructure(rows) {
       data[category] = { __meta: { categoryImage }, products: [] };
     }
 
-    console.log('Excel row data:', row);
-
     if (productName) {
       data[category].products.push({
         id: row.id,
         image: row.image,
+        image2: row.image2, // Add new image fields
+        image3: row.image3,
         name: row.name,
         size: row.size,
         uom: row.unit,
@@ -65,7 +65,7 @@ const observer = new MutationObserver(() => {
   observer.disconnect();
 
   loadExcelData().then(loadedData => {
-    const rootData = loadedData;  // <-- now rootData is available
+    const rootData = loadedData;
 
     const product = JSON.parse(localStorage.getItem('selectedProduct'));
     const navStack = JSON.parse(localStorage.getItem('navStack')) || [];
@@ -74,11 +74,12 @@ const observer = new MutationObserver(() => {
       console.error('No product data found in localStorage');
       return;
     }
-    console.log(product);
+
     let history = document.querySelector('.history');
     let pageContent = document.querySelector('.productPageDetails');
     let pageSpecs = document.querySelector('.productPageSpecs');
     let relatedProducts = document.querySelector('.relatedProducts');
+
 
     // Build breadcrumb
     let breadcrumbHTML = `
@@ -131,23 +132,39 @@ const observer = new MutationObserver(() => {
     pageContent.innerHTML = `
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-          <!-- Left Column - Title and Image -->
+          <!-- Left Column - Image Gallery -->
           <div class="flex flex-col space-y-4 md:space-y-8">
-            <!-- Product Title -->
-              <h1 class="text-2xl md:text-3xl font-bold text-gray-900 font-openSans">
-                ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
-              </h1>
-            
-            <!-- Product Image -->
+            <!-- Main Product Image -->
             <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg">
-              <img class="w-full max-w-lg object-contain hover:scale-105 transition-transform duration-300" 
+              <img id="mainProductImage" 
+                  class="w-full max-w-lg object-contain hover:scale-105 transition-transform duration-300" 
                   src="${product.image}" 
                   alt="${product.name}">
+            </div>
+
+            <!-- Thumbnail Navigation -->
+            <div class="flex justify-center gap-4 mt-4">
+              ${[product.image, product.image2, product.image3]
+                .filter(img => img)
+                .map((img, index) => `
+                  <div class="w-20 h-20 cursor-pointer border-2 ${index === 0 ? 'border-mainblue' : 'border-transparent'} 
+                      rounded-lg overflow-hidden hover:border-secondaryblue transition-colors">
+                    <img src="${img}" 
+                        alt="${product.name} view ${index + 1}"
+                        class="w-full h-full object-cover thumbnail-img"
+                        onclick="changeMainImage('${img}', this)">
+                  </div>
+                `).join('')}
             </div>
           </div>
 
           <!-- Right Column - Product Details -->
           <div class="flex flex-col space-y-4 md:space-y-8">
+            <!-- Product Title - Moved from left to right column -->
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 font-openSans">
+              ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
+            </h1>
+            
             <!-- Product ID -->
             <div class="inline-flex items-center bg-gray-100 rounded-lg px-3 md:px-4 py-2 text-gray-600">
               <span id="productIdDisplay" class="text-xs md:text-sm font-semibold">
@@ -202,6 +219,19 @@ const observer = new MutationObserver(() => {
         </div>
       </div>
     `;
+
+    window.changeMainImage = function(newSrc, thumbnailElement) {
+      // Update main image
+      document.getElementById('mainProductImage').src = newSrc;
+      
+      // Update thumbnail borders
+      document.querySelectorAll('.thumbnail-img').forEach(thumb => {
+        thumb.parentElement.classList.remove('border-mainblue');
+        thumb.parentElement.classList.add('border-transparent');
+      });
+      thumbnailElement.parentElement.classList.add('border-mainblue');
+      thumbnailElement.parentElement.classList.remove('border-transparent');
+    };
 
 
     pageSpecs.innerHTML = `

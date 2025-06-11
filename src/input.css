@@ -3,10 +3,15 @@
 @tailwind utilities;
 
 @layer components {
+  /* Menu Components */
   .menuBtn {
     @apply h-full w-full font-medium relative hover:text-white transition-colors duration-300;
     position: relative;
     z-index: 1;
+  }
+
+  .menuDiv {
+    @apply h-full flex-1 flex items-center justify-center relative overflow-hidden bg-mainblue rounded-t-xl;
   }
 
   .menuDiv .menuBtn::before {
@@ -19,65 +24,61 @@
     @apply scale-y-100;
   }
 
-
   .menuDiv.group::after {
     content: '';
     @apply absolute bottom-0 left-0 w-full h-2 bg-transparent;
   }
 
-  .menuDiv {
-    @apply h-full flex-1 flex items-center justify-center relative overflow-hidden bg-mainblue rounded-t-xl;
+  /* Header Components */
+  .headerIcons {
+    @apply text-white text-3xl relative cursor-pointer hover:text-secondaryblue;
   }
 
-  .headContainer, .menuContainer, .logoImage, .searchText, .searchButton, .headerIcons, .cartQuantity{
+  .headContainer, 
+  .menuContainer, 
+  .logoImage, 
+  .searchText, 
+  .searchButton, 
+  .headerIcons, 
+  .cartQuantity {
     @apply transition-all duration-300 ease-in-out;
   }
 
-  .headerIcons{
-    @apply text-white text-3xl relative cursor-pointer hover:text-secondaryblue;
-  } 
-
-  .footerButton{
-    @apply hover:text-mainblue cursor-pointer transition-colors hover:underline ;
-  }
-
-  .wapp{
-    @apply fixed right-[2%] bottom-[5%];
-  }
-  
-  html{
+  /* Layout Components */
+  html {
     @apply w-full overflow-x-hidden;
   }
-  
+
   .body {
-    @apply pt-[70px] md:pt-[100px] bg-bgblue overflow-x-hidden ;
+    @apply pt-[70px] md:pt-[100px] bg-bgblue overflow-x-hidden;
   }
-  
+
   .top {
     @apply fixed top-0 left-0 z-50 w-full bg-mainblue transform translate-y-0;
-    backface-visibility: hidden; 
+    backface-visibility: hidden;
   }
 
-  .map-section {
-    @apply relative z-0; 
-  }
-  
-  .map-overlay {
-    @apply absolute inset-0 w-full bg-black/50 flex items-center justify-center transition-all duration-300 ease-in-out opacity-0 invisible;
-    pointer-events: none;
+  /* Footer Components */
+  .footerButton {
+    @apply hover:text-mainblue cursor-pointer transition-colors hover:underline;
   }
 
-  .map-overlay.active {
-    @apply opacity-100 visible;
+  .footer-section {
+    @apply flex flex-col;
   }
 
-  .map-overlay-text {
-    @apply text-white text-xl font-bold bg-black/70 px-6 py-3 rounded-lg;
+  .footer-section ul li a {
+    @apply text-gray-600 hover:text-mainblue transition-colors duration-200 text-sm;
   }
 
+  .footer-section .fab {
+    @apply text-lg;
+  }
+
+  /* Dropdown Components */
   .dropdown-menu {
     @apply z-50 fixed bg-secondaryblue shadow-lg mt-0;
-    width: 60%; /* Increased width to accommodate 4 columns */
+    width: 60%;
   }
 
   #productDropdown {
@@ -92,8 +93,25 @@
     @apply visible opacity-100;
   }
 
-  /*/////////SLIDESHOW//////////*/
+  /* Map Components */
+  .map-section {
+    @apply relative z-0;
+  }
 
+  .map-overlay {
+    @apply absolute inset-0 w-full bg-black/50 flex items-center justify-center transition-all duration-300 ease-in-out opacity-0 invisible;
+    pointer-events: none;
+  }
+
+  .map-overlay.active {
+    @apply opacity-100 visible;
+  }
+
+  .map-overlay-text {
+    @apply text-white text-xl font-bold bg-black/70 px-6 py-3 rounded-lg;
+  }
+
+  /* Slideshow Components */
   .slides-wrapper {
     @apply w-full h-full;
     transform: translateX(0);
@@ -108,8 +126,7 @@
     @apply bg-white;
   }
 
-  /*/////////MENU//////////*/
-
+  /* Mobile Menu Components */
   .mobileMenu {
     @apply fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out;
   }
@@ -128,5 +145,10 @@
 
   .mobileMenuLink {
     @apply w-full text-left px-4 py-2 hover:bg-secondaryblue transition-colors duration-200 rounded;
+  }
+
+  /* Utility Components */
+  .wapp {
+    @apply fixed right-[2%] bottom-[5%];
   }
 }

@@ -75,37 +75,60 @@ fetch('../html/utils/header.html')
     window.addEventListener('scroll', () => {
       if (window.innerWidth >= 768) {
         const logoImage = document.querySelector('.logoImage');
-        const searchText = document.querySelector('.searchText');
-        const searchButton = document.querySelector('.searchButton');
         const headerIcons = document.querySelectorAll('.headerIcons');
         const head = document.querySelector('.headContainer');
+        const menuContainer = document.querySelector('.menuContainer');
         const dropdown = document.querySelector('.dropdown-menu');
         const cartQty = document.querySelector('.cartQuantity');
 
         if (window.scrollY > 50) {
-          head.classList.add('px-10');
+          // Head container changes
+          head.classList.add('px-10', 'py-2');
+          head.classList.remove('py-4');
+          
+          // Menu container changes
+          menuContainer.classList.add('h-10');
+          menuContainer.classList.remove('h-14');
+          menuContainer.classList.add('text-xl');
+          menuContainer.classList.remove('text-2xl');
+          
+          // Dropdown position adjustment
           dropdown.classList.remove('top-32');
           dropdown.classList.add('top-24');
+          
+          // Logo and icons changes
           logoImage.classList.remove('h-10');
           logoImage.classList.add('h-6');
           headerIcons.forEach(icon => {
             icon.classList.remove('text-3xl');
             icon.classList.add('text-2xl');
           });
-          cartQty.classList.remove('text-sm', 'top-[13%]');
-          cartQty.classList.add('text-xs', 'top-[9%]');
+          cartQty.classList.remove('text-[0.75rem]', 'leading-[1rem]','right-[32%]','top-[12%]');
+          cartQty.classList.add('text-[0.625rem]', 'leading-[0.85rem]','right-[29%]', 'top-[15%]');
         } else {
-          head.classList.remove('px-10');
+          // Reset head container
+          head.classList.remove('px-10', 'py-2');
+          head.classList.add('py-4');
+          
+          // Reset menu container
+          menuContainer.classList.remove('h-10');
+          menuContainer.classList.add('h-14');
+          menuContainer.classList.remove('text-xl');
+          menuContainer.classList.add('text-2xl');
+          
+          // Reset dropdown position
           dropdown.classList.remove('top-24');
           dropdown.classList.add('top-32');
+          
+          // Reset logo and icons
           logoImage.classList.remove('h-6');
           logoImage.classList.add('h-10');
           headerIcons.forEach(icon => {
             icon.classList.remove('text-2xl');
             icon.classList.add('text-3xl');
           });
-          cartQty.classList.remove('text-xs', 'top-[9%]');
-          cartQty.classList.add('text-sm', 'top-[13%]');
+          cartQty.classList.remove('text-[0.625rem]', 'leading-[0.85rem]','right-[29%]', 'top-[15%]');
+          cartQty.classList.add('text-[0.75rem]', 'leading-[1rem]','right-[32%]', 'top-[12%]');
         }
       }
     });

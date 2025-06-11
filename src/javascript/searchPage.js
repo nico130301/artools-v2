@@ -91,9 +91,11 @@ function extractProducts(rows) {
     category: row.Category,
     id: row.id,
     image: row.image,
+    image2: row.image2, // Add new image fields
+    image3: row.image3,
     name: row.name,
     size: row.size,
-    unit: row.unit, // Add unit field
+    unit: row.unit,
     description: row.description,
     spec1Title: row.spec1Title,
     spec1: row.spec1,
