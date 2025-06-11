@@ -1188,6 +1188,11 @@ html {
   margin-bottom: 2rem;
 }
 
+.mx-32 {
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1542,6 +1547,10 @@ html {
   justify-content: space-evenly;
 }
 
+.justify-items-start {
+  justify-items: start;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -1880,6 +1889,11 @@ html {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pb-4 {
@@ -2566,6 +2580,10 @@ html {
     align-items: center;
   }
 
+  .md\:justify-items-center {
+    justify-items: center;
+  }
+
   .md\:gap-16 {
     gap: 4rem;
   }
@@ -2765,5 +2783,10 @@ html {
 @media (min-width: 1024px) {
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
