@@ -1,77 +1,130 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ARTOOLS</title>
+    <title>ARTOOLS - About Us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../dist/output.css">
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
   </head>
 
   <body class="body">
-    
     <div class="top"></div>
 
-    <div class="aboutUsContainer relative h-auto mx-4 md:mx-64 py-8 md:py-32">
-      <div class="aboutUsOverlay text-center flex flex-col font-['Open_Sans'] text-black">
-        <div class="aboutUsTitle text-3xl md:text-6xl font-bold mb-8 md:mb-12">Sobre nosotros</div>
-        
-        <div class="aboutUsText text-lg text-justify md:text-2xl mb-8 md:mb-12">&nbsp;&nbsp;&nbsp;&nbsp;La expericiencia internacional, de más de 25 años, del Dr. Arturo Rodríguez Ramírez, en el campo de las herramientas  manuales, electricas y pneumaticas, ha sido garantía para el lansamiento en America Latina de ARTools: programa profesional de herramientas de uso industrial, que cumplen – con creces – con los mas altos estandardes de calidad europeos y globales, a traves de la Cia. NIRUT SA, con sede en Costa Rica. <br>&nbsp;&nbsp;&nbsp;&nbsp; Esto nos permite ofrecerle al usuario una gama muy variada de artículos, necesarios para los campos de: Automoción (talleres automotrices), Construcción, Industria, Metal-Mecanica, etc. con diferentes origines: India, China, Taiwan, SurKorea, Italia, Alemania.</div>
-        
-        <div class="aboutUsValues text-sm md:text-2xl font-bold grid grid-cols-3 gap-2 md:gap-8">
-          <div class="aboutUsValue underline decoration-[#3476a6] decoration-4 hover:text-gray-200 hover:decoration-white cursor-pointer" onclick="scrollToElement('.value1')">NUESTROS <br> VALORES</div>
-          <div class="aboutUsValue underline decoration-[#3476a6] decoration-4 hover:text-gray-200 hover:decoration-white cursor-pointer" onclick="scrollToElement('.value2')">NUESTRA <br> CALIDAD</div>
-          <div class="aboutUsValue underline decoration-[#3476a6] decoration-4 hover:text-gray-200 hover:decoration-white cursor-pointer" onclick="scrollToElement('.value3')">GESTION <br>MEDIOAMBIENTAL</div>
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-r from-mainblue to-secondaryblue">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-[url('../assets/images/dot-pattern.png')] opacity-10"></div>
+      </div>
+
+      <div class="relative">
+        <div class="container mx-auto px-6 md:px-12 py-12 md:py-20">
+          <div class="max-w-2xl">
+            <div class="mb-8 inline-flex items-center rounded-full bg-blue-50 px-6 py-2 text-mainblue">
+              <svg class="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+              </svg>
+              <span class="text-sm font-semibold">Sobre nosotros</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+              Conozca más sobre<br>
+              <span class="text-blue-100">ARTOOLS</span>
+            </h1>
+            
+            <p class="text-xl text-blue-100 opacity-90 max-w-lg">
+              Más de 25 años de experiencia en herramientas profesionales e industriales
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="aboutUsInfoContainer flex flex-col md:flex-row justify-between items-center bg-mainblue py-10 md:py-20 text-white">
-      <div class="aboutUsInfo flex-1 flex flex-col justify-center items-center mx-4 md:mx-8 mb-8 md:mb-0">
-        <div class="aboutUsInfoNumber text-3xl md:text-4xl font-bold mb-2">235</div>
-        <div class="aboutUsInfoText text-lg md:text-2xl text-center">Productos</div>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 md:px-12 py-12 md:py-20">
+      <!-- Company Description -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Nuestra Historia</h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          La experiencia internacional, de más de 25 años, del Dr. Arturo Rodríguez Ramírez, en el campo de las herramientas 
+          manuales, eléctricas y neumáticas, ha sido garantía para el lanzamiento en América Latina de ARTools: programa profesional 
+          de herramientas de uso industrial, que cumplen – con creces – con los más altos estándares de calidad europeos y globales, 
+          a través de la Cia. NIRUT SA, con sede en Costa Rica.
+        </p>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Esto nos permite ofrecerle al usuario una gama muy variada de artículos, necesarios para los campos de: 
+          Automoción (talleres automotrices), Construcción, Industria, Metal-Mecánica, etc. con diferentes orígenes: 
+          India, China, Taiwan, SurKorea, Italia, Alemania.
+        </p>
       </div>
-      <div class="aboutUsInfo flex-1 flex flex-col justify-center items-center mx-4 md:mx-8 mb-8 md:mb-0">
-        <div class="aboutUsInfoNumber text-3xl md:text-4xl font-bold mb-2">25</div>
-        <div class="aboutUsInfoText text-lg md:text-2xl text-center">Años de experiencia</div>
-      </div>
-      <div class="aboutUsInfo flex-1 flex flex-col justify-center items-center mx-4 md:mx-8 mb-8 md:mb-0">
-        <div class="aboutUsInfoNumber text-3xl md:text-4xl font-bold mb-2">100</div>
-        <div class="aboutUsInfoText text-lg md:text-2xl text-center">Clientes satisfechos</div>
-      </div>
-      <div class="aboutUsInfo flex-1 flex flex-col justify-center items-center mx-4 md:mx-8">
-        <div class="aboutUsInfoNumber text-3xl md:text-4xl font-bold mb-2">50</div>
-        <div class="aboutUsInfoText text-lg md:text-2xl text-center">Proveedores</div>
-      </div>
-  </div>
 
-  <div class="value1 my-16 mx-4 md:mx-64 md:my-40">
-    <div class="valueTitle ml-4 md:ml-8 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 px-6 md:px-12 w-fit
-                shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
-                border-l-8 border-secondaryblue">
-      NUESTROS VALORES
-    </div>
-    <div class="valueText text-lg text-justify md:text-2xl flex justify-center items-center m-4 md:m-16">&nbsp;&nbsp;&nbsp;&nbsp;MISION: Promover y proveer a nuestros usuarios con productos de la mas alta calidad. INNOVACION: Estar a la vanguardia con productos de la mas avanzada tecnología a nivel mundial. RESPONSABILIDAD: Asumir la responsabilidad desde el punto de vista ético y legal de los productos que vendemos.</div>
-  </div>
+      <!-- Stats Section -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
+          <div class="text-4xl font-bold text-mainblue mb-2">235</div>
+          <div class="text-gray-600">Productos</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
+          <div class="text-4xl font-bold text-mainblue mb-2">25</div>
+          <div class="text-gray-600">Años de experiencia</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
+          <div class="text-4xl font-bold text-mainblue mb-2">100</div>
+          <div class="text-gray-600">Clientes satisfechos</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform">
+          <div class="text-4xl font-bold text-mainblue mb-2">50</div>
+          <div class="text-gray-600">Proveedores</div>
+        </div>
+      </div>
 
-  <div class="value2 my-16 mx-4 md:mx-64 md:my-40">
-    <div class="valueTitle ml-4 md:ml-8 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 px-6 md:px-12 w-fit
-                shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
-                border-l-8 border-secondaryblue">
-      NUESTRA CALIDAD
-    </div>
-    <div class="valueText text-lg text-justify md:text-2xl flex justify-center items-center m-4 md:m-16">&nbsp;&nbsp;&nbsp;&nbsp;Nuestros productos garantizan las verdaderas necesidades de nuestros usuarios y por lo tanto se los ofrecemos de la más alta calidad, en cumplimiento de la norma europea DIN, productos con una excelente funcionalidad, con una ergonomía que proporciona mas comodidad en el trabajo y con elementos del más alto grado de seguridad, para evitar lesiones o accidentes.</div>
-  </div>
+      <!-- Values Section -->
+      <div class="space-y-12">
+        <!-- Our Values -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="bg-mainblue text-white p-6 border-l-8 border-secondaryblue">
+            <h2 class="text-2xl md:text-3xl font-bold">NUESTROS VALORES</h2>
+          </div>
+          <div class="p-8">
+            <div class="text-gray-600 text-lg leading-relaxed">
+              <p><span class="font-bold text-mainblue">MISIÓN:</span> Promover y proveer a nuestros usuarios con productos de la más alta calidad.</p>
+              <p class="mt-4"><span class="font-bold text-mainblue">INNOVACIÓN:</span> Estar a la vanguardia con productos de la más avanzada tecnología a nivel mundial.</p>
+              <p class="mt-4"><span class="font-bold text-mainblue">RESPONSABILIDAD:</span> Asumir la responsabilidad desde el punto de vista ético y legal de los productos que vendemos.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="value3 my-16 mx-4 md:mx-64 md:my-40">
-    <div class="valueTitle ml-4 md:ml-8 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 px-6 md:px-12 w-fit
-                shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
-                border-l-8 border-secondaryblue">
-      GESTION MEDIOAMBIENTAL
+        <!-- Our Quality -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="bg-mainblue text-white p-6 border-l-8 border-secondaryblue">
+            <h2 class="text-2xl md:text-3xl font-bold">NUESTRA CALIDAD</h2>
+          </div>
+          <div class="p-8">
+            <div class="text-gray-600 text-lg leading-relaxed">
+              Nuestros productos garantizan las verdaderas necesidades de nuestros usuarios y por lo tanto se los ofrecemos 
+              de la más alta calidad, en cumplimiento de la norma europea DIN, productos con una excelente funcionalidad, 
+              con una ergonomía que proporciona más comodidad en el trabajo y con elementos del más alto grado de seguridad, 
+              para evitar lesiones o accidentes.
+            </div>
+          </div>
+        </div>
+
+        <!-- Environmental Management -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="bg-mainblue text-white p-6 border-l-8 border-secondaryblue">
+            <h2 class="text-2xl md:text-3xl font-bold">GESTIÓN MEDIOAMBIENTAL</h2>
+          </div>
+          <div class="p-8">
+            <div class="text-gray-600 text-lg leading-relaxed">
+              La protección del Medio Ambiente es un tema muy importante para nosotros, es por ello que nos hemos dado 
+              a la tarea de establecer alianzas con fabricantes que respetan esta condición y cumplen con la norma 
+              internacional ISO 14001.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="valueText text-lg text-justify md:text-2xl flex justify-center items-center m-4 md:m-16">&nbsp;&nbsp;&nbsp;&nbsp;La protección del Medio Ambiente es un tema muy importante para nosotros, es por ello que nos hemos dado a la tarea de establecer alianzas con fabricantes que respetan esta condición y cumplen con la norma internacional ISO 14001.</div>
-  </div>
 
     <div class="wapp"></div>
     <div class="footer"></div>
@@ -80,20 +133,5 @@
     <script src="../javascript/utils/wapp.js"></script>
     <script src="../javascript/utils/footer.js"></script>
     <script src="../javascript/utils/headerMobile.js"></script>
-
-    <script>
-      const scrollToElement = (selector) => {
-        const element = document.querySelector(selector);
-        if (element) {
-          const offset = 200;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      };
-    </script>
   </body>
 </html>

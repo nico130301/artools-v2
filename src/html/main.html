@@ -7,8 +7,8 @@
     <meta name="description" content="ARTOOLS - Professional Tools and Equipment">
     
     <!-- Preload critical assets -->
-    <link rel="preload" href="../images/logo.png" as="image">
-    <link rel="preload" href="../images/unior1.jpg" as="image">
+    <link rel="preload" href="../assets/images/logo.png" as="image" type="image/png">
+    <link rel="preload" href="../assets/images/unior1.jpg" as="image" type="image/jpeg">
   
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -25,13 +25,13 @@
     <script defer src="https://cdn.counter.dev/script.js" data-id="902f8325-56eb-41f4-9f00-471248a12c92" data-utcoffset="3"></script>
   </head>
 
-
   <body class="body">
     <div class="top"></div>
 
+    <!-- Enhanced Slideshow -->
     <div class="slideshow relative overflow-hidden">  
       <div class="slides-wrapper flex transition-transform duration-500">
-        <!-- Clone of last slide -->
+                <!-- Clone of last slide -->
         <div class="slide-container relative h-[450px] md:h-[750px] min-w-full">
           <img src="../images/unior2.jpg" 
               alt="Last Slide Clone" 
@@ -116,70 +116,92 @@
         </div>
       </div>
 
-      <div class="slide-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        <button class="w-3 h-3 rounded-full bg-white opacity-60 hover:opacity-100 transition-opacity"></button>
-        <button class="w-3 h-3 rounded-full bg-white opacity-60 hover:opacity-100 transition-opacity"></button>
+      <!-- Enhanced slide navigation -->
+      <div class="slide-dots absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        <button class="w-4 h-4 rounded-full bg-white/60 hover:bg-white/90 transition-all duration-300"></button>
+        <button class="w-4 h-4 rounded-full bg-white/60 hover:bg-white/90 transition-all duration-300"></button>
       </div>
 
-      <button class="slide-arrow prev-arrow absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-4 rounded-full z-20 hover:bg-black/70 transition-colors">
-        <i class="fas fa-chevron-left"></i>
+      <!-- Enhanced arrows -->
+      <button class="slide-arrow prev-arrow absolute left-6 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-5 rounded-full z-20 hover:bg-black/50 transition-all duration-300 group">
+        <i class="fas fa-chevron-left group-hover:scale-110 transition-transform"></i>
       </button>
-      <button class="slide-arrow next-arrow absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-4 rounded-full z-20 hover:bg-black/70 transition-colors">
-        <i class="fas fa-chevron-right"></i>
+      <button class="slide-arrow next-arrow absolute right-6 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-5 rounded-full z-20 hover:bg-black/50 transition-all duration-300 group">
+        <i class="fas fa-chevron-right group-hover:scale-110 transition-transform"></i>
       </button>
     </div>
     
-    <div class="newProducts container mx-auto px-4 md:px-40 mt-8 md:mt-16">
-      <div class="newProductsText mb-16 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6  md:px-12 w-fit
+    <!-- Enhanced New Products Section -->
+    <div class="newProducts container mx-auto px-4 md:px-40 mt-12 md:mt-24">
+      <div class="newProductsText mb-16 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 md:px-12 
+            relative overflow-hidden group cursor-pointer
             shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
             border-l-8 border-secondaryblue">
-      NEW PRODUCTS</div>
-      <div class="newProductsGrid flex md:grid md:grid-cols-4 gap-4 md:gap-8 overflow-x-auto pb-4"></div>
+        <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+        <span class="relative z-10">NEW PRODUCTS</span>
+      </div>
+      <div class="newProductsGrid flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto pb-6 
+                  scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"></div>
     </div>
 
-    <div class="benefitsContainer bg-mainblue text-white my-12 md:my-24 py-8 md:py-14">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 container mx-auto px-4">
-        <div class="benefitItem flex flex-col items-center space-y-4">
-          <div class="benefit1 text-4xl">
-            <i class="benefitImage fa-regular fa-circle-check"></i>
+    <!-- Benefits Section -->
+    <div class="benefitsContainer bg-gradient-to-r from-mainblue to-secondaryblue text-white my-16 md:my-32 py-12 md:py-20 relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-[url('../assets/images/dot-pattern.png')] opacity-10"></div>
+      
+      <div class="relative grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 container mx-auto px-6">
+        <!-- Existing benefit -->
+        <div class="benefitItem group flex flex-col items-center space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+            <i class="benefitImage fa-regular fa-circle-check text-3xl"></i>
           </div>
-          <div class="benefitText">Authorised importer</div>
+          <div class="benefitText text-center font-medium">Authorised importer</div>
         </div>
         
-        <div class="benefitItem flex flex-col items-center space-y-4">
-          <div class="benefit2 text-4xl">
-            <i class="benefitImage fa-solid fa-truck-fast"></i>
+        <!-- Quality Assurance -->
+        <div class="benefitItem group flex flex-col items-center space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+            <i class="benefitImage fa-solid fa-award text-3xl"></i>
           </div>
-          <div class="benefitText">Free transport</div>
-        </div>  
-
-        <div class="benefitItem flex flex-col items-center space-y-4">
-          <div class="benefit3 text-4xl">
-            <i class="benefitImage fa-solid fa-headset"></i>
-          </div>
-          <div class="benefitText">Support</div>
+          <div class="benefitText text-center font-medium">Quality Assurance</div>
         </div>
 
-        <div class="benefitItem flex flex-col items-center space-y-4">
-          <div class="benefit4 text-4xl">
-            <i class="benefitImage fa-solid fa-rotate-left"></i>
+        <!-- Fast Delivery -->
+        <div class="benefitItem group flex flex-col items-center space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+            <i class="benefitImage fa-solid fa-truck-fast text-3xl"></i>
           </div>
-          <div class="benefitText">Free return in 30 days</div>
+          <div class="benefitText text-center font-medium">Fast Delivery</div>
+        </div>
+
+        <!-- Technical Support -->
+        <div class="benefitItem group flex flex-col items-center space-y-6 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+            <i class="benefitImage fa-solid fa-headset text-3xl"></i>
+          </div>
+          <div class="benefitText text-center font-medium">Technical Support</div>
         </div>
       </div>
     </div>
 
-    <div class="recommendedProducts container mx-auto px-4 md:px-40 my-8 md:my-16">
-      <div class="recommendedProductsText  mb-16 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 md:px-12 w-fit
+    <!-- Enhanced Recommended Products Section -->
+    <div class="recommendedProducts container mx-auto px-4 md:px-40 my-12 md:my-24">
+      <div class="recommendedProductsText mb-16 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 md:px-12 
+            relative overflow-hidden group cursor-pointer
             shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
             border-l-8 border-secondaryblue">
-      RECOMMENDED PRODUCTS</div>
-      <div class="recommendedProductsGrid flex md:grid md:grid-cols-4 gap-4 md:gap-8 overflow-x-auto pb-4"></div>
+        <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+        <span class="relative z-10">RECOMMENDED PRODUCTS</span>
+      </div>
+      <div class="recommendedProductsGrid flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto pb-6 
+                  scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"></div>
     </div>
 
+    <!-- Footer and WhatsApp Button -->
     <div class="footer"></div> 
     <div class="wapp"></div>
 
+    <!-- Scripts -->
     <script src="../javascript/utils/header.js"></script>
     <script src="../javascript/utils/footer.js"></script>
     <script src="../javascript/utils/wapp.js"></script>
