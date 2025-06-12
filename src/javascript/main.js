@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     formatSizeRange(product) {
       const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-      if (sizes.length === 0) return 'Size not available';
-      if (sizes.length === 1) return `Size: ${sizes[0]}${product.unit || ''}`;
+      if (sizes.length === 0) return 'Tamaño no es available';
+      if (sizes.length === 1) return `Tamaño: ${sizes[0]}${product.unit || ''}`;
       
-      return `Sizes: ${sizes[0]}${product.unit || ''} - ${sizes[sizes.length - 1]}${product.unit || ''}`;
+      return `Tamaños: ${sizes[0]}${product.unit || ''} - ${sizes[sizes.length - 1]}${product.unit || ''}`;
     }
 
     generateProductCard(product) {
@@ -50,14 +50,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                  alt="${product.name}"
                  loading="lazy">
             ${product['New Product'] === 'x' ? 
-              `<div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">NEW</div>` 
+              `<div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">NUEVO</div>` 
               : ''}
           </div>
           <div class="mt-auto p-4 border-t border-gray-200">
             <div class="productSize text-gray-500 text-[11px] mb-1">${this.formatSizeRange(product)}</div>
             <div class="productName text-lg font-medium text-gray-800 truncate mb-3">${product.name}</div>
             <button class="w-full py-2 px-4 bg-secondaryblue text-white rounded-lg hover:bg-mainblue transition-colors duration-300 transform hover:scale-[1.02]">
-              More Details
+              Más Detalles
               <i class="fas fa-arrow-right ml-2 text-sm"></i>
             </button>
           </div>

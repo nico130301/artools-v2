@@ -5,24 +5,31 @@
 @layer components {
   /* Menu Components */
   .menuBtn {
-    @apply h-full w-full font-medium relative hover:text-white transition-colors duration-300;
+    @apply h-full w-full font-medium relative text-white/90 hover:text-white transition-all duration-300;
     position: relative;
     z-index: 1;
   }
 
   .menuDiv {
     @apply h-full flex-1 flex items-center justify-center relative overflow-hidden rounded-t-xl;
-    /* Removed bg-mainblue since parent has gradient */
   }
 
-  .menuDiv .menuBtn::before {
+  .menuDiv::before {
     content: '';
-    @apply absolute inset-0 bg-black/20 scale-y-0 transition-transform duration-300 origin-bottom;
-    z-index: -1;
+    @apply absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/10 opacity-0 transition-all duration-300;
   }
 
-  .menuDiv:hover .menuBtn::before {
-    @apply scale-y-100;
+  .menuDiv:hover::before {
+    @apply opacity-100;
+  }
+
+  .menuDiv::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white transition-all duration-300;
+  }
+
+  .menuDiv:hover::after {
+    @apply w-4/5;
   }
 
   .menuDiv.group::after {
@@ -32,8 +39,7 @@
 
   /* Header Components */
   .headerIcons {
-    @apply text-white text-3xl relative cursor-pointer hover:text-blue-100;
-    /* Changed hover color to be more visible on gradient */
+    @apply text-white text-3xl relative cursor-pointer transition-transform duration-300 hover:scale-125;
   }
 
   .headContainer, 
@@ -65,6 +71,12 @@
     @apply fixed top-0 left-0 z-50 w-full bg-mainblue transform translate-y-0;
     backface-visibility: hidden;
   }
+  
+  .top::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-white/20 via-white/30 to-white/20;
+  }
+
 
   /* Footer Components */
   .footerButton {
@@ -85,16 +97,16 @@
 
   /* Dropdown Components */
   .dropdown-menu {
-    @apply z-50 fixed bg-secondaryblue shadow-lg mt-0;
+    @apply z-50 fixed bg-gradient-to-r from-mainblue to-secondaryblue shadow-lg mt-0 backdrop-blur-sm;
     width: 60%;
   }
 
   #productDropdown {
-    @apply grid grid-cols-3 gap-4 py-4 px-8;
+    @apply grid grid-cols-3 gap-6 p-8;
   }
 
   #productDropdown a {
-    @apply text-white text-base font-medium transition-all duration-200 whitespace-nowrap;
+    @apply text-white text-base font-medium transition-all duration-300 whitespace-nowrap;
   }
 
   .group:hover .dropdown-menu {
@@ -157,7 +169,7 @@
 
   /* Utility Components */
   .wapp {
-    @apply fixed right-[2%] bottom-[5%];
+    @apply fixed right-[3%] bottom-[4%];
   }
 
   /*main page*/

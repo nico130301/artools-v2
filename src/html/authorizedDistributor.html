@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ARTOOLS</title>
+    <title>DISTRIBUIDORES</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta name="description" content="Find authorized ARTOOLS distributors near you. Locate professional tools and equipment vendors in your area.">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="../assets/images/logo.png" as="image" type="image/png">
+  
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../../dist/output.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js" defer></script>
   </head>
 
   <body class="body">
@@ -17,9 +31,11 @@
 
     <div class="relative mt-10 md:mt-20">
       <div class="distributorsTitle ml-4 md:ml-8 bg-mainblue text-white text-2xl md:text-4xl font-bold py-4 md:py-6 px-6 md:px-12 w-fit
+                  relative overflow-hidden group cursor-pointer
                   shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
                   border-l-8 border-secondaryblue">
-        Distribuidores Autorizados
+        <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+        <span class="relative z-10">Distribuidores Autorizados</span>
       </div>
     </div>
 

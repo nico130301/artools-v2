@@ -8,10 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItems = cart.reduce((total, item) => total + item.quantity, 0);
     const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     
-    // Update cart badge in hero section
-    const cartBadge = document.querySelector('.cart-badge');
-    if (cartBadge) {
-      cartBadge.textContent = `${cartItems} ${cartItems === 1 ? 'item' : 'items'}`;
+    // Update page title with product count
+    const pageTitle = document.querySelector('h1');
+    if (pageTitle) {
+      pageTitle.textContent = `Su Carrito (${cartItems} ${cartItems === 1 ? 'producto' : 'productos'})`;
+    }
+
+    // Update global cart count
+    if (typeof window.updateCartCount === 'function') {
+      window.updateCartCount();
     }
   }
 
@@ -91,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
+        updateCartTitle(); // Add this line
       });
     });
 
@@ -101,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart[index].quantity++;
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
+        updateCartTitle(); 
       });
     });
 
@@ -114,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
+        updateCartTitle(); 
       });
     });
   }
@@ -136,6 +144,5 @@ document.addEventListener('DOMContentLoaded', () => {
     collectCartInfoForForm();
   });
 
-  // Initial render
   renderCart();
 });

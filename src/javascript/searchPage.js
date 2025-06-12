@@ -29,7 +29,7 @@ function render(products, searchTerm) {
   app.innerHTML = '';
 
   const title = document.querySelector('.resultsTitle');
-  title.textContent = `Search results for "${searchTerm}" (${products.length} found)`;
+  title.textContent = `Resultados buscados para "${searchTerm}" (${products.length} encontrados)`;
 
   const grid = document.createElement('div');
   grid.className = 'grid grid-cols-1 md:grid-cols-4 gap-8';
@@ -39,17 +39,17 @@ function render(products, searchTerm) {
   products.forEach(product => {
     // Get size range with proper handling of UOM
     const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-    let sizeRange = 'Size not available';
+    let sizeRange = 'Tamaño indisponible';
 
     if (sizes.length > 0 && sizes[0] !== 'nan') {
       if (sizes.length === 1) {
         // If there's only one size, show it with the unit
-        sizeRange = `Size: ${sizes[0]}${product.unit || ''}`;
+        sizeRange = `Tamaño: ${sizes[0]}${product.unit || ''}`;
       } else {
         // If there are multiple sizes, show the range with the unit
         const firstSize = sizes[0];
         const lastSize = sizes[sizes.length - 1];
-        sizeRange = `Sizes: ${firstSize}${product.unit || ''} - ${lastSize}${product.unit || ''}`;
+        sizeRange = `Tamaños: ${firstSize}${product.unit || ''} - ${lastSize}${product.unit || ''}`;
       }
     }
 
@@ -63,7 +63,7 @@ function render(products, searchTerm) {
       <div class="mt-auto p-3 border-t border-gray-200">
         <div class="text-gray-500 text-[11px]">${sizeRange}</div>
         <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
-        <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
+        <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">Más Detalles</button>
       </div>
     `;
 

@@ -25,7 +25,7 @@ fetch('../html/utils/header.html')
             const item = document.createElement('a');
             item.href = './products.html';
             item.setAttribute('data-category', category);
-            item.className = 'text-white bg-mainblue py-1 px-2 rounded-lg hover:bg-secondaryblue transition-colors duration-200 text-center';
+            item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center';
             item.textContent = category;
             item.addEventListener('click', (e) => {
               e.preventDefault();
@@ -47,8 +47,20 @@ fetch('../html/utils/header.html')
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-      if (document.querySelector('.cartQuantity'))
-        document.querySelector('.cartQuantity').textContent = totalQuantity;
+      const cartQuantityElement = document.querySelector('.cartQuantity');
+      
+      if (cartQuantityElement) {
+        cartQuantityElement.textContent = totalQuantity;
+        
+        // Adjust position based on number of digits
+        if (totalQuantity > 9) {
+          cartQuantityElement.classList.remove('right-[32%]');
+          cartQuantityElement.classList.add('right-[25%]');
+        } else {
+          cartQuantityElement.classList.remove('right-[25%]');
+          cartQuantityElement.classList.add('right-[32%]');
+        }
+      }
     }
 
     window.updateCartCount = updateCartCount;

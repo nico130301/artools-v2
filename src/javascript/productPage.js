@@ -90,7 +90,7 @@ const observer = new MutationObserver(() => {
         <span class="mx-2">/</span>
         <a class="text-mainblue hover:underline cursor-pointer" 
           onclick="location.href='./products.html'">
-          Products
+          Categoría de Productos
         </a>
       </span>`;
 
@@ -168,7 +168,7 @@ const observer = new MutationObserver(() => {
             <!-- Product ID -->
             <div class="inline-flex items-center bg-gray-100 rounded-lg px-3 md:px-4 py-2 text-gray-600">
               <span id="productIdDisplay" class="text-xs md:text-sm font-semibold">
-                Cod produs: ${product.id}
+                Código de Producto: ${product.id}
               </span>
             </div>
 
@@ -187,7 +187,7 @@ const observer = new MutationObserver(() => {
             <!-- Size Selector if available -->
             ${product.size ? `
               <div class="bg-gray-50 rounded-lg p-4 md:p-6">
-                <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Select Size:</label>
+                <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Seleccione el Tamaño:</label>
                 <select id="sizeSelector" 
                         class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
                   ${product.size.split(';').map(s => `
@@ -199,7 +199,7 @@ const observer = new MutationObserver(() => {
 
             <!-- Technical Sheet -->
             <div class="bg-gray-50 rounded-lg p-4 md:p-6 flex items-center justify-between">
-              <span class="text-sm md:text-base text-gray-700 font-semibold">Technical sheet:</span>
+              <span class="text-sm md:text-base text-gray-700 font-semibold">Ficha Técnica:</span>
               <a href="../data/catalog/${product.id}.pdf" 
                 class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2 text-sm md:text-base">
                 <i class="fas fa-file-pdf"></i>
@@ -212,7 +212,7 @@ const observer = new MutationObserver(() => {
                         hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3 text-sm md:text-base"
                     data-name="${product.name}" 
                     data-image="${product.image}">
-              <span>Add to cart</span>
+              <span>Agregue al Cesto</span>
               <i class="fas fa-shopping-cart"></i>
             </button>
           </div>
@@ -235,9 +235,17 @@ const observer = new MutationObserver(() => {
 
 
     pageSpecs.innerHTML = `
-      <div class="specsTitle bg-mainblue text-white text-2xl md:text-3xl font-openSans w-full md:w-96 my-6 md:my-10 py-2 px-4 md:px-14"> Specification </div>
+      <div class="relative my-12">
+        <div class="bg-mainblue text-white text-xl md:text-2xl font-bold py-3 md:py-4 px-4 md:px-8 w-fit
+                    relative overflow-hidden group cursor-pointer
+                    shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
+                    border-l-8 border-secondaryblue">
+          <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+          <span class="relative z-10">ESPECIFICACIONES</span>
+        </div>
+      </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto mt-8">
         <table class="specsTable w-full md:w-11/12 md:ml-12">
           <tr class="specContainer bg-gray-200">
             <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec1Title}</th>
@@ -264,6 +272,20 @@ const observer = new MutationObserver(() => {
       </div>
     `;
 
+    // Update the related products title with the same style
+    const relatedProductsTitle = document.querySelector('.relatedProductsTitle');
+    relatedProductsTitle.outerHTML = `
+      <div class="relative my-12">
+        <div class="bg-mainblue text-white text-xl md:text-2xl font-bold py-3 md:py-4 px-4 md:px-8 w-fit
+                    relative overflow-hidden group cursor-pointer
+                    shadow-lg rounded-r-lg transform transition-all duration-300 hover:scale-[1.02]
+                    border-l-8 border-secondaryblue">
+          <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+          <span class="relative z-10">PRODUCTOS RELACIONADOS</span>
+        </div>
+      </div>
+    `;
+
     // related products section
     if (Array.isArray(product.related)) {
       const relatedNames = typeof product.related === 'string'
@@ -281,17 +303,17 @@ const observer = new MutationObserver(() => {
           const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
           // Updated size range calculation
           const sizes = relatedProduct.size ? relatedProduct.size.split(';').map(s => s.trim()) : [];
-          let sizeRange = 'Size not available';
+          let sizeRange = 'Tamaño indisponible';
 
           if (sizes.length > 0) {
             if (sizes.length === 1) {
               // If there's only one size, show it with the unit
-              sizeRange = `Size: ${sizes[0]}${relatedProduct.uom || ''}`;
+              sizeRange = `Tamaño: ${sizes[0]}${relatedProduct.uom || ''}`;
             } else {
               // If there are multiple sizes, show the range with the unit
               const firstSize = sizes[0];
               const lastSize = sizes[sizes.length - 1];
-              sizeRange = `Sizes: ${firstSize}${relatedProduct.uom || ''} - ${lastSize}${relatedProduct.uom || ''}`;
+              sizeRange = `Tamaños: ${firstSize}${relatedProduct.uom || ''} - ${lastSize}${relatedProduct.uom || ''}`;
             }
           }
 
@@ -303,7 +325,7 @@ const observer = new MutationObserver(() => {
               <div class="mt-auto p-3 border-t border-gray-200">
                 <div class="text-gray-500 text-[11px]">${sizeRange}</div>
                 <div class="text-lg font-medium text-gray-800 truncate">${relatedProduct.name}</div>
-                <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">More Details</button>
+                <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">Más Detalles</button>
               </div>
             </div>
           `;
@@ -339,7 +361,7 @@ const observer = new MutationObserver(() => {
           // Update product ID
           const productIdDisplay = document.getElementById('productIdDisplay');
           if (productIdDisplay) {
-            productIdDisplay.textContent = `Cod produs: ${product.id}${selectedIndex}`;
+            productIdDisplay.textContent = `Código de Producto: ${product.id}${selectedIndex}`;
           }
 
           // Update product title with size and UOM

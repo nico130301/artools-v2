@@ -67,9 +67,21 @@ function buildDataStructure(rows) {
 function render(currentData, title = 'Product Categories') {
   app.innerHTML = '';
 
-  // Update the page title
-  const pageTitle = document.querySelector('.pageTitle');
-  pageTitle.textContent = title;
+  // Update the page title while preserving the HTML structure
+  const pageTitle = document.querySelector('.pageTitle span');
+  if (pageTitle) {
+    pageTitle.textContent = title;
+  } else {
+    // If the span doesn't exist, recreate the entire title structure
+    const pageTitleDiv = document.querySelector('.pageTitle');
+    if (pageTitleDiv) {
+      pageTitleDiv.innerHTML = `
+        <div class="absolute inset-0 bg-secondaryblue transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+        <span class="relative z-10">${title}</span>
+      `;
+    }
+  }
+  
 
   // Breadcrumb navigation
   const breadcrumb = document.querySelector('.breadcrumbs');
@@ -77,7 +89,7 @@ function render(currentData, title = 'Product Categories') {
     <span class="text-gray-600">
       <a href="./main.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
       <span class="mx-2">/</span>
-      <a class="text-mainblue hover:underline cursor-pointer" onclick="resetToRoot()">Products categories</a>
+      <a class="text-mainblue hover:underline cursor-pointer" onclick="resetToRoot()">Categoría de Productos</a>
     </span>
   `;
   
@@ -130,17 +142,17 @@ function render(currentData, title = 'Product Categories') {
       
       // Updated size range calculation
       const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
-      let sizeRange = 'Size not available';
+      let sizeRange = 'Tamaño indisponible';
 
       if (sizes.length > 0) {
         if (sizes.length === 1) {
           // If there's only one size, show it with the unit
-          sizeRange = `Size: ${sizes[0]}${product.uom || ''}`;
+          sizeRange = `Tamaño: ${sizes[0]}${product.uom || ''}`;
         } else {
           // If there are multiple sizes, show the range with the unit
           const firstSize = sizes[0];
           const lastSize = sizes[sizes.length - 1];
-          sizeRange = `Sizes: ${firstSize}${product.uom || ''} - ${lastSize}${product.uom || ''}`;
+          sizeRange = `Tamaños: ${firstSize}${product.uom || ''} - ${lastSize}${product.uom || ''}`;
         }
       }
 
@@ -155,7 +167,7 @@ function render(currentData, title = 'Product Categories') {
           <div class="text-sm md:text-base font-medium text-gray-800 truncate">${product.name}</div>
           <button class="w-full mt-2 py-1 md:py-2 px-2 md:px-4 bg-secondaryblue text-white text-xs md:text-sm rounded 
                       hover:bg-mainblue transition-colors duration-300">
-            More Details
+            Más Detalles
           </button>
         </div>
       `;
@@ -181,7 +193,7 @@ window.goToLevel = function (index) {
 
 window.resetToRoot = function () {
   stack = [];
-  render(rootData, 'Product Categories');
+  render(rootData, 'Categoría de Productos');
 };
 
 // INITIAL LOAD
@@ -206,6 +218,6 @@ loadExcelData().then(loadedData => {
     render(rootData[selectedCategory], selectedCategory);
     localStorage.removeItem('selectedCategory');
   } else {
-    render(rootData, 'Product Categories');
+    render(rootData, 'Categoría de Productos');
   }
 });

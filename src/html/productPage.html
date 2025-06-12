@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ARTOOLS</title>
+    <title>PRODUCTO</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta name="description" content="Explore detailed information about our professional tools and equipment. Find specifications, related products, and make informed decisions.">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="../assets/images/logo.png" as="image" type="image/png">
+  
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../../dist/output.css">
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js" defer></script>
   </head>
 
   <body class="body bg-white">
@@ -20,14 +34,14 @@
 
       <div class="productPageSpecs mx-4 md:mx-0 overflow-x-auto">
         <div class="specsTitle bg-mainblue text-white text-2xl md:text-3xl font-openSans w-full md:w-96 my-6 md:my-10 py-2 px-4 md:px-14">
-          Specification
+          ESPECIFICACIONES
         </div>
         <!-- Table will be injected by JS -->
       </div>
       
       <div class="relatedProductsContainer mx-4 md:mx-0 flex flex-col">
         <div class="relatedProductsTitle bg-mainblue text-white text-2xl md:text-3xl font-openSans w-full md:w-96 my-6 md:my-10 py-2 px-4 md:px-14">
-          Related Products
+          PRODUCTOS RELACIONADOS
         </div>
         <!-- Changed this div's classes -->
         <div class="relatedProducts flex md:grid md:grid-cols-4 gap-4 overflow-x-auto pb-4">
