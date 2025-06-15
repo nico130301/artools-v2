@@ -142,20 +142,25 @@ const observer = new MutationObserver(() => {
                   alt="${product.name}">
             </div>
 
-            <!-- Thumbnail Navigation -->
-            <div class="flex justify-center gap-4 mt-4">
-              ${[product.image, product.image2, product.image3]
-                .filter(img => img)
-                .map((img, index) => `
-                  <div class="w-20 h-20 cursor-pointer border-2 ${index === 0 ? 'border-mainblue' : 'border-transparent'} 
-                      rounded-lg overflow-hidden hover:border-secondaryblue transition-colors">
-                    <img src="${img}" 
-                        alt="${product.name} view ${index + 1}"
-                        class="w-full h-full object-cover thumbnail-img"
-                        onclick="changeMainImage('${img}', this)">
-                  </div>
-                `).join('')}
-            </div>
+            ${(() => {
+              const validImages = [product.image, product.image2, product.image3]
+                .filter(img => img && img.trim() !== '' && img !== 'undefined' && img !== undefined);
+            
+              return validImages.length > 1 ? 
+                `<!-- Thumbnail Navigation -->
+                <div class="flex justify-center gap-4 mt-4">
+                  ${validImages.map((img, index) => `
+                    <div class="w-20 h-20 cursor-pointer border-2 ${index === 0 ? 'border-mainblue' : 'border-transparent'} 
+                        rounded-lg overflow-hidden hover:border-secondaryblue transition-colors">
+                      <img src="${img}" 
+                          alt="${product.name} view ${index + 1}"
+                          class="w-full h-full object-cover thumbnail-img"
+                          onclick="changeMainImage('${img}', this)">
+                    </div>
+                  `).join('')}
+                </div>` 
+                : '';
+            })()}
           </div>
 
           <!-- Right Column - Product Details -->
@@ -235,6 +240,7 @@ const observer = new MutationObserver(() => {
 
 
     pageSpecs.innerHTML = `
+      <!-- Specifications Title with same style as Related Products -->
       <div class="relative my-12">
         <div class="bg-mainblue text-white text-xl md:text-2xl font-bold py-3 md:py-4 px-4 md:px-8 w-fit
                     relative overflow-hidden group cursor-pointer
@@ -245,29 +251,25 @@ const observer = new MutationObserver(() => {
         </div>
       </div>
 
+      <!-- Specifications Table with updated styling -->
       <div class="overflow-x-auto mt-8">
-        <table class="specsTable w-full md:w-11/12 md:ml-12">
-          <tr class="specContainer bg-gray-200">
-            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec1Title}</th>
-            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec1}</td>
-          </tr>
-          <tr class="specContainer ">
-            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec2Title}</th>
-            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec2}</td>
-          </tr>
-          <tr class="specContainer bg-gray-200">
-            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec3Title}</th>
-            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec3}</td>
-          </tr>
-          <tr class="specContainer ">
-            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec4Title}</th>
-            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec4}</td>
-          </tr>
-          <tr class="specContainer bg-gray-200">
-            <th class="specTitle text-base md:text-xl font-bold text-black font-openSans p-2 text-left">${product.spec5Title}</th>
-            <td class="spec text-base md:text-xl text-black font-openSans p-2">${product.spec5}</td>
-          </tr>
-          
+        <table class="specsTable w-full border-collapse">
+          ${[
+            { title: product.spec1Title, value: product.spec1 },
+            { title: product.spec2Title, value: product.spec2 },
+            { title: product.spec3Title, value: product.spec3 },
+            { title: product.spec4Title, value: product.spec4 },
+            { title: product.spec5Title, value: product.spec5 }
+          ].filter(spec => spec.title && spec.value).map((spec, index) => `
+            <tr class="specContainer ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100 transition-colors">
+              <th class="specTitle text-base md:text-lg font-semibold text-gray-800 p-4 text-left border-b border-gray-200">
+                ${spec.title}
+              </th>
+              <td class="spec text-base md:text-lg text-gray-600 p-4 border-b border-gray-200">
+                ${spec.value}
+              </td>
+            </tr>
+          `).join('')}
         </table>
       </div>
     `;
@@ -318,14 +320,20 @@ const observer = new MutationObserver(() => {
           }
 
           relatedProducts.innerHTML += `
-            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" onclick='viewrelatedProduct(${JSON.stringify(relatedProduct)})'>
-              <div class="p-7 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" 
+                 onclick='viewrelatedProduct(${JSON.stringify({
+                   ...relatedProduct,
+                   description: undefined // Remove description from JSON to prevent it showing up
+                 })})'>
+              <div class="p-7 flex items-center justify-center h-48">
                 <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
               </div>
               <div class="mt-auto p-3 border-t border-gray-200">
                 <div class="text-gray-500 text-[11px]">${sizeRange}</div>
                 <div class="text-lg font-medium text-gray-800 truncate">${relatedProduct.name}</div>
-                <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">Más Detalles</button>
+                <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">
+                  Más Detalles
+                </button>
               </div>
             </div>
           `;

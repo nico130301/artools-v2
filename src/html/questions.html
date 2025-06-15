@@ -8,7 +8,10 @@
     
     <!-- Preload critical assets -->
     <link rel="preload" href="../assets/images/logo.png" as="image" type="image/png">
-  
+    <link rel="stylesheet" href="../../dist/output.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+
+      
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,28 +20,110 @@
     <!-- Defer non-critical CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="../../dist/output.css">
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
-    
-
   </head>
 
-  <body class="body ">
-
+  <body class="body">
     <div class="top"></div>
 
+    <div class="container mx-auto px-4 md:px-8 py-8 md:py-12">
+      <!-- How to Buy Section -->
+      <section class="mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-mainblue mb-8 md:mb-12 border-l-8 border-secondaryblue pl-4">
+          ¿CÓMO COMPRAR?
+        </h1>
+        <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+          <ol class="list-decimal list-inside space-y-4 text-gray-600">
+            <li class="pl-2">Seleccione los productos deseados en la canasta de compras</li>
+            <li class="pl-2">Envíe los productos seleccionados ya sea por correo electrónico o utilizando el formulario de contacto.</li>
+            <li class="pl-2">Entre 48-72 horas recibirá una oferta nuestra de precio con las condiciones de compra-venta, por medio de una Proforma.</li>
+            <li class="pl-2">Una vez aceptada la proforma y sus condiciones, se procede con el despacho de la mercadería.</li>
+          </ol>
+        </div>
+      </section>
 
+      <!-- FAQ Section -->
+      <section>
+        <h2 class="text-3xl md:text-4xl font-bold text-mainblue mb-8 md:mb-12 border-l-8 border-secondaryblue pl-4">
+          PREGUNTAS FRECUENTES
+        </h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-lg shadow-lg divide-y divide-gray-200">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Dónde se encuentra la sede de NIRUT SA?</h3>
+              <p class="text-gray-600">La sede de NIRUT SA se encuentra en Costa Rica, Cartago, Av.10-Calles 0 y 2.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Quién es NIRUT SA y Artools?</h3>
+              <p class="text-gray-600">Nirut SA es el nombre de la Sociedad Mercantil importadora de la marca Artools y otras más.</p>
+              <p class="text-gray-600 mt-2">ARtools es la marca de las herramientas manuales importadas y distribuidas por NIRUT SA, para Costa Rica y el resto de America Central</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Porqué comprar los productos que distribuye NIRUT SA?</h3>
+              <p class="text-gray-600">Por su calidad, innovación y ergonomia. Además es remarcable nuestra política de Garantia, Devoluciones y Reembolsos.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Dónde puedo comprar herramientas ARtools?</h3>
+              <p class="text-gray-600">Por intermedio de los Distribuidores Autorizados o directamente a la Cia. NIRUT SA. Los datos de contacto los encuentra en la pagina WEB - Contacto</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Qué garantía tienen las herramientas ARtools?</h3>
+              <p class="text-gray-600">La garantia de las herrmientas Artools es de 12 meses(con excepción de los productos consumibles). Todos nuestros productos pueden ser reemplazados en el caso de algún defecto de fabricación o defecto de material.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Dónde puedo consultar los precios de herramientas ARtools?</h3>
+              <p class="text-gray-600">Mediante el envío de una solicitud de precio a nuestro correo electronico: info@artools-latam.com o completando nuestro formulario de contacto.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Es posible comprar herramientas online a través de la web de NIRUT SA?</h3>
+              <p class="text-gray-600">No, no es posible.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Qué hace NIRUT SA por el medio ambiente?</h3>
+              <p class="text-gray-600">Tomamos las medidas oportunas para la protección ambiental, incluida la prevención de la contaminación y la mejora del desempeño ambiental asociado a nuestros aspectos e impactos ambientales como la generación de emisiones atmosféricas y de residuos, los vertidos y los consumos de recursos. Esto en seguimiento a la politica de medio ambiente asumida por nuestros proveedores fabricantes.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Cumple NIRUT SA las normativas vigentes de fabricación y calidad de la herramienta?</h3>
+              <p class="text-gray-600">Todas las herramientas distribuidas por NIRUT SA cumplen las normas de calidad y fabricación internacionales, según DIN - ISO.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿A quién van dirigidas las herramientas distribuidas por NIRUT SA?</h3>
+              <p class="text-gray-600">Nuestras herramientas van dirigidas al Sector Industrial, Talleres Automotrices, Sector Construccion, Instalaciones Sanitarias, Sector Ferretero, Sector Metal-Mecanica.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Cuáles son los plazos de entrega?</h3>
+              <p class="text-gray-600">Puede ver en nuestra página web, en la Política de Transporte, los plazos de entrega para diferentes zonas y países.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Cómo puedo obtener información técnica de los productos?</h3>
+              <p class="text-gray-600">Cada producto de la pagina web tiene una sección de ficha técnica.</p>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-mainblue mb-2">¿Qué tipos de BROCAS distribuye NIRUT SA?</h3>
+              <p class="text-gray-600">Brocas para Metal, Brocas para Concreto, Brocas para Madera, Brocas para Ceramica y Vidrio, Broca-Sierras, Puntas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <div class="footer"></div> 
-
-     <div class="wapp"></div>
-
-    
+    <div class="wapp"></div>
 
     <script src="../javascript/utils/header.js"></script>
     <script src="../javascript/utils/footer.js"></script>
     <script src="../javascript/utils/wapp.js"></script>
     <script src="../javascript/utils/headerMobile.js"></script>
-
   </body>
 </html>

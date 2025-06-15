@@ -134,6 +134,19 @@ function render(currentData, title = 'Product Categories') {
       };
       grid.appendChild(card);
     }
+
+    // Add the Coming Soon category
+    const comingSoonCard = document.createElement('div');
+    comingSoonCard.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300';
+    comingSoonCard.innerHTML = `
+      <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-60">
+        <span class="text-black text-lg font-semibold">MUY PRONTO...</span>
+      </div>
+      <div class="p-2 md:p-3 border-t border-gray-200">
+        <div class="text-sm md:text-base font-medium text-gray-800 truncate text-center">BROCAS</div>
+      </div>
+    `;
+    grid.appendChild(comingSoonCard);
   } else {
     // Inside a category → show products
     const { products } = currentData;

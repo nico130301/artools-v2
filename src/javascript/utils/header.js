@@ -3,7 +3,16 @@ fetch('../html/utils/header.html')
   .then(data => {
     document.querySelector('.top').innerHTML = data;
 
-    // Add this new function to load categories
+    // Wrap the loadProductCategories in a function that checks for XLSX
+    function waitForXLSX() {
+      if (typeof XLSX === 'undefined') {
+        // If XLSX is not loaded yet, wait and try again
+        setTimeout(waitForXLSX, 100);
+        return;
+      }
+      loadProductCategories();
+    }
+
     async function loadProductCategories() {
       try {
         const response = await fetch('../data/data.xlsx');
@@ -16,24 +25,31 @@ fetch('../html/utils/header.html')
           const sheet = workbook.Sheets[workbook.SheetNames[0]];
           const json = XLSX.utils.sheet_to_json(sheet);
           
-          // Get unique categories
-          const categories = [...new Set(json.map(item => item.Category))];
+          // Get unique categories and sort them
+          const categories = [...new Set(json.map(item => item.Category))].sort();
           
-          // Populate dropdown
+          // Clear existing dropdown items
           const dropdown = document.getElementById('productDropdown');
-          categories.forEach(category => {
-            const item = document.createElement('a');
-            item.href = './products.html';
-            item.setAttribute('data-category', category);
-            item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center';
-            item.textContent = category;
-            item.addEventListener('click', (e) => {
-              e.preventDefault();
-              localStorage.setItem('selectedCategory', category);
-              window.location.href = './products.html';
+          if (dropdown) {
+            dropdown.innerHTML = '';
+            
+            // Populate dropdown
+            categories.forEach(category => {
+              if (category) { // Only add if category exists
+                const item = document.createElement('a');
+                item.href = './products.html';
+                item.setAttribute('data-category', category);
+                item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center';
+                item.textContent = category;
+                item.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  localStorage.setItem('selectedCategory', category);
+                  window.location.href = './products.html';
+                });
+                dropdown.appendChild(item);
+              }
             });
-            dropdown.appendChild(item);
-          });
+          }
         };
         reader.readAsArrayBuffer(blob);
       } catch (error) {
@@ -41,8 +57,8 @@ fetch('../html/utils/header.html')
       }
     }
 
-    // Call the function to load categories
-    loadProductCategories();
+    // Start checking for XLSX
+    waitForXLSX();
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];

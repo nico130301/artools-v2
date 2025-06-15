@@ -1519,6 +1519,10 @@ html {
   width: 100%;
 }
 
+.w-\[4\%\] {
+  width: 4%;
+}
+
 .min-w-\[280px\] {
   min-width: 280px;
 }
@@ -2746,6 +2750,14 @@ html {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-\[5\%\] {
+    width: 5%;
+  }
+
+  .md\:w-\[4\%\] {
+    width: 4%;
   }
 
   .md\:min-w-0 {
