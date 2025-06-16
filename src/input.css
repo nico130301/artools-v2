@@ -98,15 +98,21 @@
   /* Dropdown Components */
   .dropdown-menu {
     @apply z-50 fixed bg-gradient-to-r from-mainblue to-secondaryblue shadow-lg mt-0 backdrop-blur-sm;
-    width: 60%;
+    width: 70%; /* Increased width for better spacing */
   }
 
   #productDropdown {
-    @apply grid grid-cols-3 gap-6 p-8;
+    @apply grid grid-cols-3 gap-4 p-6;
   }
 
   #productDropdown a {
-    @apply text-white text-base font-medium transition-all duration-300 whitespace-nowrap;
+    @apply text-white text-base font-medium transition-all duration-300;
+    @apply min-h-[4rem]; /* Set minimum height for two lines */
+    @apply flex items-center justify-center text-center;
+    @apply px-2 py-3;
+    line-height: 1.2;
+    hyphens: auto;
+    word-wrap: break-word;
   }
 
   .group:hover .dropdown-menu {

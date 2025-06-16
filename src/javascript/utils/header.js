@@ -35,11 +35,11 @@ fetch('../html/utils/header.html')
             
             // Populate dropdown
             categories.forEach(category => {
-              if (category) { // Only add if category exists
+              if (category) {
                 const item = document.createElement('a');
                 item.href = './products.html';
                 item.setAttribute('data-category', category);
-                item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center';
+                item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center flex items-center justify-center min-h-[4rem]';
                 item.textContent = category;
                 item.addEventListener('click', (e) => {
                   e.preventDefault();
