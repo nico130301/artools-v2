@@ -288,49 +288,37 @@ const observer = new MutationObserver(() => {
       </div>
     `;
 
-    // related products section
+    // Update the related products section to only show clean product cards
     if (Array.isArray(product.related)) {
-      const relatedNames = typeof product.related === 'string'
-        ? product.related.split(';').map(name => name.trim()).filter(name => name)
-        : product.related;
+      const relatedNames = product.related;
+      relatedProducts.innerHTML = '';
 
       relatedNames.forEach((relatedName) => {
         let relatedProduct = null;
+        // Search for the related product in all categories
         for (const category in rootData) {
-          relatedProduct = rootData[category].products.find(p => p.name === relatedName);
-          if (relatedProduct) break;
+          const found = rootData[category].products.find(p => p.name === relatedName);
+          if (found) {
+            relatedProduct = found;
+            break;
+          }
         }
 
         if (relatedProduct) {
-          const imageToShow = relatedProduct.image || 'https://via.placeholder.com/100x100?text=related';
-          // Updated size range calculation
-          const sizes = relatedProduct.size ? relatedProduct.size.split(';').map(s => s.trim()) : [];
-          let sizeRange = 'Tamaño indisponible';
-
-          if (sizes.length > 0) {
-            if (sizes.length === 1) {
-              // If there's only one size, show it with the unit
-              sizeRange = `Tamaño: ${sizes[0]}${relatedProduct.uom || ''}`;
-            } else {
-              // If there are multiple sizes, show the range with the unit
-              const firstSize = sizes[0];
-              const lastSize = sizes[sizes.length - 1];
-              sizeRange = `Tamaños: ${firstSize}${relatedProduct.uom || ''} - ${lastSize}${relatedProduct.uom || ''}`;
-            }
-          }
-
+          const imageToShow = relatedProduct.image || '../assets/images/placeholder.png';
+          
           relatedProducts.innerHTML += `
-            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0" 
-                 onclick='viewrelatedProduct(${JSON.stringify({
-                   ...relatedProduct,
-                   description: undefined // Remove description from JSON to prevent it showing up
-                 })})'>
+            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0 flex flex-col" 
+                 onclick="viewrelatedProduct('${relatedProduct.name}')">
               <div class="p-7 flex items-center justify-center h-48">
-                <img src="${imageToShow}" alt="${relatedProduct.name}" class="max-h-full w-auto object-contain">
+                <img src="${imageToShow}" 
+                     alt="${relatedProduct.name}" 
+                     class="max-h-full w-auto object-contain hover:scale-105 transition-transform duration-300">
               </div>
-              <div class="mt-auto p-3 border-t border-gray-200">
-                <div class="text-gray-500 text-[11px]">${sizeRange}</div>
-                <div class="text-lg font-medium text-gray-800 truncate">${relatedProduct.name}</div>
+              <div class="p-3 border-t border-gray-200 mt-auto">
+                <h3 class="text-lg font-medium text-gray-800 truncate">
+                  ${relatedProduct.name}
+                </h3>
                 <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">
                   Más Detalles
                 </button>
@@ -342,12 +330,41 @@ const observer = new MutationObserver(() => {
     }
 
 
-    // Helper function to view related product
-    window.viewrelatedProduct = function (productObj) {
-      localStorage.setItem('selectedProduct', JSON.stringify(productObj));
-      localStorage.setItem('navStack', JSON.stringify(navStack));
-      window.location.href = './productPage.html';
-    }
+    // Update the viewrelatedProduct function
+    window.viewrelatedProduct = function (productName) {
+        // Find the product in rootData
+        let foundProduct = null;
+        let foundCategory = null;
+        
+        for (const category in rootData) {
+            const product = rootData[category].products.find(p => p.name === productName);
+            if (product) {
+                foundProduct = product;
+                foundCategory = category;
+                break;
+            }
+        }
+
+        if (foundProduct) {
+            // Update navigation stack - only include category
+            const navStack = [
+                {
+                    title: foundCategory,
+                    name: foundCategory
+                }
+            ];
+            
+            // Store the updated navigation and product data
+            localStorage.setItem('navStack', JSON.stringify(navStack));
+            localStorage.setItem('selectedProductCategory', foundCategory);
+            localStorage.setItem('selectedProduct', JSON.stringify({
+                ...foundProduct,
+                category: foundCategory
+            }));
+            
+            window.location.href = './productPage.html';
+        }
+    };
 
     //size drop-down
 
