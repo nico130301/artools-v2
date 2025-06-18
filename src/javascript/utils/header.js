@@ -15,7 +15,7 @@ fetch('/artools-v2/src/html/utils/header.html')
 
     async function loadProductCategories() {
       try {
-        const response = await fetch('/src/data/data.xlsx');
+        const response = await fetch('/artools-v2/src/data/data.xlsx');  // Updated path
         const blob = await response.blob();
         
         const reader = new FileReader();

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Load footer content
-    const response = await fetch('/src/html/utils/footer.html');
+    const response = await fetch('/artools-v2/src/html/utils/footer.html'); // Updated path
     if (!response.ok) throw new Error('Failed to load footer');
     const footerContent = await response.text();
     document.querySelector('.footer').innerHTML = footerContent;
