@@ -305,7 +305,7 @@ const observer = new MutationObserver(() => {
         }
 
         if (relatedProduct) {
-          const imageToShow = relatedProduct.image || '../assets/images/placeholder.png';
+          const imageToShow = relatedProduct.image || '../images/placeholder.png';
           
           relatedProducts.innerHTML += `
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0 flex flex-col" 

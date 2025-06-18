@@ -1972,7 +1972,7 @@ html {
 }
 
 .bg-\[url\(\'\.\.\/assets\/images\/dot-pattern\.png\'\)\] {
-  background-image: url('../assets/images/dot-pattern.png');
+  background-image: url('../images/dot-pattern.png');
 }
 
 .bg-gradient-to-b {

@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Initialize Application
   try {
     // Load Excel data
-    const response = await fetch('../data/data.xlsx');
+    const response = await fetch('/src/data/data.xlsx');
     const blob = await response.blob();
     const workbook = await new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             { title: category, data: null }
           ]));
           
-          window.location.href = '../html/productPage.html';
+          window.location.href = '/src/html/productPage.html';
         }
       });
     });
