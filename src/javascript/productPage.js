@@ -84,7 +84,7 @@ const observer = new MutationObserver(() => {
     // Build breadcrumb
     let breadcrumbHTML = `
       <span class="text-gray-600">
-        <a href="./main.html" class="text-mainblue hover:underline">
+        <a href="/index.html" class="text-mainblue hover:underline">
           <i class="fa-solid fa-house"></i>
         </a>
         <span class="mx-2">/</span>

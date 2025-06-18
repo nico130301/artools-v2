@@ -7,7 +7,7 @@
              width="160" 
              height="40"
              loading="eager"
-             onclick="location.href='/main.html'">
+             onclick="location.href='/index.html'">
     </div>
 
     <!-- Search Bar -->
@@ -30,7 +30,7 @@
     </button>
     
     <!-- Cart Button -->
-    <button class="cartButton w-[10%] md:w-[4%] rounded-full" onclick="location.href='./cart.html'">
+    <button class="cartButton w-[10%] md:w-[4%] rounded-full" onclick="location.href='/src/html/cart.html'">
         <i class="headerIcons fa-solid fa-cart-shopping">
             <span class="cartQuantity absolute top-[12%] right-[32%] text-mainblue text-[0.75rem] leading-[1rem] "></span>
         </i>
@@ -43,7 +43,7 @@
     </button>
 
     <!-- Support Button -->
-    <button class="customerSupportButton hidden md:block w-[4%] rounded-full" onclick="location.href='./contact.html'">
+    <button class="customerSupportButton hidden md:block w-[4%] rounded-full" onclick="location.href='/src/html/contact.html'">
         <i class="headerIcons fa-solid fa-headset"></i>
     </button>
 </div>
@@ -51,24 +51,24 @@
 <!-- Desktop Navigation Menu - Updated background -->
 <div class="menuContainer hidden md:flex items-center justify-between px-24 w-full h-14 bg-gradient-to-r from-mainblue to-secondaryblue text-white text-2xl shadow-2xl">
     <div class="menuDiv">
-        <button class="menuBtn" onclick="location.href='./aboutUs.html'">SOBRE NOSOTROS</button>
+        <button class="menuBtn" onclick="location.href='/src/html/aboutUs.html'">SOBRE NOSOTROS</button>
     </div>
     
     <div class="menuDiv group relative">
-        <button class="menuBtn" onclick="location.href='./products.html'">PRODUCTOS</button>
+        <button class="menuBtn" onclick="location.href='/src/html/products.html'">PRODUCTOS</button>
         <div class="dropdown-menu fixed top-32 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 rounded-b-lg">
             <div class="py-3 px-24" id="productDropdown"></div>
         </div>
     </div>
     
     <div class="menuDiv">
-        <button class="menuBtn" onclick="location.href='./authorizedDistributor.html'">
+        <button class="menuBtn" onclick="location.href='/src/html/authorizedDistributor.html'">
             DISTRIBUIDORES
         </button>
     </div>
     
     <div class="menuDiv">
-        <button class="menuBtn" onclick="location.href='./contact.html'">CONTACTO</button>
+        <button class="menuBtn" onclick="location.href='/src/html/contact.html'">CONTACTO</button>
     </div>
 </div>
 
@@ -84,11 +84,11 @@
         
         <!-- Mobile Menu Links -->
         <div class="flex flex-col gap-4 p-4">
-            <a href="./aboutUs.html" class="mobileMenuLink text-white">SOBRE NOSOTROS</a>
-            <a href="./products.html" class="mobileMenuLink text-white">PRODUCTOS</a>
-            <a href="./authorizedDistributor.html" class="mobileMenuLink text-white">DISTRIBUIDORES AUTORIZADOS</a>
-            <a href="./questions.html" class="mobileMenuLink text-white">PREGUNTAS FRECUENTES</a>
-            <a href="./contact.html" class="mobileMenuLink text-white">CONTACTO</a>
+            <a href="/src/aboutUs.html" class="mobileMenuLink text-white">SOBRE NOSOTROS</a>
+            <a href="/src/products.html" class="mobileMenuLink text-white">PRODUCTOS</a>
+            <a href="/src/authorizedDistributor.html" class="mobileMenuLink text-white">DISTRIBUIDORES AUTORIZADOS</a>
+            <a href="/src/questions.html" class="mobileMenuLink text-white">PREGUNTAS FRECUENTES</a>
+            <a href="/src/contact.html" class="mobileMenuLink text-white">CONTACTO</a>
             
         </div>
     </div>
