@@ -160,4 +160,11 @@ fetch('/artools-v2/src/html/utils/header.html')
         }
       }
     });
+
+    // Add event listeners to buttons with data-href
+    document.querySelectorAll('[data-href]').forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = button.dataset.href;
+        });
+    });
   });
