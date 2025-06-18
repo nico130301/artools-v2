@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex flex-col items-center justify-center p-8 text-center">
           <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
           <p class="text-gray-500 text-lg mb-4">Your cart is empty</p>
-          <a href="./products.html" class="inline-flex items-center px-4 py-2 bg-mainblue text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <a href="./products.html" class="inline-flex items-center px-4 py-2 bg-mainblue text-white rounded-lg hover:bg-secondaryblue transition-colors">
             <i class="fas fa-arrow-left mr-2"></i>
             Continue Shopping
           </a>
