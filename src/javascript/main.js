@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async function() {
              data-id="${product.id}">
           <div class="product-image-container relative p-7 flex items-center justify-center group">
             <img class="productImage max-h-[${CONFIG.productImageHeight}px] w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
-                 src="${product.image}" 
+                 src="./src${product.image.substring(2)}" 
                  alt="${product.name}"
                  loading="lazy">
             ${product['New Product'] === 'x' ? 
