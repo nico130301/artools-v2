@@ -196,19 +196,33 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Initialize Application
   try {
     // Load Excel data
-    const response = await fetch('/artools-v2/src/data/data.xlsx');
+    const excelPath = '/artools-v2/src/data/data.xlsx';
+    const response = await fetch(excelPath);
+    if (!response.ok) {
+      throw new Error(`Failed to load Excel file: ${response.status}`);
+    }
     const blob = await response.blob();
-    const workbook = await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = e => resolve(XLSX.read(new Uint8Array(e.target.result), { type: 'array' }));
-      reader.onerror = reject;
-      reader.readAsArrayBuffer(blob);
-    });
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        
+        // Add error checking for sheet existence
+        if (!workbook.SheetNames.length) {
+          throw new Error('Excel file contains no sheets');
+        }
+        
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        if (!sheet) {
+          throw new Error('First sheet is empty');
+        }
+        
+        const json = XLSX.utils.sheet_to_json(sheet);
 
     // Initialize Product Manager
-    const productManager = new ProductManager(
-      XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]])
-    );
+    const productManager = new ProductManager(json);
 
     // Render Products
     document.querySelector('.newProductsGrid').innerHTML = 
@@ -247,8 +261,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Initialize Slideshow
     new SlideshowController();
 
+      } catch (error) {
+        console.error('Error processing Excel data:', error);
+      }
+    };
+    reader.onerror = (error) => {
+      console.error('Error reading file:', error);
+    };
+    reader.readAsArrayBuffer(blob);
+    
   } catch (error) {
-    console.error('Application initialization failed:', error);
-    // Here you could add user-friendly error handling
+    console.error('Error fetching Excel file:', error);
   }
 });
