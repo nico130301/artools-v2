@@ -69,7 +69,7 @@ let isCtrlPressed = false;
 
 const map = L.map('map', {
   scrollWheelZoom: false 
-}).setView([9.9281, -84.0907], 6);
+}).setView([9.9281, -84.0907], 8);
 
 // Initialize map centered on Costa Rica
 const mapElement = document.getElementById('map');
