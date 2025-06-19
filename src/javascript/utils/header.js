@@ -89,7 +89,7 @@ fetch('/artools-v2/src/html/utils/header.html')
     function handleSearch() {
       const query = searchInput.value.trim();
       if (query) {
-        window.location.href = `/src/html/searchPage.html?query=${encodeURIComponent(query)}`;
+        window.location.href = `/artools-v2/src/html/searchPage.html?query=${encodeURIComponent(query)}`;
       }
     }    
 
