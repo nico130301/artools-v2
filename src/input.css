@@ -64,7 +64,7 @@
   }
 
   .body {
-    @apply pt-[70px] md:pt-[100px] bg-bgblue overflow-x-hidden;
+    @apply pt-[70px] md:pt-[90px] bg-bgblue overflow-x-hidden;
   }
 
   .top {
