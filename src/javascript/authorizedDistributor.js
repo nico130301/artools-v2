@@ -1,57 +1,67 @@
 const stores = [
   {
-    name: "Distribuidor San José",
-    address: "San José, Costa Rica",
-    phone: "123-456-789",
-    email: "sanjose@distribuidor.com",
-    lat: 9.9281,
-    lng: -84.0907,
-    hours: "8:00–17:00"
+    name: "Tornillos Toyman",
+    address: "Frente a Las Gravilias, Cartago, Costa Rica",
+    phone: "+506-25910858",
+    email: "tornillostoyman@gmail.com",
+    lat: 9.9000,
+    lng: -84.0833
   },
   {
-    name: "Distribuidor Alajuela",
-    address: "Alajuela, Costa Rica",
-    phone: "123-456-788",
-    email: "alajuela@distribuidor.com",
-    lat: 10.0159,
-    lng: -84.2145,
-    hours: "8:00–17:00"
+    name: "Codeorsa",
+    address: "20804, Poas, Alajuela, Costa Rica",
+    phone: "+506-24583858",
+    email: "info@codeorsa.com",
+    lat: 10.0170,
+    lng: -84.2740
   },
   {
-    name: "Distribuidor Caracas",
-    address: "Caracas, Venezuela",
-    phone: "123-456-787",
-    email: "caracas@distribuidor.com",
-    lat: 10.4806,
-    lng: -66.9036,
-    hours: "8:00–17:00"
+    name: "Confecciones Zae",
+    address: "101 m Oeste Cementerio, Escazu, San Jose, Costa Rica",
+    phone: "+506-22285197",
+    email: "kikescazu@gmail.com",
+    lat: 9.9207,
+    lng: -84.1462
   },
   {
-    name: "Distribuidor Caracas2",
-    address: "Caracas, Venezuela",
-    phone: "123-456-787",
-    email: "caracas@distribuidor.com",
-    lat: 10.4856,
-    lng: -66.9036,
-    hours: "8:00–17:00"
+    name: "DIPROINSUR",
+    address: "Frente al Hotel del Sur, Perez Zeledon, Costa Rica",
+    phone: "+506-27711066",
+    email: "info@diproinsur.com",
+    lat: 9.3395,
+    lng: -83.6711
   },
   {
-    name: "Distribuidor Caracas3",
-    address: "Caracas, Venezuela",
-    phone: "123-456-787",
-    email: "caracas@distribuidor.com",
-    lat: 10.4810,
-    lng: -66.9066,
-    hours: "8:00–17:00"
+    name: "Mayzap Tornillos",
+    address: "Heredia, Costa Rica",
+    phone: "+506-40017427",
+    email: "mayzapcr@gmail.com",
+    lat: 10.0024,
+    lng: -84.1165
   },
   {
-    name: "Distribuidor Caracas4",
-    address: "Caracas, Venezuela",
-    phone: "123-456-787",
-    email: "caracas@distribuidor.com",
-    lat: 10.4800,
-    lng: -66.886,
-    hours: "8:00–17:00"
+    name: "Autorepuestos Rekasa",
+    address: "Puntarenas, Costa Rica",
+    phone: "+506-26630110",
+    email: "repuestosdelpacifico.fe@gmail.com",
+    lat: 9.9769,
+    lng: -84.8384
+  },
+  {
+    name: "CON-TACTO SA",
+    address: "Curridabat, San Jose, Costa Rica",
+    phone: "+506-88755180",
+    email: "verafarah@contactocr.com",
+    lat: 9.9163,
+    lng: -84.0283
+  },
+  {
+    name: "Taller Federico Meza",
+    address: "Barrio Paez, San Rafael, Cartago, Costa Rica",
+    phone: "+506-88428859",
+    email: "fmr-mecanik@hotmail.com",
+    lat: 9.8702,
+    lng: -83.8951
   }
 ];
 
@@ -157,8 +167,7 @@ stores.forEach((store, index) => {
     <div class="text-sm text-gray-700">${store.address}</div>
     <div class="text-sm mt-1">${store.phone}</div>
     <div class="text-sm">${store.email}</div>
-    <div class="text-sm text-gray-600">Program : ${store.hours}</div>
-  `;
+`;
 
   storeItem.addEventListener("click", () => {
     map.setView([store.lat, store.lng], 14);
