@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       this.slidesWrapper.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
         this.stopAutoplay();
-      });
+      }, { passive: true }); // Add passive flag here
 
       this.slidesWrapper.addEventListener('touchend', e => {
         const touchEndX = e.changedTouches[0].screenX;
