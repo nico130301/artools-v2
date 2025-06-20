@@ -1,61 +1,53 @@
 document.addEventListener('DOMContentLoaded', async function() {
 
-   // Slideshow Controller
-  
-  const slides = document.querySelectorAll(".slide");
+   //slideshow
+  const slides = document.getElementById("slides");
   const dots = document.querySelectorAll(".dot");
-  let currentSlide = 0;
-  let intervalId;
+  const totalSlides = dots.length;
+  let index = 0;
+  let interval = setInterval(nextSlide, 4000);
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("hidden", i !== index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("bg-blue-500", i === index);
-      dot.classList.toggle("bg-gray-300", i !== index);
+  function showSlide(i) {
+    index = (i + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle("opacity-100", idx === index);
+      dot.classList.toggle("opacity-50", idx !== index);
     });
   }
 
   function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
+    showSlide(index + 1);
   }
 
   function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function startAutoSlide() {
-    intervalId = setInterval(nextSlide, 5000);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(intervalId);
-    startAutoSlide();
+    showSlide(index - 1);
   }
 
   document.getElementById("next").addEventListener("click", () => {
     nextSlide();
-    resetAutoSlide();
+    resetInterval();
   });
 
   document.getElementById("prev").addEventListener("click", () => {
     prevSlide();
-    resetAutoSlide();
+    resetInterval();
   });
 
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
-      currentSlide = i;
-      showSlide(currentSlide);
-      resetAutoSlide();
+      showSlide(i);
+      resetInterval();
     });
   });
 
-  showSlide(currentSlide);
-  startAutoSlide();
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 4000);
+  }
+
+  // Initialize
+  showSlide(index);
 
   
   // Configuration

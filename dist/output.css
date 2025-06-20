@@ -1010,97 +1010,7 @@ html {
 }
 
 .benefitImage {
-  padding: 0.25rem;
-}
-
-/* Slideshow Components */
-
-.slide {
-  height: 100%;
-  width: 100%;
-}
-
-.slide img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-/* Navigation Arrows */
-
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 20;
-  display: flex;
-  height: 3rem;
-  width: 3rem;
-  --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  border-width: 2px;
-  border-color: rgb(255 255 255 / 0.3);
-  background-color: rgb(0 0 0 / 0.3);
-  font-size: 1.5rem;
-  line-height: 2rem;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-.nav-arrow:hover {
-  background-color: rgb(0 0 0 / 0.5);
-}
-
-#prev, #next {
-  left: 1rem;
-}
-
-#next {
-  right: 1rem;
-}
-
-/* Navigation Dots */
-
-.dots-container {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  z-index: 10;
-  display: flex;
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  gap: 0.5rem;
-}
-
-.dot {
-  height: 0.75rem;
-  width: 0.75rem;
-  cursor: pointer;
-  border-radius: 9999px;
-  background-color: rgb(255 255 255 / 0.5);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-.dot:hover {
-  background-color: rgb(255 255 255 / 0.7);
-}
-
-/* Active dot state */
-
-.dot.active {
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 0.5rem;
 }
 
 .pointer-events-none {
@@ -1141,10 +1051,6 @@ html {
 
 .bottom-16 {
   bottom: 4rem;
-}
-
-.bottom-4 {
-  bottom: 1rem;
 }
 
 .bottom-\[4\%\] {
@@ -1191,10 +1097,6 @@ html {
   top: 0px;
 }
 
-.top-1\/2 {
-  top: 50%;
-}
-
 .top-24 {
   top: 6rem;
 }
@@ -1221,10 +1123,6 @@ html {
 
 .z-10 {
   z-index: 10;
-}
-
-.z-20 {
-  z-index: 20;
 }
 
 .z-50 {
@@ -1420,10 +1318,6 @@ html {
   height: 7rem;
 }
 
-.h-3 {
-  height: 0.75rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -1498,10 +1392,6 @@ html {
 
 .w-24 {
   width: 6rem;
-}
-
-.w-3 {
-  width: 0.75rem;
 }
 
 .w-4 {
@@ -1584,11 +1474,6 @@ html {
 
 .-translate-x-full {
   --tw-translate-x: -100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-1\/2 {
-  --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1870,10 +1755,6 @@ html {
   background-color: rgb(0 0 0 / 0.2);
 }
 
-.bg-black\/30 {
-  background-color: rgb(0 0 0 / 0.3);
-}
-
 .bg-black\/50 {
   background-color: rgb(0 0 0 / 0.5);
 }
@@ -1958,10 +1839,6 @@ html {
 
 .bg-white\/10 {
   background-color: rgb(255 255 255 / 0.1);
-}
-
-.bg-white\/50 {
-  background-color: rgb(255 255 255 / 0.5);
 }
 
 .bg-\[url\(\'\.\.\/images\/dot-pattern\.png\'\)\] {
@@ -2348,6 +2225,10 @@ html {
   opacity: 0.9;
 }
 
+.opacity-50 {
+  opacity: 0.5;
+}
+
 .shadow-2xl {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -2454,10 +2335,6 @@ html {
   border-color: rgb(74 111 165 / var(--tw-border-opacity, 1));
 }
 
-.hover\:bg-black\/50:hover {
-  background-color: rgb(0 0 0 / 0.5);
-}
-
 .hover\:bg-blue-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(191 219 254 / var(--tw-bg-opacity, 1));
@@ -2490,10 +2367,6 @@ html {
 
 .hover\:bg-white\/20:hover {
   background-color: rgb(255 255 255 / 0.2);
-}
-
-.hover\:bg-white\/70:hover {
-  background-color: rgb(255 255 255 / 0.7);
 }
 
 .hover\:bg-opacity-90:hover {
