@@ -163,4 +163,8 @@
     @apply fixed right-[3%] bottom-[4%];
   }
 
+  .benefitImage{
+    @apply p-1;
+  }
+
 }

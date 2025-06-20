@@ -1009,6 +1009,10 @@ html {
   bottom: 4%;
 }
 
+.benefitImage {
+  padding: 0.25rem;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
