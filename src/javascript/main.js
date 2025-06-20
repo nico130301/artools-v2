@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', async function() {
+
+   // Slideshow Controller
+  
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("hidden", i !== index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-blue-500", i === index);
+      dot.classList.toggle("bg-gray-300", i !== index);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  document.getElementById("next").addEventListener("click", nextSlide);
+  document.getElementById("prev").addEventListener("click", prevSlide);
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      currentSlide = i;
+      showSlide(currentSlide);
+    });
+  });
+
+  showSlide(currentSlide);
+
+  
   // Configuration
   const CONFIG = {
     autoplayDelay: 4000,
@@ -66,133 +105,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
   }
 
-  // Slideshow Controller
-  class SlideshowController {
-    constructor() {
-      this.slideshow = document.querySelector('.slideshow');
-      this.slidesWrapper = document.querySelector('.slides-wrapper');
-      this.slides = document.querySelectorAll('.slide-container');
-      this.dots = document.querySelectorAll('.slide-dots button');
-      this.prevButton = document.querySelector('.prev-arrow');
-      this.nextButton = document.querySelector('.next-arrow');
-      
-      this.currentSlide = 1;
-      this.isTransitioning = false;
-      this.autoplayInterval = null;
-      
-      this.init();
-    }
-
-    init() {
-      this.setupInitialState();
-      this.setupEventListeners();
-      this.startAutoplay();
-    }
-
-    setupInitialState() {
-      this.slidesWrapper.style.transform = `translateX(-100%)`;
-      this.dots[0].classList.add('opacity-100');
-    }
-
-    setupEventListeners() {
-      this.setupNavigationListeners();
-      this.setupTouchListeners();
-      this.setupTransitionListener();
-    }
-
-    setupNavigationListeners() {
-      this.prevButton.addEventListener('click', () => this.navigate('prev'));
-      this.nextButton.addEventListener('click', () => this.navigate('next'));
-      this.dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => this.goToSlide(index + 1));
-      });
-    }
-
-    setupTouchListeners() {
-      let touchStartX = 0;
-      this.slidesWrapper.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-        this.stopAutoplay();
-      }, { passive: true }); // Add passive flag here
-
-      this.slidesWrapper.addEventListener('touchend', e => {
-        const touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > CONFIG.touchThreshold) {
-          this.navigate(diff > 0 ? 'next' : 'prev');
-        }
-        this.startAutoplay();
-      });
-    }
-
-    setupTransitionListener() {
-      this.slidesWrapper.addEventListener('transitionend', () => {
-        this.slidesWrapper.style.transition = `transform ${CONFIG.transitionDuration}ms`;
-      });
-    }
-
-    navigate(direction) {
-      this.goToSlide(direction === 'next' ? this.currentSlide + 1 : this.currentSlide - 1);
-      this.resetAutoplay();
-    }
-
-    goToSlide(index, instant = false) {
-      if (this.isTransitioning && !instant) return;
-      this.isTransitioning = true;
-
-      const totalSlides = this.slides.length;
-      const actualIndex = ((index % (totalSlides - 2)) + (totalSlides - 2)) % (totalSlides - 2);
-      
-      this.updateDots(actualIndex);
-      this.moveSlides(index, instant);
-    }
-
-    updateDots(activeIndex) {
-      this.dots.forEach(dot => dot.classList.remove('opacity-100'));
-      this.dots[activeIndex].classList.add('opacity-100');
-    }
-
-    moveSlides(index, instant) {
-      if (instant) this.slidesWrapper.style.transition = 'none';
-      this.slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
-
-      setTimeout(() => {
-        this.handleInfiniteScroll(index);
-      }, instant ? 0 : CONFIG.transitionDuration);
-    }
-
-    handleInfiniteScroll(index) {
-      const totalSlides = this.slides.length;
-      
-      if (index === 0 || index === totalSlides - 1) {
-        this.slidesWrapper.style.transition = 'none';
-        this.currentSlide = index === 0 ? totalSlides - 2 : 1;
-        this.slidesWrapper.style.transform = `translateX(-${this.currentSlide * 100}%)`;
-      } else {
-        this.currentSlide = index;
-      }
-
-      setTimeout(() => {
-        this.slidesWrapper.style.transition = `transform ${CONFIG.transitionDuration}ms`;
-        this.isTransitioning = false;
-      }, 10);
-    }
-
-    startAutoplay() {
-      this.autoplayInterval = setInterval(() => this.navigate('next'), CONFIG.autoplayDelay);
-    }
-
-    stopAutoplay() {
-      clearInterval(this.autoplayInterval);
-    }
-
-    resetAutoplay() {
-      this.stopAutoplay();
-      this.startAutoplay();
-    }
-  }
-
+ 
   // Initialize Application
   try {
     // Load Excel data
