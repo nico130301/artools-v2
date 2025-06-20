@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   const slides = document.querySelectorAll(".slide");
   const dots = document.querySelectorAll(".dot");
   let currentSlide = 0;
+  let intervalId;
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -26,16 +27,35 @@ document.addEventListener('DOMContentLoaded', async function() {
     showSlide(currentSlide);
   }
 
-  document.getElementById("next").addEventListener("click", nextSlide);
-  document.getElementById("prev").addEventListener("click", prevSlide);
+  function startAutoSlide() {
+    intervalId = setInterval(nextSlide, 5000);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(intervalId);
+    startAutoSlide();
+  }
+
+  document.getElementById("next").addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
       currentSlide = i;
       showSlide(currentSlide);
+      resetAutoSlide();
     });
   });
 
   showSlide(currentSlide);
+  startAutoSlide();
 
   
   // Configuration
