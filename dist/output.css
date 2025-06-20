@@ -924,7 +924,7 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-/* Slideshow Componentss */
+/* Slideshow Components */
 
 .slides-wrapper {
   height: 100%;
@@ -1061,6 +1061,28 @@ html {
 }
 
 /*main page*/
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 90px);
+  /* Adjust height based on header */
+}
+
+.slide-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide-container img {
+  position: absolute;
+  inset: 0px;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 .pointer-events-none {
   pointer-events: none;

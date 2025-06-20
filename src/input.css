@@ -179,5 +179,16 @@
   }
 
   /*main page*/
-  
+  .slideshow {
+    @apply relative overflow-hidden;
+    height: calc(100vh - 90px); /* Adjust height based on header */
+  }
+
+  .slide-container {
+    @apply relative w-full h-full;
+  }
+
+  .slide-container img {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
 }
