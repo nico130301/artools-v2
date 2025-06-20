@@ -134,46 +134,42 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         const json = XLSX.utils.sheet_to_json(sheet);
 
-    // Initialize Product Manager
-    const productManager = new ProductManager(json);
+        // Initialize Product Manager
+        const productManager = new ProductManager(json);
 
-    // Render Products
-    document.querySelector('.newProductsGrid').innerHTML = 
-      productManager.newProducts.map(p => productManager.generateProductCard(p)).join('');
-    document.querySelector('.recommendedProductsGrid').innerHTML = 
-      productManager.recommendedProducts.map(p => productManager.generateProductCard(p)).join('');
+        // Render Products
+        document.querySelector('.newProductsGrid').innerHTML = 
+          productManager.newProducts.map(p => productManager.generateProductCard(p)).join('');
+        document.querySelector('.recommendedProductsGrid').innerHTML = 
+          productManager.recommendedProducts.map(p => productManager.generateProductCard(p)).join('');
 
-    // Setup Product Click Handlers
-    ['newProductsGrid', 'recommendedProductsGrid'].forEach(gridClass => {
-      document.querySelector('.' + gridClass).addEventListener('click', (event) => {
-        const productElement = event.target.closest('.product');
-        if (!productElement) return;
+        // Setup Product Click Handlers
+        ['newProductsGrid', 'recommendedProductsGrid'].forEach(gridClass => {
+          document.querySelector('.' + gridClass).addEventListener('click', (event) => {
+            const productElement = event.target.closest('.product');
+            if (!productElement) return;
 
-        const { category, id } = productElement.dataset;
-        const product = [...productManager.newProducts, ...productManager.recommendedProducts]
-          .find(p => p.id === id);
+            const { category, id } = productElement.dataset;
+            const product = [...productManager.newProducts, ...productManager.recommendedProducts]
+              .find(p => p.id === id);
 
-        if (product) {
-          localStorage.setItem('selectedProduct', JSON.stringify({
-            ...product,
-            size: product.size ? product.size.split(';')
-              .map(s => s.trim() + (s.includes(product.unit) ? '' : (product.unit || '')))
-              .join(';') : '',
-            unit: product.unit || ''
-          }));
-          
-          localStorage.setItem('navStack', JSON.stringify([
-            { title: category, data: null }
-          ]));
-          
-          window.location.href = '/artools-v2/src/html/productPage.html';
-        }
-      });
-    });
-
-    // Initialize Slideshow
-    new SlideshowController();
-
+            if (product) {
+              localStorage.setItem('selectedProduct', JSON.stringify({
+                ...product,
+                size: product.size ? product.size.split(';')
+                  .map(s => s.trim() + (s.includes(product.unit) ? '' : (product.unit || '')))
+                  .join(';') : '',
+                unit: product.unit || ''
+              }));
+              
+              localStorage.setItem('navStack', JSON.stringify([
+                { title: category, data: null }
+              ]));
+              
+              window.location.href = '/artools-v2/src/html/productPage.html';
+            }
+          });
+        });
       } catch (error) {
         console.error('Error processing Excel data:', error);
       }
