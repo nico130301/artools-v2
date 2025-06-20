@@ -177,17 +177,19 @@
   }
 
   /* Navigation Arrows */
-  #prev, #next {
-    @apply absolute top-1/2 -translate-y-1/2 w-10 h-10
-           flex items-center justify-center
-           bg-black/50 hover:bg-black/70
+  .nav-arrow {
+    @apply absolute top-1/2 -translate-y-1/2 
+           w-12 h-12 
+           flex items-center justify-center 
+           bg-black/30 hover:bg-black/50
            text-white text-2xl
            rounded-full
            transition-all duration-300
-           z-10;
+           z-20
+           border-2 border-white/30;
   }
 
-  #prev {
+  #prev, #next {
     @apply left-4;
   }
 
@@ -208,7 +210,8 @@
            transition-all duration-300;
   }
 
+  /* Active dot state */
   .dot.active {
-    @apply bg-white;
+    @apply bg-white scale-125;
   }
 }

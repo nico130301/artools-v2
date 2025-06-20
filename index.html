@@ -37,30 +37,32 @@
     <div class="top"></div>
 
     <div class="relative w-full max-w-xl mx-auto overflow-hidden rounded-lg shadow-lg h-[450px] md:h-[750px]">
-      <!-- Slides -->
-      <div class="slide">
-        <img src="./src/images/unior1.png" alt="Unior Tools 1" loading="lazy">
-      </div>
-      <div class="slide hidden">
-        <img src="./src/images/unior2.png" alt="Unior Tools 2" loading="lazy">
-      </div>
-      <div class="slide hidden">
-        <img src="./src/images/unior3.png" alt="Unior Tools 3" loading="lazy">
+      <!-- Slides Container -->
+      <div class="h-full">
+        <div class="slide absolute inset-0">
+          <img src="./src/images/unior1.png" alt="Unior Tools 1" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="slide absolute inset-0 hidden">
+          <img src="./src/images/unior2.png" alt="Unior Tools 2" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="slide absolute inset-0 hidden">
+          <img src="./src/images/unior3.png" alt="Unior Tools 3" class="w-full h-full object-cover" loading="lazy">
+        </div>
       </div>
 
       <!-- Navigation Arrows -->
-      <button id="prev" aria-label="Previous slide">
+      <button id="prev" class="nav-arrow left-4" aria-label="Previous slide">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <button id="next" aria-label="Next slide">
+      <button id="next" class="nav-arrow right-4" aria-label="Next slide">
         <i class="fas fa-chevron-right"></i>
       </button>
 
       <!-- Dots -->
-      <div class="dots-container">
-        <button class="dot active" aria-label="Go to slide 1"></button>
-        <button class="dot" aria-label="Go to slide 2"></button>
-        <button class="dot" aria-label="Go to slide 3"></button>
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
+        <button class="dot bg-white/50 w-3 h-3 rounded-full hover:bg-white transition-colors active" aria-label="Go to slide 1"></button>
+        <button class="dot bg-white/50 w-3 h-3 rounded-full hover:bg-white transition-colors" aria-label="Go to slide 2"></button>
+        <button class="dot bg-white/50 w-3 h-3 rounded-full hover:bg-white transition-colors" aria-label="Go to slide 3"></button>
       </div>
     </div>
 
