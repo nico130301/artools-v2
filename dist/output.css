@@ -1932,6 +1932,10 @@ html {
   padding: 2rem;
 }
 
+.p-\[1px\] {
+  padding: 1px;
+}
+
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
