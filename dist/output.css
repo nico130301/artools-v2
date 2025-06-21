@@ -1793,6 +1793,11 @@ html {
   background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
 }
 
+.bg-green-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity, 1));
+}
+
 .bg-mainblue {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
@@ -1829,11 +1834,6 @@ html {
 
 .bg-white\/10 {
   background-color: rgb(255 255 255 / 0.1);
-}
-
-.bg-green-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 83 45 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[url\(\'\.\.\/images\/dot-pattern\.png\'\)\] {
@@ -2345,6 +2345,11 @@ html {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-green-950:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(5 46 22 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-mainblue:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
@@ -2362,11 +2367,6 @@ html {
 
 .hover\:bg-white\/20:hover {
   background-color: rgb(255 255 255 / 0.2);
-}
-
-.hover\:bg-green-950:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(5 46 22 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-opacity-90:hover {
