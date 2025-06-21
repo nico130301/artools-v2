@@ -182,7 +182,7 @@ function render(currentData, title = 'Product Categories') {
           <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
         <div class="p-2 md:p-3 border-t border-gray-200">
-          <div class="text-xs md:text-sm text-gray-500">${sizeRange}</div>
+          <div class="text-xs md:text-sm text-gray-500 truncate">${sizeRange}</div>
           <div class="text-sm md:text-base font-medium text-gray-800 truncate">${product.name}</div>
           <button class="w-full mt-2 py-1 md:py-2 px-2 md:px-4 bg-secondaryblue text-white text-xs md:text-sm rounded 
                       hover:bg-mainblue transition-colors duration-300">

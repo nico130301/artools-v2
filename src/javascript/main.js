@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async function() {
               : ''}
           </div>
           <div class="mt-auto p-4 border-t border-gray-200">
-            <div class="productSize text-gray-500 text-[11px] mb-1">${this.formatSizeRange(product)}</div>
+            <div class="productSize text-gray-500 text-[11px] truncate mb-1">${this.formatSizeRange(product)}</div>
             <div class="productName text-lg font-medium text-gray-800 truncate mb-3">${product.name}</div>
             <button class="w-full py-2 px-4 bg-secondaryblue text-white rounded-lg hover:bg-mainblue transition-colors duration-300 transform hover:scale-[1.02]">
               Más Detalles

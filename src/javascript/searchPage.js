@@ -1,5 +1,3 @@
-
-
 const app = document.querySelector('.categories');
 
 async function loadExcelData() {
@@ -61,7 +59,7 @@ function render(products, searchTerm) {
         <img src="${product.image || defaultProductImg}" alt="${product.name}" class="max-h-full w-auto object-contain">
       </div>
       <div class="mt-auto p-3 border-t border-gray-200">
-        <div class="text-gray-500 text-[11px]">${sizeRange}</div>
+        <div class="text-gray-500 text-[11px] truncate">${sizeRange}</div>
         <div class="text-lg font-medium text-gray-800 truncate">${product.name}</div>
         <button class="w-full mt-3 py-2 px-4 bg-secondaryblue text-white rounded hover:bg-mainblue transition-colors duration-300">Más Detalles</button>
       </div>
