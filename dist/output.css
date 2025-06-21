@@ -1008,7 +1008,7 @@ html {
   right: 3%;
   bottom: 4%;
   height: 20%;
-  width: 20%;
+  width: 4.5%;
 }
 
 .benefitImage {
@@ -1416,16 +1416,16 @@ html {
   width: 10%;
 }
 
-.w-\[20\%\] {
-  width: 20%;
-}
-
 .w-\[25\%\] {
   width: 25%;
 }
 
 .w-\[4\%\] {
   width: 4%;
+}
+
+.w-\[4\.5\%\] {
+  width: 4.5%;
 }
 
 .w-\[40\%\] {
