@@ -1,3 +1,11 @@
+// Add this helper function at the top of your file
+function formatSizeRange(product) {
+  const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
+  if (sizes.length === 0) return 'Tamaño indisponible';
+  if (sizes.length === 1) return `Tamaño: ${sizes[0]}${product.uom || ''}`;
+  return `Tamaños: ${sizes[0]}${product.uom || ''} - ${sizes[sizes.length - 1]}${product.uom || ''}`;
+}
+
 // Load Excel and parse data
 async function loadExcelData() {
   const response = await fetch('../data/data.xlsx');
@@ -306,6 +314,7 @@ const observer = new MutationObserver(() => {
 
         if (relatedProduct) {
           const imageToShow = relatedProduct.image || '../images/placeholder.png';
+          const sizeRange = formatSizeRange(relatedProduct);
           
           relatedProducts.innerHTML += `
             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer min-w-[280px] md:min-w-0 flex flex-col" 
@@ -316,6 +325,7 @@ const observer = new MutationObserver(() => {
                      class="max-h-full w-auto object-contain hover:scale-105 transition-transform duration-300">
               </div>
               <div class="p-3 border-t border-gray-200 mt-auto">
+                <div class="text-[11px] text-gray-500 mb-1">${sizeRange}</div>
                 <h3 class="text-lg font-medium text-gray-800 truncate">
                   ${relatedProduct.name}
                 </h3>
