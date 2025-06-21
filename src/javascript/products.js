@@ -66,6 +66,12 @@ function buildDataStructure(rows) {
 // Rendering
 function render(currentData, title = 'Product Categories') {
   app.innerHTML = '';
+  
+  // Scroll to top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
   // Update the page title while preserving the HTML structure
   const pageTitle = document.querySelector('.pageTitle span');
@@ -208,6 +214,12 @@ window.resetToRoot = function () {
   stack = [];
   render(rootData, 'Categoría de Productos');
 };
+
+// If you handle category clicks separately, you can also add it there:
+function handleCategoryClick(category, data) {
+  stack.push({ data, title: category });
+  render(data, category);
+}
 
 // INITIAL LOAD
 loadExcelData().then(loadedData => {
