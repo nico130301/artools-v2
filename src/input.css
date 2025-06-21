@@ -160,7 +160,7 @@
 
   /* Utility Components */
   .wapp {
-    @apply fixed right-[3%] bottom-[4%];
+    @apply fixed right-[3%] bottom-[4%] h-[20%] w-[20%];
   }
 
   .benefitImage{
