@@ -1936,6 +1936,10 @@ html {
   padding: 1px;
 }
 
+.p-\[2px\] {
+  padding: 2px;
+}
+
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
