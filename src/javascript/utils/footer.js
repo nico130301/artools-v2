@@ -16,8 +16,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         try {
           const formData = new FormData(form);
-          // Add additional data for email template
+          const subscriberEmail = formData.get('email');
+          
+          // Add CC and other configuration
           formData.append('_template', 'basic');
+          formData.append('_cc', subscriberEmail);
           formData.append('message', 'Nueva suscripción al boletín de noticias');
 
           const response = await fetch(form.action, {
@@ -107,7 +110,9 @@ document.addEventListener('DOMContentLoaded', async () => {
               body: JSON.stringify({
                 email: email,
                 _subject: 'Solicitud de cancelación de suscripción',
-                unsubscribe: true
+                _cc: email,
+                unsubscribe: true,
+                _autoresponse: 'Hemos recibido tu solicitud de cancelación de suscripción. Pronto dejarás de recibir nuestros correos.'
               })
             });
 
