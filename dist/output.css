@@ -731,7 +731,7 @@ html {
   overflow-x: hidden;
   --tw-bg-opacity: 1;
   background-color: rgb(245 247 250 / var(--tw-bg-opacity, 1));
-  padding-top: 70px;
+  padding-top: 60px;
 }
 
 @media (min-width: 768px) {
@@ -2036,8 +2036,8 @@ html {
   padding-left: 1rem;
 }
 
-.pt-\[70px\] {
-  padding-top: 70px;
+.pt-\[60px\] {
+  padding-top: 60px;
 }
 
 .text-left {
