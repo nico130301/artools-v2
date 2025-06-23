@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   const dots = document.querySelectorAll(".dot");
   const totalSlides = dots.length;
   let index = 0;
-  let interval = setInterval(nextSlide, 4000);
+  let interval = setInterval(nextSlide, 7000);
 
   function showSlide(i) {
     index = (i + totalSlides) % totalSlides;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   function resetInterval() {
     clearInterval(interval);
-    interval = setInterval(nextSlide, 4000);
+    interval = setInterval(nextSlide, 7000);
   }
 
   // Initialize
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
   // Configuration
   const CONFIG = {
-    autoplayDelay: 4000,
+    autoplayDelay: 7000,
     transitionDuration: 500,
     touchThreshold: 50,
     productImageHeight: 200
