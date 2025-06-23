@@ -1005,13 +1005,19 @@ html {
 
 .wapp {
   position: fixed;
-  right: 3%;
+  right: 7%;
   bottom: 4%;
   display: flex;
   height: 10%;
   width: 5%;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .wapp {
+    right: 3%;
+  }
 }
 
 .benefitImage {
@@ -1090,12 +1096,12 @@ html {
   right: 29%;
 }
 
-.right-\[3\%\] {
-  right: 3%;
-}
-
 .right-\[32\%\] {
   right: 32%;
+}
+
+.right-\[7\%\] {
+  right: 7%;
 }
 
 .top-0 {
@@ -2474,6 +2480,10 @@ html {
 }
 
 @media (min-width: 768px) {
+  .md\:right-\[3\%\] {
+    right: 3%;
+  }
+
   .md\:m-5 {
     margin: 1.25rem;
   }
