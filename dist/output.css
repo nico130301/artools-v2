@@ -1069,6 +1069,14 @@ html {
   inset: 0px;
 }
 
+.-right-2 {
+  right: -0.5rem;
+}
+
+.-top-2 {
+  top: -0.5rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -1135,14 +1143,6 @@ html {
 
 .top-\[15\%\] {
   top: 15%;
-}
-
-.-right-2 {
-  right: -0.5rem;
-}
-
-.-top-2 {
-  top: -0.5rem;
 }
 
 .z-0 {
