@@ -15,9 +15,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
         
         try {
+          const formData = new FormData(form);
+          // Add additional data for email template
+          formData.append('_template', 'basic');
+          formData.append('message', 'Nueva suscripción al boletín de noticias');
+
           const response = await fetch(form.action, {
             method: 'POST',
-            body: new FormData(form),
+            body: formData,
             headers: {
               'Accept': 'application/json'
             }
@@ -27,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Show success message
             messageDiv.innerHTML = `
               <div class="bg-green-100 text-green-700 px-4 py-2 rounded-lg">
-                ¡Gracias por suscribirte! Revisa tu correo para confirmar la suscripción.
+                ¡Gracias por suscribirte! Hemos enviado un correo de confirmación.
               </div>
             `;
             messageDiv.classList.remove('hidden');
