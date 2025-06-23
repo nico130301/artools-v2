@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     interval = setInterval(nextSlide, 7000);
   }
 
-  // Initialize
+  // Initializee
   showSlide(index);
 
   
