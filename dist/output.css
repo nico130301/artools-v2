@@ -1015,7 +1015,7 @@ html {
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: rgb(20 83 45 / var(--tw-bg-opacity, 1));
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .wapp:hover {
@@ -1029,6 +1029,7 @@ html {
     bottom: 3.5rem;
     height: 5rem;
     width: 5rem;
+    padding: 3rem;
   }
 }
 
@@ -2700,6 +2701,10 @@ html {
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
+  .md\:p-12 {
+    padding: 3rem;
+  }
+
   .md\:p-2 {
     padding: 0.5rem;
   }
@@ -2829,6 +2834,11 @@ html {
     line-height: 1;
   }
 
+  .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -2842,11 +2852,6 @@ html {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .md\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1;
   }
 }
 
