@@ -160,7 +160,7 @@
 
   /* Utility Components */
   .wapp {
-    @apply fixed right-10 md:right-14 bottom-10 md:bottom-14 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center;
+    @apply fixed right-10 md:right-14 bottom-10 md:bottom-14 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center p-4  bg-green-900 hover:bg-green-950;
   }
 
   .benefitImage{
