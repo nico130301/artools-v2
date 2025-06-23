@@ -1015,7 +1015,7 @@ html {
 }
 
 .benefitImage {
-  padding: 0.75rem;
+  padding: 1.25rem;
 }
 
 .pointer-events-none {
@@ -1933,10 +1933,6 @@ html {
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-\[2px\] {
-  padding: 2px;
 }
 
 .px-10 {
