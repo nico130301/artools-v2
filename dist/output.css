@@ -1293,6 +1293,10 @@ html {
   display: none;
 }
 
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .h-0\.5 {
   height: 0.125rem;
 }
@@ -1359,10 +1363,6 @@ html {
 
 .h-\[800px\] {
   height: 800px;
-}
-
-.h-\[92\%\] {
-  height: 92%;
 }
 
 .h-full {
@@ -2066,8 +2066,8 @@ html {
   line-height: 2.5rem;
 }
 
-.text-6xl {
-  font-size: 3.75rem;
+.text-5xl {
+  font-size: 3rem;
   line-height: 1;
 }
 
