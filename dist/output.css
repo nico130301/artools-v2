@@ -1006,6 +1006,7 @@ html {
 .wapp {
   position: fixed;
   right: 2.5rem;
+  bottom: 2.5rem;
   display: flex;
   height: 2.5rem;
   width: 2.5rem;
@@ -1060,6 +1061,10 @@ html {
 
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-10 {
+  bottom: 2.5rem;
 }
 
 .bottom-16 {
@@ -2478,10 +2483,6 @@ html {
 }
 
 @media (min-width: 768px) {
-  .md\:bottom-10 {
-    bottom: 2.5rem;
-  }
-
   .md\:bottom-14 {
     bottom: 3.5rem;
   }
