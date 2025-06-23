@@ -48,8 +48,8 @@ function render(products) {
     
     // Add the 15% promotion label
     card.innerHTML = `
-      <div class="absolute -top-2 -right-2 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full z-10 shadow-lg">
-        15% OFF
+      <div class="absolute top-2 right-2 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full z-10 shadow-lg">
+        -15%
       </div>
       <div class="p-7 flex items-center justify-center">
         <img src="${product.image || defaultProductImg}" alt="${product.name}" class="max-h-full w-auto object-contain">
