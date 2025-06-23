@@ -1005,18 +1005,20 @@ html {
 
 .wapp {
   position: fixed;
-  right: 7%;
-  bottom: 4%;
+  right: 2.5rem;
   display: flex;
-  height: 10%;
-  width: 5%;
+  height: 2.5rem;
+  width: 2.5rem;
   align-items: center;
   justify-content: center;
 }
 
 @media (min-width: 768px) {
   .wapp {
-    right: 3%;
+    right: 3.5rem;
+    bottom: 3.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
   }
 }
 
@@ -1064,10 +1066,6 @@ html {
   bottom: 4rem;
 }
 
-.bottom-\[4\%\] {
-  bottom: 4%;
-}
-
 .left-0 {
   left: 0px;
 }
@@ -1078,6 +1076,10 @@ html {
 
 .right-0 {
   right: 0px;
+}
+
+.right-10 {
+  right: 2.5rem;
 }
 
 .right-4 {
@@ -1098,10 +1100,6 @@ html {
 
 .right-\[32\%\] {
   right: 32%;
-}
-
-.right-\[7\%\] {
-  right: 7%;
 }
 
 .top-0 {
@@ -1349,10 +1347,6 @@ html {
   height: 2rem;
 }
 
-.h-\[10\%\] {
-  height: 10%;
-}
-
 .h-\[2px\] {
   height: 2px;
 }
@@ -1439,10 +1433,6 @@ html {
 
 .w-\[40\%\] {
   width: 40%;
-}
-
-.w-\[5\%\] {
-  width: 5%;
 }
 
 .w-auto {
@@ -2488,8 +2478,16 @@ html {
 }
 
 @media (min-width: 768px) {
-  .md\:right-\[3\%\] {
-    right: 3%;
+  .md\:bottom-10 {
+    bottom: 2.5rem;
+  }
+
+  .md\:bottom-14 {
+    bottom: 3.5rem;
+  }
+
+  .md\:right-14 {
+    right: 3.5rem;
   }
 
   .md\:m-5 {
@@ -2584,6 +2582,10 @@ html {
     height: 2.5rem;
   }
 
+  .md\:h-14 {
+    height: 3.5rem;
+  }
+
   .md\:h-60 {
     height: 15rem;
   }
@@ -2606,6 +2608,10 @@ html {
 
   .md\:w-11\/12 {
     width: 91.666667%;
+  }
+
+  .md\:w-14 {
+    width: 3.5rem;
   }
 
   .md\:w-2\/3 {
