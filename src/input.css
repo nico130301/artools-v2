@@ -167,5 +167,9 @@
     @apply p-5;
   }
 
+  #slides > div {
+  position: relative;
+  z-index: 20;
+}
 
 }
