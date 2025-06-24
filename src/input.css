@@ -173,11 +173,11 @@
   }
 
   #prev{
-    @apply bg-mainblue/80 hover:bg-mainblue/90;
+    @apply bg-mainblue hover:bg-mainblue/90;
   }
 
   #next{
-    @apply bg-secondaryblue/80 hover:bg-secondaryblue/90;
+    @apply bg-secondaryblue hover:bg-secondaryblue/90;
   }
 
   #prev:hover, #next:hover {

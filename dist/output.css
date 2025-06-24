@@ -1057,7 +1057,8 @@ html {
 }
 
 #prev {
-  background-color: rgb(27 60 95 / 0.8);
+  --tw-bg-opacity: 1;
+  background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
 }
 
 #prev:hover {
@@ -1065,7 +1066,8 @@ html {
 }
 
 #next {
-  background-color: rgb(74 111 165 / 0.8);
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 111 165 / var(--tw-bg-opacity, 1));
 }
 
 #next:hover {
@@ -1883,10 +1885,6 @@ html {
   background-color: rgb(27 60 95 / 0.05);
 }
 
-.bg-mainblue\/80 {
-  background-color: rgb(27 60 95 / 0.8);
-}
-
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity, 1));
@@ -1905,10 +1903,6 @@ html {
 .bg-secondaryblue {
   --tw-bg-opacity: 1;
   background-color: rgb(74 111 165 / var(--tw-bg-opacity, 1));
-}
-
-.bg-secondaryblue\/80 {
-  background-color: rgb(74 111 165 / 0.8);
 }
 
 .bg-white {
