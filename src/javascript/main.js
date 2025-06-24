@@ -1,90 +1,85 @@
 document.addEventListener('DOMContentLoaded', async function() {
-  // Add these variables at the start with your other slideshow variables
+  // Slider functionality
+  const slides = document.getElementById('slides');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+  const totalSlides = slides.children.length;
+  let index = 0;
+
+  // Touch handling variables
   let touchStartX = 0;
   let touchEndX = 0;
-  const slides = document.getElementById("slides");
-  const dots = document.querySelectorAll(".dot");
-  const totalSlides = dots.length;
-  let index = 0;
-  let interval = setInterval(nextSlide, 7000);
+  let isDragging = false;
+  let startTranslateX = 0;
+  let currentTranslateX = 0;
 
-  // Add touch event listeners
-  slides.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
-
-  slides.addEventListener('touchmove', (e) => {
-    touchEndX = e.touches[0].clientX;
-    // Calculate the difference
-    const diff = touchStartX - touchEndX;
-    // Apply real-time transform while dragging
-    const offset = -index * 100 - (diff / slides.offsetWidth * 100);
-    slides.style.transform = `translateX(${offset}%)`;
-    // Prevent default scrolling
-    e.preventDefault();
-  });
-
-  slides.addEventListener('touchend', () => {
-    const diff = touchStartX - touchEndX;
-    const threshold = window.innerWidth * 0.15; // 15% of screen width
-
-    if (Math.abs(diff) > threshold) {
-      if (diff > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
+  function updateSlidePosition(animate = true) {
+    if (animate) {
+      slides.style.transition = 'transform 0.5s ease-out';
     } else {
-      // Return to original position if threshold not met
-      showSlide(index);
+      slides.style.transition = 'none';
     }
-    resetInterval();
-  });
-
-  // Update your showSlide function to be smoother
-  function showSlide(i) {
-    index = (i + totalSlides) % totalSlides;
-    slides.style.transition = 'transform 0.3s ease-out';
     slides.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle("opacity-100", idx === index);
-      dot.classList.toggle("opacity-50", idx !== index);
-    });
   }
 
   function nextSlide() {
-    showSlide(index + 1);
+    index = (index + 1) % totalSlides;
+    updateSlidePosition();
   }
 
   function prevSlide() {
-    showSlide(index - 1);
+    index = (index - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
   }
 
-  document.getElementById("next").addEventListener("click", () => {
-    nextSlide();
-    resetInterval();
+  // Touch event handlers
+  slides.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    isDragging = true;
+    startTranslateX = -index * 100;
+    slides.style.transition = 'none';
+  }, { passive: true });
+
+  slides.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - touchStartX;
+    const movePercent = (diff / window.innerWidth) * 100;
+    currentTranslateX = startTranslateX + movePercent;
+    
+    // Limit the sliding to one slide at a time
+    if (currentTranslateX > 0 || currentTranslateX < -((totalSlides - 1) * 100)) {
+      return;
+    }
+    
+    slides.style.transform = `translateX(${currentTranslateX}%)`;
+  }, { passive: true });
+
+  slides.addEventListener('touchend', (e) => {
+    isDragging = false;
+    const movePercent = currentTranslateX - startTranslateX;
+    
+    // Determine if we should move to next/prev slide or snap back
+    if (Math.abs(movePercent) > 20) { // 20% threshold for slide change
+      if (movePercent > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    } else {
+      updateSlidePosition(); // Snap back to current slide
+    }
   });
 
-  document.getElementById("prev").addEventListener("click", () => {
-    prevSlide();
-    resetInterval();
-  });
+  // Add event listeners for desktop
+  prevButton.addEventListener('click', prevSlide);
+  nextButton.addEventListener('click', nextSlide);
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-      showSlide(i);
-      resetInterval();
-    });
-  });
-
-  function resetInterval() {
-    clearInterval(interval);
-    interval = setInterval(nextSlide, 7000);
+  // Auto-sliding (only for desktop)
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    setInterval(nextSlide, 5000);
   }
-
-  // Initializee
-  showSlide(index);
-
 
   // Configuration
   const CONFIG = {

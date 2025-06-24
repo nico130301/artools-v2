@@ -160,27 +160,12 @@
 
   /* Utility Components */
   .wapp {
-    @apply fixed right-5 md:right-14 bottom-5 md:bottom-14 h-14 w-14 md:h-20 md:w-20 flex items-center justify-center  md:p-12 p-8  bg-green-900 hover:bg-green-950 rounded-full;
+    @apply fixed right-5 md:right-10 bottom-5 md:bottom-8 h-14 w-14 md:h-20 md:w-20 flex items-center justify-center  md:p-10 p-8  bg-green-900 hover:bg-green-950 rounded-full;
   }
 
   .benefitImage{
     @apply p-5;
   }
 
-  /* Slideshow Navigationn */
-  #prev, #next {
-    @apply hidden md:flex items-center p-1 md:p-4 justify-center transition-colors duration-300;
-  }
 
-  #prev{
-    @apply bg-mainblue hover:bg-mainblue/90;
-  }
-
-  #next{
-    @apply bg-secondaryblue hover:bg-secondaryblue/90;
-  }
-
-  #prev:hover, #next:hover {
-    @apply cursor-pointer;
-  }
 }

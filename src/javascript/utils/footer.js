@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const email = unsubscribeForm.email.value;
 
           try {
-            const response = await fetch('https://formsubmit.co/ajax/nicroraza@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/contact@artoolsweb.com', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
