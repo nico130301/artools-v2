@@ -1,14 +1,50 @@
 document.addEventListener('DOMContentLoaded', async function() {
-
-   //slideshow
+  // Add these variables at the start with your other slideshow variables
+  let touchStartX = 0;
+  let touchEndX = 0;
   const slides = document.getElementById("slides");
   const dots = document.querySelectorAll(".dot");
   const totalSlides = dots.length;
   let index = 0;
   let interval = setInterval(nextSlide, 7000);
 
+  // Add touch event listeners
+  slides.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  slides.addEventListener('touchmove', (e) => {
+    touchEndX = e.touches[0].clientX;
+    // Calculate the difference
+    const diff = touchStartX - touchEndX;
+    // Apply real-time transform while dragging
+    const offset = -index * 100 - (diff / slides.offsetWidth * 100);
+    slides.style.transform = `translateX(${offset}%)`;
+    // Prevent default scrolling
+    e.preventDefault();
+  });
+
+  slides.addEventListener('touchend', () => {
+    const diff = touchStartX - touchEndX;
+    const threshold = window.innerWidth * 0.15; // 15% of screen width
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    } else {
+      // Return to original position if threshold not met
+      showSlide(index);
+    }
+    resetInterval();
+  });
+
+  // Update your showSlide function to be smoother
   function showSlide(i) {
     index = (i + totalSlides) % totalSlides;
+    slides.style.transition = 'transform 0.3s ease-out';
     slides.style.transform = `translateX(-${index * 100}%)`;
     dots.forEach((dot, idx) => {
       dot.classList.toggle("opacity-100", idx === index);
@@ -49,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Initializee
   showSlide(index);
 
-  
+
   // Configuration
   const CONFIG = {
     autoplayDelay: 7000,
@@ -117,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
   }
 
- 
+
   // Initialize Application
   try {
     // Load Excel data

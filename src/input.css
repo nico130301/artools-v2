@@ -169,7 +169,7 @@
 
   /* Slideshow Navigation */
   #prev, #next {
-    @apply flex items-center p-1 md:p-4 justify-center bg-mainblue/30 hover:bg-mainblue/40 transition-colors duration-300;
+    @apply hidden md:flex items-center p-1 md:p-4 justify-center bg-mainblue/30 hover:bg-mainblue/40 transition-colors duration-300;
   }
 
   #prev:hover, #next:hover {
