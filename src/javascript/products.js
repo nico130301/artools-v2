@@ -94,7 +94,7 @@ function render(currentData, title = 'Product Categories') {
   const breadcrumb = document.querySelector('.breadcrumbs');
   let breadcrumbHTML = `
     <span class="text-gray-600">
-      <a href="/index.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
+      <a href="/artools-v2/index.html" class="text-mainblue hover:underline"><i class="fa-solid fa-house"></i></a>
       <span class="mx-2">/</span>
       <a class="text-mainblue hover:underline cursor-pointer" onclick="resetToRoot()">Categoría de Productos</a>
     </span>
