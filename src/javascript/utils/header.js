@@ -1,4 +1,4 @@
-fetch('/artools-v2/src/html/utils/header.html')
+fetch('/src/html/utils/header.html')
   .then(response => response.text())
   .then(data => {
     document.querySelector('.top').innerHTML = data;
@@ -15,7 +15,7 @@ fetch('/artools-v2/src/html/utils/header.html')
 
     async function loadProductCategories() {
       try {
-        const response = await fetch('/artools-v2/src/data/data.xlsx');  // Updated path
+        const response = await fetch('/src/data/data.xlsx');  // Updated path
         const blob = await response.blob();
         
         const reader = new FileReader();
@@ -37,14 +37,14 @@ fetch('/artools-v2/src/html/utils/header.html')
             categories.forEach(category => {
               if (category) {
                 const item = document.createElement('a');
-                item.href = '/artools-v2/src/html/products.html';
+                item.href = '/src/html/products.html';
                 item.setAttribute('data-category', category);
                 item.className = 'block w-full text-white px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center flex items-center justify-center min-h-[4rem]';
                 item.textContent = category;
                 item.addEventListener('click', (e) => {
                   e.preventDefault();
                   localStorage.setItem('selectedCategory', category);
-                  window.location.href = '/artools-v2/src/html/products.html';
+                  window.location.href = '/src/html/products.html';
                 });
                 dropdown.appendChild(item);
               }
@@ -89,7 +89,7 @@ fetch('/artools-v2/src/html/utils/header.html')
     function handleSearch() {
       const query = searchInput.value.trim();
       if (query) {
-        window.location.href = `/artools-v2/src/html/searchPage.html?query=${encodeURIComponent(query)}`;
+        window.location.href = `/src/html/searchPage.html?query=${encodeURIComponent(query)}`;
       }
     }    
 

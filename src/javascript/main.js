@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Initialize Application
   try {
     // Load Excel data
-    const excelPath = '/artools-v2/src/data/data.xlsx';
+    const excelPath = '/src/data/data.xlsx';
     const response = await fetch(excelPath);
     if (!response.ok) {
       throw new Error(`Failed to load Excel file: ${response.status}`);
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 { title: category, data: null }
               ]));
               
-              window.location.href = '/artools-v2/src/html/productPage.html';
+              window.location.href = '/src/html/productPage.html';
             }
           });
         });
