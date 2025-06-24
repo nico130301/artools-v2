@@ -55,6 +55,7 @@ function buildDataStructure(rows) {
         spec4: row.spec4,
         spec5Title: row.spec5Title,
         spec5: row.spec5,
+        promo: row.promo, 
         related: row.related ? row.related.split(';').map(r => r.trim()) : []
       });
     }
@@ -176,8 +177,15 @@ function render(currentData, title = 'Product Categories') {
       }
 
       const card = document.createElement('div');
-      card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
+      card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer relative'; // Added relative positioning
+
+      // Add the promo badge if product has promo flag
+      const promoHTML = product.promo && product.promo.toLowerCase() === 'x' 
+        ? `<div class="absolute top-2 right-2 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full z-10 shadow-lg">-15%</div>`
+        : '';
+
       card.innerHTML = `
+        ${promoHTML}
         <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-60">
           <img src="${imageToShow}" alt="${product.name}" class="max-h-full w-auto object-contain">
         </div>
