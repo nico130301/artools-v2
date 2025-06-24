@@ -37,18 +37,18 @@
   <body class="body">
     <div class="top"></div>
 
-    <div class="w-full flex flex-row">
-      <button id="prev" class=" p-2 md:p-4 rounded-full transition-colors items-center justify-center pointer-events-auto">
-        <i class="fas fa-chevron-left text-mainblue" ></i>
+    <div class="w-full flex flex-row h-[500px]"> <!-- Added fixed height to container -->
+      <button id="prev" class=" transition-colors flex items-center justify-center pointer-events-auto duration-300">
+        <i class="fas fa-chevron-left text-mainblue"></i>
       </button>
 
       <!-- Slideshow Container -->
       <div class="relative w-full overflow-hidden shadow-[0_10px_20px_-15px_rgba(0,0,0,0.3)]">
         <!-- Slides -->
-        <div id="slides" class="flex transition-transform duration-500 ease-in-out z-30">
-          <a href="./src/html/products.html" class="w-full flex-shrink-0 block cursor-pointer">
-            <img src="./src/images/unior1.png" class="w-full md:block hidden" />
-            <img src="./src/images/unior1_phone.png" class="w-full block md:hidden" />
+        <div id="slides" class="flex transition-transform duration-500 ease-in-out z-30 h-full"> <!-- Added h-full -->
+          <a href="./src/html/products.html" class="w-full flex-shrink-0 block cursor-pointer h-full"> <!-- Added h-full -->
+            <img src="./src/images/unior1.png" class="w-full h-full object-cover md:block hidden" /> <!-- Added h-full and object-cover -->
+            <img src="./src/images/unior1_phone.png" class="w-full h-full object-cover block md:hidden" />
           </a>
           <a href="./src/html/promo.html" class="w-full flex-shrink-0 block cursor-pointer">
             <img src="./src/images/unior2.png" class="w-full md:block hidden" />
@@ -61,7 +61,7 @@
         </div>
       </div>
       
-      <button id="next" class=" p-2 md:p-4 rounded-full transition-colors mr-4 items-center justify-center pointer-events-auto">
+      <button id="next" class="transition-colors flex items-center justify-center pointer-events-auto duration-300">
         <i class="fas fa-chevron-right text-mainblue"></i>
       </button>
     </div>

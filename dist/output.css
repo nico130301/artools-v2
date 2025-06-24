@@ -1037,6 +1037,33 @@ html {
   padding: 1.25rem;
 }
 
+/* Slideshow Navigation */
+
+#prev, #next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(27 60 95 / 0.3);
+  padding: 0.25rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+#prev:hover, #next:hover {
+  background-color: rgb(27 60 95 / 0.4);
+}
+
+@media (min-width: 768px) {
+  #prev, #next {
+    padding: 1rem;
+  }
+}
+
+#prev:hover, #next:hover {
+  cursor: pointer;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -1067,14 +1094,6 @@ html {
 
 .inset-0 {
   inset: 0px;
-}
-
-.-right-2 {
-  right: -0.5rem;
-}
-
-.-top-2 {
-  top: -0.5rem;
 }
 
 .bottom-0 {
@@ -1143,22 +1162,6 @@ html {
 
 .top-\[15\%\] {
   top: 15%;
-}
-
-.-right-1 {
-  right: -0.25rem;
-}
-
-.-top-1 {
-  top: -0.25rem;
-}
-
-.right-1 {
-  right: 0.25rem;
-}
-
-.top-1 {
-  top: 0.25rem;
 }
 
 .z-0 {
@@ -1864,6 +1867,10 @@ html {
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
 }
 
+.bg-mainblue\/30 {
+  background-color: rgb(27 60 95 / 0.3);
+}
+
 .bg-mainblue\/5 {
   background-color: rgb(27 60 95 / 0.05);
 }
@@ -2424,6 +2431,10 @@ html {
 .hover\:bg-mainblue:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-mainblue\/40:hover {
+  background-color: rgb(27 60 95 / 0.4);
 }
 
 .hover\:bg-red-700:hover {
