@@ -167,7 +167,7 @@
     @apply p-5;
   }
 
-  /* Slideshow Navigation */
+  /* Slideshow Navigationn */
   #prev, #next {
     @apply hidden md:flex items-center p-1 md:p-4 justify-center transition-colors duration-300;
   }
