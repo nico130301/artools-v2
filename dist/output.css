@@ -1043,15 +1043,10 @@ html {
   display: none;
   align-items: center;
   justify-content: center;
-  background-color: rgb(27 60 95 / 0.3);
   padding: 0.25rem;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
-}
-
-#prev:hover, #next:hover {
-  background-color: rgb(27 60 95 / 0.4);
 }
 
 @media (min-width: 768px) {
@@ -1059,6 +1054,22 @@ html {
     display: flex;
     padding: 1rem;
   }
+}
+
+#prev {
+  background-color: rgb(27 60 95 / 0.8);
+}
+
+#prev:hover {
+  background-color: rgb(27 60 95 / 0.9);
+}
+
+#next {
+  background-color: rgb(74 111 165 / 0.8);
+}
+
+#next:hover {
+  background-color: rgb(74 111 165 / 0.9);
 }
 
 #prev:hover, #next:hover {
@@ -1868,12 +1879,12 @@ html {
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
 }
 
-.bg-mainblue\/30 {
-  background-color: rgb(27 60 95 / 0.3);
-}
-
 .bg-mainblue\/5 {
   background-color: rgb(27 60 95 / 0.05);
+}
+
+.bg-mainblue\/80 {
+  background-color: rgb(27 60 95 / 0.8);
 }
 
 .bg-red-100 {
@@ -1894,6 +1905,10 @@ html {
 .bg-secondaryblue {
   --tw-bg-opacity: 1;
   background-color: rgb(74 111 165 / var(--tw-bg-opacity, 1));
+}
+
+.bg-secondaryblue\/80 {
+  background-color: rgb(74 111 165 / 0.8);
 }
 
 .bg-white {
@@ -2444,10 +2459,6 @@ html {
 .hover\:bg-mainblue:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(27 60 95 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-mainblue\/40:hover {
-  background-color: rgb(27 60 95 / 0.4);
 }
 
 .hover\:bg-red-700:hover {
