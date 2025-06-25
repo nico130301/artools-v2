@@ -158,33 +158,21 @@ document.addEventListener('DOMContentLoaded', () => {
       loadingSpinner.classList.remove('hidden');
       submitButton.querySelector('span').textContent = 'Enviando...';
 
-      // Submit the form
+      // Collect form data
       const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+      collectCartInfoForForm(); // Make sure cart details are included
 
-      if (!response.ok) throw new Error('Network response was not ok');
+      // Submit using regular form submission instead of fetch
+      form.submit();
 
-      // Handle success (e.g., show a success message, redirect, etc.)
-      alert('Formulario enviado con éxito');
-      cart.length = 0; // Clear cart
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-      updateCartTitle();
-      form.reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Hubo un problema al enviar el formulario. Por favor, inténtelo de nuevo más tarde.');
-    } finally {
-      // Hide loading state
+      console.error('Error:', error);
+      alert('Lo sentimos, hubo un error al enviar el mensaje. Por favor intente nuevamente.');
+      
+      // Reset button state
       submitButton.disabled = false;
       loadingSpinner.classList.add('hidden');
-      submitButton.querySelector('span').textContent = 'Enviar Pedido';
+      submitButton.querySelector('span').textContent = 'ENVIE SOLICITUD DE ORDEN';
     }
   });
 
