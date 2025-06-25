@@ -36,32 +36,46 @@
 
   <body class="body">
     <div class="top"></div>
-    <!-- Slides container -->
-    <div id="slides" class="flex transition-transform duration-500 ease-in-out w-full h-full">
-      <a href="/src/html/products.html" class="w-full flex-shrink-0">
-        <img src="/src/images/unior1.png" alt="Slide 1" class="w-full h-full object-cover hidden md:block" />
-        <img src="/src/images/unior1_phone.png" alt="Slide 1 (Mobile)" class="w-full h-full object-cover block md:hidden" />
-      </a>
-      <a href="/src/html/promo.html" class="w-full flex-shrink-0">
-        <img src="/src/images/unior2.png" alt="Slide 2" class="w-full h-full object-cover hidden md:block">
-        <img src="/src/images/unior2_phone.png" alt="Slide 2 (Mobile)" class="w-full h-full object-cover block md:hidden">
-      </a>
-      <a href="/src/html/authorizedDistributor.html" class="w-full flex-shrink-0">
-        <img src="/src/images/unior3.png" alt="Slide 3" class="w-full h-full object-cover hidden md:block">
-        <img src="/src/images/unior3_phone.png" alt="Slide 3 (Mobile)" class="w-full h-full object-cover block md:hidden">
-      </a>
+    <!-- Slides container with additional cloned slides -->
+    <div class="relative w-full overflow-hidden">
+      <div id="slides" class="flex transition-transform duration-500 ease-in-out w-full h-full">
+        <!-- Clone of last slide -->
+        <a href="/src/html/authorizedDistributor.html" class="w-full flex-shrink-0">
+          <img src="/src/images/unior3.png" alt="Slide 3" class="w-full h-full object-cover hidden md:block" />
+          <img src="/src/images/unior3_phone.png" alt="Slide 3 (Mobile)" class="w-full h-full object-cover block md:hidden" />
+        </a>
+        
+        <!-- Original slides -->
+        <a href="/src/html/products.html" class="w-full flex-shrink-0">
+          <img src="/src/images/unior1.png" alt="Slide 1" class="w-full h-full object-cover hidden md:block" />
+          <img src="/src/images/unior1_phone.png" alt="Slide 1 (Mobile)" class="w-full h-full object-cover block md:hidden" />
+        </a>
+        <a href="/src/html/promo.html" class="w-full flex-shrink-0">
+          <img src="/src/images/unior2.png" alt="Slide 2" class="w-full h-full object-cover hidden md:block" />
+          <img src="/src/images/unior2_phone.png" alt="Slide 2 (Mobile)" class="w-full h-full object-cover block md:hidden" />
+        </a>
+        <a href="/src/html/authorizedDistributor.html" class="w-full flex-shrink-0">
+          <img src="/src/images/unior3.png" alt="Slide 3" class="w-full h-full object-cover hidden md:block" />
+          <img src="/src/images/unior3_phone.png" alt="Slide 3 (Mobile)" class="w-full h-full object-cover block md:hidden" />
+        </a>
+        
+        <!-- Clone of first slide -->
+        <a href="/src/html/products.html" class="w-full flex-shrink-0">
+          <img src="/src/images/unior1.png" alt="Slide 1" class="w-full h-full object-cover hidden md:block" />
+          <img src="/src/images/unior1_phone.png" alt="Slide 1 (Mobile)" class="w-full h-full object-cover block md:hidden" />
+        </a>
+      </div>
+
+      <!-- Prev Button -->
+      <button id="prevButton" class="absolute left-0 top-1/2 md:top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-80 text-black px-4 py-2 shadow-lg hidden md:block">
+        <i class="fas fa-chevron-left font-bold"></i>
+      </button>
+
+      <!-- Next Button -->
+      <button id="nextButton" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-80 text-black px-4 py-2 shadow-lg hidden md:block">
+        <i class="fas fa-chevron-right font-bold"></i>
+      </button>
     </div>
-
-    <!-- Prev Button -->
-    <button id="prevButton" class="absolute left-0 top-1/2 md:top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-80 text-black px-4 py-2 shadow-lg hidden md:block">
-      <i class="fas fa-chevron-left font-bold"></i>
-    </button>
-
-    <!-- Next Button -->
-    <button id="nextButton" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-80 text-black px-4 py-2 shadow-lg hidden md:block">
-      <i class="fas fa-chevron-right font-bold"></i>
-    </button>
-  </div>
 
     <!-- Enhanced New Products Section -->
     <div class="newProducts container mx-auto px-4 my-12 md:my-24 md:px-40">
