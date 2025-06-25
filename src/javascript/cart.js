@@ -152,30 +152,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
+      // Show loading state
       submitButton.disabled = true;
       submitButton.textContent = 'Enviando...';
 
+      // Update cart details
       updateCartDetails();
-      const formData = new FormData(form);
       
+      // Prepare form data
+      const formData = new FormData(form);
+      const jsonData = Object.fromEntries(formData);
+
+      // Submit to Formspark
       const response = await fetch(form.action, {
         method: 'POST',
-        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
       });
 
       if (response.ok) {
+        // Clear cart and show success message
         localStorage.removeItem('cart');
         alert('Orden enviada exitosamente');
-        window.location.href = '/src/html/cart.html'; // Redirect to home or thank you page
+        
+        // Redirect to success page
+        window.location.href = formData.get('_redirect');
       } else {
         throw new Error('Error en el envío');
       }
     } catch (error) {
+      console.error('Error:', error);
       alert('Error al enviar la orden. Por favor, intente nuevamente.');
     } finally {
+      // Reset button state
       submitButton.disabled = false;
       submitButton.textContent = 'ENVIE SOLICITUD DE ORDEN';
     }
