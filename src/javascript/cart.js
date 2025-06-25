@@ -3,11 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.cartContainer');
   const form = document.querySelector('form');
   const termsCheckbox = document.getElementById('termsCheckbox');
+  const submitButton = document.getElementById('submitButton');
+  const loadingSpinner = document.getElementById('loadingSpinner');
 
   function updateCartTitle() {
     const cartItems = cart.reduce((total, item) => total + item.quantity, 0);
     const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     
+    // Update cart badge in hero section
+    const cartBadge = document.querySelector('.cart-badge');
+    if (cartBadge) {
+      cartBadge.textContent = `${cartItems} ${cartItems === 1 ? 'item' : 'items'}`;
+    }
+
     // Update page title with product count
     const pageTitle = document.querySelector('h1');
     if (pageTitle) {
@@ -96,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
-        updateCartTitle(); // Add this line
+        updateCartTitle();
       });
     });
 
@@ -107,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart[index].quantity++;
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
-        updateCartTitle(); 
+        updateCartTitle();
       });
     });
 
@@ -121,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
-        updateCartTitle(); 
+        updateCartTitle();
       });
     });
   }
@@ -135,13 +143,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Form submission handler
-  form.addEventListener('submit', (e) => {
-    if (!termsCheckbox.checked) {
-      e.preventDefault();
-      alert('Please accept the terms and conditions before submitting the request.');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Validate form
+    if (!form.checkValidity()) {
+      form.reportValidity();
       return;
     }
-    collectCartInfoForForm();
+
+    try {
+      // Show loading state
+      submitButton.disabled = true;
+      loadingSpinner.classList.remove('hidden');
+      submitButton.querySelector('span').textContent = 'Enviando...';
+
+      // Submit the form
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!response.ok) throw new Error('Network response was not ok');
+
+      // Handle success (e.g., show a success message, redirect, etc.)
+      alert('Formulario enviado con éxito');
+      cart.length = 0; // Clear cart
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+      updateCartTitle();
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Hubo un problema al enviar el formulario. Por favor, inténtelo de nuevo más tarde.');
+    } finally {
+      // Hide loading state
+      submitButton.disabled = false;
+      loadingSpinner.classList.add('hidden');
+      submitButton.querySelector('span').textContent = 'Enviar Pedido';
+    }
   });
 
   renderCart();

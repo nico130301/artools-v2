@@ -122,74 +122,12 @@
 
               <!-- Submit Button -->
               <button type="submit" 
-                class="w-full py-3 px-6 bg-mainblue text-white rounded-lg hover:bg-secondaryblue                
-                document.addEventListener('DOMContentLoaded', () => {
-                  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                  const container = document.querySelector('.cartContainer');
-                  const form = document.querySelector('form');
-                  const termsCheckbox = document.getElementById('termsCheckbox');
-                
-                  function updateCartTitle() {
-                    const cartItems = cart.reduce((total, item) => total + item.quantity, 0);
-                    const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                    
-                    // Update cart badge in hero section
-                    const cartBadge = document.querySelector('.cart-badge');
-                    if (cartBadge) {
-                      cartBadge.textContent = `${cartItems} ${cartItems === 1 ? 'item' : 'items'}`;
-                    }
-                
-                    // Update page title with product count
-                    const pageTitle = document.querySelector('h1');
-                    if (pageTitle) {
-                      pageTitle.textContent = `Su Carrito (${cartItems} ${cartItems === 1 ? 'producto' : 'productos'})`;
-                    }
-                
-                    // Update global cart count
-                    if (typeof window.updateCartCount === 'function') {
-                      window.updateCartCount();
-                    }
-                  }                
-                  function attachEventListeners() {
-                    // Delete item handlers
-                    document.querySelectorAll('.deleteItem').forEach(button => {
-                      button.addEventListener('click', (e) => {
-                        const index = e.currentTarget.dataset.index;
-                        cart.splice(index, 1);
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                        updateCartTitle(); // Add this line
-                      });
-                    });
-                
-                    // Quantity handlers
-                    document.querySelectorAll('.addQuantity').forEach(button => {
-                      button.addEventListener('click', (e) => {
-                        const index = e.currentTarget.dataset.index;
-                        cart[index].quantity++;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                        updateCartTitle(); // Add this line
-                      });
-                    });
-                
-                    document.querySelectorAll('.removeQuantity').forEach(button => {
-                      button.addEventListener('click', (e) => {
-                        const index = e.currentTarget.dataset.index;
-                        if (cart[index].quantity > 1) {
-                          cart[index].quantity--;
-                        } else {
-                          cart.splice(index, 1);
-                        }
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                        updateCartTitle(); // Add this line
-                      });
-                    });
-                  }
-                
-                }); focus:ring-4 focus:ring-blue-200 transition-colors font-semibold text-lg">
-                ENVIE SOLICITUD DE ORDEN
+                id="submitButton"
+                class="w-full py-3 px-6 bg-mainblue text-white rounded-lg hover:bg-secondaryblue focus:ring-4 focus:ring-blue-200 transition-colors font-semibold text-lg flex items-center justify-center">
+                <span>ENVIE SOLICITUD DE ORDEN</span>
+                <div id="loadingSpinner" class="hidden ml-2">
+                  <i class="fas fa-circle-notch fa-spin"></i>
+                </div>
               </button>
 
               <input type="hidden" name="_next" value="https://artoolsweb.com/src/html/cart.html">
