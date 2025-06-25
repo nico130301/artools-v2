@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',async function() {
+document.addEventListener('DOMContentLoaded', async function() {
   const slides = document.getElementById('slides');
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
@@ -50,38 +50,6 @@ document.addEventListener('DOMContentLoaded',async function() {
   prevButton.addEventListener('click', prevSlide);
   nextButton.addEventListener('click', nextSlide);
 
-  // Touch handling
-  let touchStartX = 0;
-  let touchEndX = 0;
-  let initialTranslate = 0;
-
-  slides.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    initialTranslate = -currentIndex * 100;
-    slides.style.transition = 'none';
-  }, { passive: true });
-
-  slides.addEventListener('touchmove', (e) => {
-    if (isTransitioning) return;
-    const currentX = e.touches[0].clientX;
-    const diff = currentX - touchStartX;
-    const movePercent = (diff / window.innerWidth) * 100;
-    slides.style.transform = `translateX(${initialTranslate + movePercent}%)`;
-  }, { passive: true });
-
-  slides.addEventListener('touchend', (e) => {
-    const movePercent = touchEndX - touchStartX;
-    if (Math.abs(movePercent) > 50) {
-      if (movePercent > 0) {
-        prevSlide();
-      } else {
-        nextSlide();
-      }
-    } else {
-      updateSlidePosition(); // Snap back
-    }
-  });
-
   // Initialize position
   updateSlidePosition(false);
 
@@ -94,7 +62,7 @@ document.addEventListener('DOMContentLoaded',async function() {
     }, 5000);
   }
 
-   // Data Management
+  // Data Management
   class ProductManager {
     constructor(products) {
       this.products = products;
