@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = `
         <div class="flex flex-col items-center justify-center p-8 text-center">
           <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
-          <p class="text-gray-500 text-lg mb-4">Your cart is empty</p>
+          <p class="text-gray-500 text-lg mb-4">Tu carrito está vacío</p>
           <a href="./products.html" class="inline-flex items-center px-4 py-2 bg-mainblue text-white rounded-lg hover:bg-secondaryblue transition-colors">
             <i class="fas fa-arrow-left mr-2"></i>
-            Continue Shopping
+            Seguir Comprando
           </a>
         </div>
       `;
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Product Details -->
           <div class="flex-1">
             <h3 class="text-lg font-semibold text-gray-900">${item.name}</h3>
-            <p class="text-sm text-gray-600 mt-1">Size: ${item.selectedSize}${item.uom || ''}</p>
+            <p class="text-sm text-gray-600 mt-1">Tamaño: ${item.selectedSize}${item.uom || ''}</p>
             ${item.price ? `<p class="text-sm font-medium text-gray-900 mt-1">${formatPrice(item.price)}</p>` : ''}
           </div>
 
@@ -134,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function collectCartInfoForForm() {
+  function updateCartDetails() {
     const cartData = cart.map(item => 
-      `Product: ${item.name}\nSize: ${item.selectedSize}${item.uom || ''}\nQuantity: ${item.quantity}\n${'-'.repeat(40)}`
+      `${item.name} - ${item.selectedSize}${item.uom || ''} - Cantidad: ${item.quantity}`
     ).join('\n');
     
     document.querySelector('.cartDetails').value = cartData;
@@ -145,34 +145,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Form submission handler
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Validate form
+
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
     try {
-      // Show loading state
       submitButton.disabled = true;
-      loadingSpinner.classList.remove('hidden');
-      submitButton.querySelector('span').textContent = 'Enviando...';
+      submitButton.textContent = 'Enviando...';
 
-      // Collect form data
+      updateCartDetails();
       const formData = new FormData(form);
-      collectCartInfoForForm(); // Make sure cart details are included
-
-      // Submit using regular form submission instead of fetch
-      form.submit();
-
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Lo sentimos, hubo un error al enviar el mensaje. Por favor intente nuevamente.');
       
-      // Reset button state
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        localStorage.removeItem('cart');
+        alert('Orden enviada exitosamente');
+        window.location.href = '/src/html/cart.html'; // Redirect to home or thank you page
+      } else {
+        throw new Error('Error en el envío');
+      }
+    } catch (error) {
+      alert('Error al enviar la orden. Por favor, intente nuevamente.');
+    } finally {
       submitButton.disabled = false;
-      loadingSpinner.classList.add('hidden');
-      submitButton.querySelector('span').textContent = 'ENVIE SOLICITUD DE ORDEN';
+      submitButton.textContent = 'ENVIE SOLICITUD DE ORDEN';
     }
   });
 

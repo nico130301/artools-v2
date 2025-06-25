@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.getElementById('submitButton');
   const loadingSpinner = document.getElementById('loadingSpinner');
   
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     
     // Validate form
@@ -18,28 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
       loadingSpinner.classList.remove('hidden');
       submitButton.querySelector('span').textContent = 'Enviando...';
 
-      // Submit the form
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      // Show success message
-      alert('Mensaje enviado exitosamente. Gracias por contactarnos.');
-      form.reset();
+      // Submit form normally
+      form.submit();
 
     } catch (error) {
       console.error('Error:', error);
       alert('Lo sentimos, hubo un error al enviar el mensaje. Por favor intente nuevamente.');
-    } finally {
+      
       // Reset button state
       submitButton.disabled = false;
       loadingSpinner.classList.add('hidden');

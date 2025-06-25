@@ -54,21 +54,16 @@
         <div class="lg:col-span-1">
           <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 sticky top-24">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">SOLICITUD DE OFERTA</h2>
-
             
-            
-            <form class="space-y-6" action="https://formsubmit.co/contact@artoolsweb.com" method="POST">
-              <!-- Add these hidden fields for FormSubmit configuration -->
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="https://artoolsweb.com/src/html/cart.html">
-              <input type="hidden" name="_subject" value="Nueva Solicitud de Orden">
+            <form action="https://getform.io/f/aqomwqea" method="POST" class="space-y-6">
+              <!-- Hidden fields -->
+              <input type="hidden" name="form_type" value="order">
+              <input type="hidden" name="cart_details" class="cartDetails">
 
-                            <!-- Buyer Type Field -->
+              <!-- Form fields -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" for="buyerType">Perfil *</label>
-                <select name="buyerType" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue transition-colors">
+                <select name="buyerType" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue">
                   <option value="" disabled selected>Seleccione el tipo</option>
                   <option value="distribuidor">Distribuidor</option>
                   <option value="fabrica">Fábrica</option>
@@ -78,65 +73,30 @@
                   <option value="otros">Otros</option>
                 </select>
               </div>
-              
-              <!-- Name Field -->
+
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" for="name">Nombre Completo *</label>
-                <input type="text" name="name" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue transition-colors"
-                  placeholder="Ingrese su nombre completo">
+                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue">
               </div>
 
-              <!-- Email Field -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" for="email">Correo Electrónico *</label>
-                <input type="email" name="email" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue transition-colors"
-                  placeholder="ejemplo@correo.com">
+                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue">
               </div>
 
-              <!-- Phone Field -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">Teléfono *</label>
-                <input type="tel" name="phone" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue transition-colors"
-                  placeholder="Ingrese su número de teléfono">
+                <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue">
               </div>
 
-
-
-              <!-- Message Field -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2" for="message">Mensaje / Solicitud Especial</label>
-                <textarea name="message" rows="4" 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue transition-colors"
-                  placeholder="¿Algún requerimiento especial?"></textarea>
+                <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-mainblue focus:border-mainblue"></textarea>
               </div>
 
-              <!-- Terms Checkbox -->
-              <div class="flex items-start">
-                <input type="checkbox" id="termsCheckbox" required class="mt-1 mr-2">
-                <label for="termsCheckbox" class="text-sm text-gray-600">
-                  He leído y acepto los 
-                  <a href="./termsConditions.html" class="text-mainblue hover:underline font-semibold">términos y condiciones</a> 
-                  y la 
-                  <a href="./privacyPolicy.html" class="text-mainblue hover:underline font-semibold">política de privacidad</a>
-                </label>
-              </div>
-
-              <input type="hidden" class="cartDetails" name="cartDetails">
-
-              <!-- Submit Button -->
-              <button type="submit" 
-                id="submitButton"
-                class="w-full py-3 px-6 bg-mainblue text-white rounded-lg hover:bg-secondaryblue focus:ring-4 focus:ring-blue-200 transition-colors font-semibold text-lg flex items-center justify-center">
-                <span>ENVIE SOLICITUD DE ORDEN</span>
-                <div id="loadingSpinner" class="hidden ml-2">
-                  <i class="fas fa-circle-notch fa-spin"></i>
-                </div>
+              <button type="submit" id="submitButton" class="w-full py-3 px-6 bg-mainblue text-white rounded-lg hover:bg-secondaryblue focus:ring-4 focus:ring-blue-200 transition-colors font-semibold text-lg">
+                ENVIE SOLICITUD DE ORDEN
               </button>
-
-              
             </form>
           </div>
         </div>
