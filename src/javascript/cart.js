@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemDiv = `
         <div class="p-6 flex flex-col md:flex-row gap-4 items-start md:items-center border-b border-gray-200 last:border-b-0">
           <!-- Product Image -->
-          <div class="w-24 h-24 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
-            <img class="w-full h-full object-cover" src="${item.image}" alt="${item.name}">
+          <div class="w-24 h-24 flex-shrink-0 bg-white rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
+            <img class="max-w-full max-h-full object-contain p-2" src="${item.image}" alt="${item.name}">
           </div>
 
           <!-- Product Details -->

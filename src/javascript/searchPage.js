@@ -36,7 +36,9 @@ function render(products, searchTerm) {
 
   products.forEach(product => {
     // Get size range with proper handling of UOM
-    const sizes = product.size ? product.size.split(';').map(s => s.trim()) : [];
+    const sizes = typeof product.size === 'string' && product.size.trim() !== ''
+      ? product.size.split(';').map(s => s.trim())
+      : [];
     let sizeRange = 'Tamaño indisponible';
 
     if (sizes.length > 0 && sizes[0] !== 'nan') {
@@ -55,7 +57,7 @@ function render(products, searchTerm) {
     card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer';
     
     card.innerHTML = `
-      <div class="p-7 flex items-center justify-center">
+      <div class="p-2 md:p-4 flex items-center justify-center h-28 md:h-60">
         <img src="${product.image || defaultProductImg}" alt="${product.name}" class="max-h-full w-auto object-contain">
       </div>
       <div class="mt-auto p-3 border-t border-gray-200">

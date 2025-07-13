@@ -143,11 +143,11 @@ const observer = new MutationObserver(() => {
           <!-- Left Column - Image Gallery -->
           <div class="flex flex-col space-y-4 md:space-y-8">
             <!-- Main Product Image -->
-            <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg">
-              <img id="mainProductImage" 
-                  class="w-full max-w-lg object-contain hover:scale-105 transition-transform duration-300" 
-                  src="${product.image}" 
-                  alt="${product.name}">
+            <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg h-[500px]">
+              <img id="mainProductImage"
+                   class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                   src="${product.image}"
+                   alt="${product.name}">
             </div>
 
             ${(() => {
