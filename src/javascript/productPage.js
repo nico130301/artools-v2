@@ -137,101 +137,236 @@ const observer = new MutationObserver(() => {
 
     history.innerHTML = breadcrumbHTML;
 
-    pageContent.innerHTML = `
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-          <!-- Left Column - Image Gallery -->
-          <div class="flex flex-col space-y-4 md:space-y-8">
-            <!-- Main Product Image -->
-            <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg h-[500px]">
-              <img id="mainProductImage"
-                   class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                   src="${product.image}"
-                   alt="${product.name}">
-            </div>
 
-            ${(() => {
-              const validImages = [product.image, product.image2, product.image3]
-                .filter(img => img && img.trim() !== '' && img !== 'undefined' && img !== undefined);
-            
-              return validImages.length > 1 ? 
-                `<!-- Thumbnail Navigation -->
-                <div class="flex justify-center gap-4 mt-4">
-                  ${validImages.map((img, index) => `
-                    <div class="w-20 h-20 cursor-pointer border-2 ${index === 0 ? 'border-mainblue' : 'border-transparent'} 
-                        rounded-lg overflow-hidden hover:border-secondaryblue transition-colors">
-                      <img src="${img}" 
-                          alt="${product.name} view ${index + 1}"
-                          class="w-full h-full object-cover thumbnail-img"
-                          onclick="changeMainImage('${img}', this)">
-                    </div>
-                  `).join('')}
-                </div>` 
-                : '';
-            })()}
-          </div>
-
-          <!-- Right Column - Product Details -->
-          <div class="flex flex-col space-y-4 md:space-y-8">
-            <!-- Product Title - Moved from left to right column -->
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 font-openSans">
-              ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
-            </h1>
-            
-            <!-- Product ID -->
-            <div class="inline-flex items-center bg-gray-100 rounded-lg px-3 md:px-4 py-2 text-gray-600">
-              <span id="productIdDisplay" class="text-xs md:text-sm font-semibold">
-                Código de Producto: ${product.id}
-              </span>
-            </div>
-
-            <!-- Product Description -->
-            <div class="bg-gray-50 rounded-lg p-4 md:p-6">
-              <ul class="space-y-3 md:space-y-4">
-                ${product.description.split('\n').map(line => 
-                  `<li class="flex items-start">
-                    <span class="text-mainblue mr-2">•</span>
-                    <span class="text-sm md:text-base text-gray-700">${line}</span>
-                  </li>`
-                ).join('')}
-              </ul>
-            </div>
-
-            <!-- Size Selector if available -->
-            ${product.size ? `
-              <div class="bg-gray-50 rounded-lg p-4 md:p-6">
-                <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Seleccione el Tamaño:</label>
-                <select id="sizeSelector" 
-                        class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
-                  ${product.size.split(';').map(s => `
-                    <option value="${s.trim()}">${s.trim()}${product.uom ? ` ${product.uom}` : ''}</option>
-                  `).join('')}
-                </select>
+    // Helper to render the product page content, with a parameter for the technical sheet section
+    function renderProductPageContent(technicalSheetHTML) {
+      pageContent.innerHTML = `
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
+            <!-- Left Column - Image Gallery -->
+            <div class="flex flex-col space-y-4 md:space-y-8">
+              <!-- Main Product Image -->
+              <div class="flex items-center justify-center bg-white p-4 md:p-8 rounded-lg h-[500px]">
+                <img id="mainProductImage"
+                    class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                    src="${product.image}"
+                    alt="${product.name}">
               </div>
-            ` : ''}
 
-            <!-- Technical Sheet -->
+              ${(() => {
+                const validImages = [product.image, product.image2, product.image3]
+                  .filter(img => img && img.trim() !== '' && img !== 'undefined' && img !== undefined);
+              
+                return validImages.length > 1 ? 
+                  `<!-- Thumbnail Navigation -->
+                  <div class="flex justify-center gap-4 mt-4">
+                    ${validImages.map((img, index) => `
+                      <div class="w-20 h-20 cursor-pointer border-2 ${index === 0 ? 'border-mainblue' : 'border-transparent'} 
+                          rounded-lg overflow-hidden hover:border-secondaryblue transition-colors">
+                        <img src="${img}" 
+                            alt="${product.name} view ${index + 1}"
+                            class="w-full h-full object-cover thumbnail-img"
+                            onclick="changeMainImage('${img}', this)">
+                      </div>
+                    `).join('')}
+                  </div>` 
+                  : '';
+              })()}
+            </div>
+
+            <!-- Right Column - Product Details -->
+            <div class="flex flex-col space-y-4 md:space-y-8">
+              <!-- Product Title - Moved from left to right column -->
+              <h1 class="text-2xl md:text-3xl font-bold text-gray-900 font-openSans">
+                ${product.name}${product.size ? ` ${product.size.split(';')[0]}` : ''}${product.uom ? ` ${product.uom}` : ''}
+              </h1>
+              
+              <!-- Product ID -->
+              <div class="inline-flex items-center bg-gray-100 rounded-lg px-3 md:px-4 py-2 text-gray-600">
+                <span id="productIdDisplay" class="text-xs md:text-sm font-semibold">
+                  Código de Producto: ${product.id}
+                </span>
+              </div>
+
+              <!-- Product Description -->
+              <div class="bg-gray-50 rounded-lg p-4 md:p-6">
+                <ul class="space-y-3 md:space-y-4">
+                  ${product.description.split('\n').map(line => 
+                    `<li class="flex items-start">
+                      <span class="text-mainblue mr-2">•</span>
+                      <span class="text-sm md:text-base text-gray-700">${line}</span>
+                    </li>`
+                  ).join('')}
+                </ul>
+              </div>
+
+              <!-- Size Selector if available -->
+              ${product.size ? `
+                <div class="bg-gray-50 rounded-lg p-4 md:p-6">
+                  <label class="block text-sm md:text-base text-gray-700 font-semibold mb-2">Seleccione el Tamaño:</label>
+                  <select id="sizeSelector" 
+                          class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mainblue focus:border-mainblue text-sm md:text-base">
+                    ${product.size.split(';').map(s => `
+                      <option value="${s.trim()}">${s.trim()}${product.uom ? ` ${product.uom}` : ''}</option>
+                    `).join('')}
+                  </select>
+                </div>
+              ` : ''}
+
+              <!-- Technical Sheet -->
+              ${technicalSheetHTML}
+
+              <!-- Add to Cart Button -->
+              <button class="addCartButton w-full bg-secondaryblue text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-lg
+                          hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3 text-sm md:text-base"
+                      data-name="${product.name}" 
+                      data-image="${product.image}">
+                <span>Agregue al Cesto</span>
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Check if the PDF exists before rendering the technical sheet section
+    const pdfUrl = `../data/catalog/${product.id}.pdf`;
+    fetch(pdfUrl, { method: 'HEAD' })
+      .then(response => {
+        let technicalSheetHTML = '';
+        if (response.ok) {
+          technicalSheetHTML = `
             <div class="bg-gray-50 rounded-lg p-4 md:p-6 flex items-center justify-between">
               <span class="text-sm md:text-base text-gray-700 font-semibold">Ficha Técnica:</span>
-              <a href="../data/catalog/${product.id}.pdf" 
-                class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2 text-sm md:text-base">
+              <a href="${pdfUrl}" 
+                class="inline-flex items-center text-mainblue hover:text-secondaryblue space-x-2 text-sm md:text-base" target="_blank" rel="noopener">
                 <i class="fas fa-file-pdf"></i>
                 <span class="underline">${product.id}.pdf</span>
               </a>
             </div>
-
-            <!-- Add to Cart Button -->
-            <button class="addCartButton w-full bg-secondaryblue text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-lg
-                        hover:bg-mainblue transition-colors duration-300 flex items-center justify-center space-x-3 text-sm md:text-base"
-                    data-name="${product.name}" 
-                    data-image="${product.image}">
-              <span>Agregue al Cesto</span>
-              <i class="fas fa-shopping-cart"></i>
-            </button>
+          `;
+        } else {
+          technicalSheetHTML = `
+            <div class="bg-gray-50 rounded-lg p-4 md:p-6 flex items-center justify-between">
+              <span class="text-sm md:text-base text-gray-700 font-semibold">Ficha Técnica:</span>
+              <span class="text-gray-400">No disponible</span>
+            </div>
+          `;
+        }
+        renderProductPageContent(technicalSheetHTML);
+        afterProductPageContentRender();
+      })
+      .catch(() => {
+        // On error, treat as not available
+        const technicalSheetHTML = `
+          <div class="bg-gray-50 rounded-lg p-4 md:p-6 flex items-center justify-between">
+            <span class="text-sm md:text-base text-gray-700 font-semibold">Ficha Técnica:</span>
+            <span class="text-gray-400">No disponible</span>
           </div>
-        </div>
-      </div>
-    `;
+        `;
+        renderProductPageContent(technicalSheetHTML);
+        afterProductPageContentRender();
+      });
+
+    // All logic that depends on the product page content being rendered
+    function afterProductPageContentRender() {
+      window.changeMainImage = function(newSrc, thumbnailElement) {
+        // Update main image
+        document.getElementById('mainProductImage').src = newSrc;
+        
+        // Update thumbnail borders
+        document.querySelectorAll('.thumbnail-img').forEach(thumb => {
+          thumb.parentElement.classList.remove('border-mainblue');
+          thumb.parentElement.classList.add('border-transparent');
+        });
+        thumbnailElement.parentElement.classList.add('border-mainblue');
+        thumbnailElement.parentElement.classList.remove('border-transparent');
+      };
+
+      //size drop-down
+      if (product.size) {
+        // Find the right column div that contains product details
+        const rightColumn = document.querySelector('.grid-cols-1.lg\\:grid-cols-2 > div:last-child');
+        // Get the title element
+        const productTitle = document.querySelector('.text-2xl.md\\:text-3xl.font-bold');
+        // The size selector is already being created in the main HTML template
+        const sizeSelector = document.getElementById('sizeSelector');
+        if (sizeSelector) {
+          sizeSelector.addEventListener('change', function () {
+            const selectedIndex = String(this.selectedIndex + 1).padStart(2, '0');
+            const selectedSize = this.value;
+            // Update product ID
+            const productIdDisplay = document.getElementById('productIdDisplay');
+            if (productIdDisplay) {
+              productIdDisplay.textContent = `Código de Producto: ${product.id}${selectedIndex}`;
+            }
+            // Update product title with size and UOM
+            if (productTitle) {
+              const uomText = product.uom ? ` ${product.uom}` : '';
+              productTitle.textContent = `${product.name} ${selectedSize}${uomText}`;
+            }
+          });
+          // Trigger initial update immediately after setting up the listener
+          const event = new Event('change');
+          sizeSelector.dispatchEvent(event);
+        }
+      }
+
+      // Cart button logic
+      const button = document.querySelector('.addCartButton');
+      button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const name = button.dataset.name;
+        const image = button.dataset.image;
+        const selectedSize = document.getElementById('sizeSelector') ? document.getElementById('sizeSelector').value : undefined;
+        const uom = product.uom || ''; // Get UOM from product data
+
+        const existingItem = cart.find(item => item.name === name && item.selectedSize === selectedSize);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ 
+            name, 
+            image, 
+            quantity: 1, 
+            selectedSize,
+            uom // Add UOM to cart item
+          });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+
+        // Store original content
+        const originalContent = button.innerHTML;
+        
+        // Update button appearance
+        button.innerHTML = '<span>Added to Cart!</span><i class="fas fa-check ml-2"></i>';
+        button.disabled = true;
+        button.classList.remove('bg-secondaryblue', 'hover:bg-mainblue');
+        button.classList.add('bg-green-500');
+
+        setTimeout(() => {
+          button.disabled = false;
+          button.innerHTML = originalContent;
+          button.classList.remove('bg-green-500');
+          button.classList.add('bg-secondaryblue', 'hover:bg-mainblue');
+        }, 1000);
+      });
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartQuantity = document.querySelector('.cartQuantity');
+        if (cartQuantity) {
+          cartQuantity.textContent = totalQuantity;
+        }
+      }
+    }
 
     window.changeMainImage = function(newSrc, thumbnailElement) {
       // Update main image
