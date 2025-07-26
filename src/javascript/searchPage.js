@@ -76,6 +76,12 @@ function render(products, searchTerm) {
       };
       
       localStorage.setItem('selectedProduct', JSON.stringify(productData));
+      if (product.category) {
+        localStorage.setItem('selectedProductCategory', product.category);
+      } else {
+        localStorage.removeItem('selectedProductCategory');
+      }
+      localStorage.removeItem('navStack');
       window.location.href = './productPage.html';
     };
 

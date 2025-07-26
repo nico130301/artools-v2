@@ -604,14 +604,17 @@ const observer = new MutationObserver(() => {
     }
 
     // Helper to go back to category from breadcrumb
-    window.historyBackTo = function (index) {
-      const navStack = JSON.parse(localStorage.getItem('navStack')) || [];
-      const newStack = navStack.slice(0, index + 1);
-      localStorage.setItem('navStack', JSON.stringify(newStack));
-      localStorage.setItem('resumeFromNavStack', 'true');
-      location.href = './products.html';
-    };
+
   });
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
+
+
+window.historyBackTo = function (index) {
+  const navStack = JSON.parse(localStorage.getItem('navStack')) || [];
+  const newStack = navStack.slice(0, index + 1);
+  localStorage.setItem('navStack', JSON.stringify(newStack));
+  localStorage.setItem('resumeFromNavStack', 'true');
+  location.href = './products.html';
+};

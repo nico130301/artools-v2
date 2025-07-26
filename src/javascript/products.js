@@ -192,6 +192,7 @@ function render(currentData, title = 'Product Categories') {
       card.onclick = () => {
         localStorage.setItem('selectedProduct', JSON.stringify(product));
         localStorage.setItem('navStack', JSON.stringify(stack));
+        localStorage.setItem('selectedProductCategory', stack[stack.length - 1].title); 
         window.location.href = './productPage.html';
       };
       grid.appendChild(card);
