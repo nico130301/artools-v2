@@ -107,10 +107,10 @@
 
   #productDropdown a {
     @apply text-white text-base font-medium transition-all duration-300;
-    @apply min-h-[4rem]; /* Set minimum height for two lines */
+    @apply min-h-[2.5rem]; /* Set minimum height for two lines */
     @apply flex items-center justify-center text-center;
-    @apply px-2 py-3;
-    line-height: 1.2;
+    @apply px-1 py-1;
+    line-height: 1.1;
     hyphens: auto;
     word-wrap: break-word;
   }
