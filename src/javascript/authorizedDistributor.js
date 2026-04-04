@@ -1,67 +1,99 @@
 const stores = [
   {
-    name: "Tornillos Toyman",
-    address: "Frente a Las Gravilias, Cartago, Costa Rica",
-    phone: "+506-25910858",
-    email: "tornillostoyman@gmail.com",
-    lat: 9.9000,
-    lng: -84.0833
-  },
-  {
-    name: "Codeorsa",
+    name: "CODEORSA",
     address: "20804, Poas, Alajuela, Costa Rica",
     phone: "+506-24583858",
     email: "info@codeorsa.com",
-    lat: 10.0170,
-    lng: -84.2740
+    lat: 10.03842,
+    lng: -84.27151
   },
   {
-    name: "Confecciones Zae",
-    address: "101 m Oeste Cementerio, Escazu, San Jose, Costa Rica",
+    name: "TORNILLOS MANGUERAS TOYMAN SA",
+    address: "Frente a la Gravilias, Cartago, Costa Rica",
+    phone: "+506-25910858",
+    email: "tornillostoyman@gmail.com",
+    lat: 9.86721,
+    lng: -83.92407
+  },
+  {
+    name: "CONFECCIONES ZAE",
+    address: "100 m Oeste Cementerio, Escazu, San Jose, Costa Rica",
     phone: "+506-22285197",
     email: "kikescazu@gmail.com",
-    lat: 9.9207,
-    lng: -84.1462
+    lat: 9.92052,
+    lng: -84.14633
   },
   {
     name: "DIPROINSUR",
     address: "Frente al Hotel del Sur, Perez Zeledon, Costa Rica",
     phone: "+506-27711066",
     email: "info@diproinsur.com",
-    lat: 9.3395,
-    lng: -83.6711
+    lat: 9.33995,
+    lng: -83.67246
   },
   {
-    name: "Mayzap Tornillos",
+    name: "MAZAP TORNILLOS",
     address: "Heredia, Costa Rica",
     phone: "+506-40017427",
     email: "mayzapcr@gmail.com",
-    lat: 10.0024,
-    lng: -84.1165
+    lat: 10.01598,
+    lng: -84.12209
   },
   {
-    name: "Autorepuestos Rekasa",
+    name: "AUTOREPUESTOS REKASA",
     address: "Puntarenas, Costa Rica",
     phone: "+506-26630110",
     email: "repuestosdelpacifico.fe@gmail.com",
-    lat: 9.9769,
-    lng: -84.8384
+    lat: 8.52611,
+    lng: -82.83544
   },
   {
     name: "CON-TACTO SA",
     address: "Curridabat, San Jose, Costa Rica",
     phone: "+506-88755180",
     email: "verafarah@contactocr.com",
-    lat: 9.9163,
-    lng: -84.0283
+    lat: 9.93018,
+    lng: -84.04027
   },
   {
-    name: "Taller Federico Meza",
-    address: "Barrio Paez, San Rafael, Cartago, Costa Rica",
-    phone: "+506-88428859",
-    email: "fmr-mecanik@hotmail.com",
-    lat: 9.8702,
-    lng: -83.8951
+    name: "FERRETERIA COCORÍ",
+    address: "50 m. Norte Escuela Cocorí, Cocorí, Cartago, Costa Rica",
+    phone: "+506-85591366",
+    email: "Jeisonmiranda10@gmail.com",
+    lat: 9.84276,
+    lng: -83.92240
+  },
+  {
+    name: "AGROCOMERCIAL CARICOS",
+    address: "Frente al Templo Católico, Llano Grande, Cartago, Costa Rica",
+    phone: "+506-89633436",
+    email: "agrocomercaricos21@gmail.com",
+    lat: 9.93994,
+    lng: -83.91126
+  },
+  {
+    name: "FERRECOCLES",
+    address: "Diagonal a la Plaza de Deportes, Cocles, Talamanca, Limón",
+    phone: "+506-27502102",
+    email: "informes@ferrecocles.com",
+    lat: 9.64461,
+    lng: -82.72978
+  },
+  {
+    name: "MERCASA",
+    address: "Agua Caliente, Cartago, Costa Rica",
+    phone: "+506-25524137",
+    email: "ventas@grupomercasa.com",
+    lat: 9.84271,
+    lng: -83.91537
+  },
+  {
+    name: "ALMACEN Y FERRETERIA GONAR",
+    address: "125 m Este del BNCR, Puerto Viejo, Sarapiquí, Heredia",
+    phone: "+506-27666196",
+    email: "gonar01rg@gmail.com",
+    lat: 9.33995,
+    lng: -83.67246
   }
 ];
 
